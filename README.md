@@ -1,11 +1,8 @@
 # JE Starter Theme
-==========================
 
-### Built with alittle help from _S.
+### Built with a little help from _S.
 
-==========================
-
-## Notes:
+### Notes:
 * Uses SASS with Gulp
 * Built with modular components
 * Must be used with ACF Pro
