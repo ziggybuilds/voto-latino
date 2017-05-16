@@ -1,0 +1,179 @@
+// Header classes
+//animation classes
+.reveal {
+	animation-duration: 2s;
+	animation-timing-function: ease-in-out;
+	animation-delay: .5s;
+	animation-name: reveal;
+}
+
+@keyframes reveal {
+	0% { @include opacity(0); }
+	100% { @include opacity(1); }
+}
+
+.overlay-header-gradient {
+	content: "";
+	z-index: 2;
+	position: absolute;
+	width: 100%;
+	height: 80vh;
+	min-height: 600px;
+	max-height: 1000px;
+	@include gradient($red, $dblue);
+	@include opacity(0.3);
+	@media screen and (max-width: 768px) {
+	          min-height: 400px;
+	}
+}
+
+
+header {
+	@include flex-direction(column);
+	@include justify-content(space-between);
+	height: 80vh;
+	min-height: 600px;
+	max-height: 1000px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+	@media screen and (max-width: 768px) {
+	          min-height: 400px;
+	}
+	&:after {
+	          position: absolute;
+	          content: "";
+	          width: 100%;
+	          top: 0;
+	          left: 0;
+	          height: 80vh;
+	          min-height: 600px;
+	          max-height: 1000px;
+	          @include opacity(0.6);
+	          z-index: 1;
+	          @media screen and (max-width: 768px) {
+	        		  min-height: 400px;
+		}
+         }
+}
+
+.bring-forward {
+	@include flex-direction(column);
+	@include justify-content(space-between);
+	height: 80vh;
+	min-height: 600px;
+	max-height: 1000px;
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	@media screen and (max-width: 768px) {
+        		  min-height: 400px;
+	}
+}
+
+.header-push-right {
+		@include flex-direction(row);
+		@include justify-content(flex-end);
+		@media screen and (max-width: 768px) {
+			@include justify-content(center);
+		}
+}
+
+.header-title {
+	padding: 0;
+	color: $white;
+	a {
+		text-decoration: none;
+		color: $white;
+		&:hover, &:active, &:focus, &:visited {
+			color: $white;
+		}
+	}
+	h1 {
+		max-width: 600px;
+		font-size: 3em;
+		@media screen and (max-width: 768px) {
+			padding: 0 .5em 0 .5em;
+		}
+	}
+}
+
+.menu-logo {
+	margin: 1.8em 0;
+	height: 2em;
+	@include opacity(0.6);
+	@include transition(ease-in-out .2s);
+		&:hover, &:focus {
+			@include opacity(1);
+		}
+}
+
+.action-nav {
+	padding: 1em;
+	ul {
+		list-style: none;
+		margin: 1em 1em 0 0;
+		padding: 0 0 0 0;
+		li {
+			display: inline;
+			padding: 0 .5em;
+			a {
+				text-decoration: none;
+				color: $white;
+				color: $white;
+				font-size: 1.2em;
+				padding: .5em 2em;
+				@include border-radius(20px);
+			}
+		}
+		@media screen and (max-width: 768px) {
+			margin: 1em 0 0 0;
+			li {
+				padding: 0 .1em;
+			}
+		}
+	}
+	.sign-up {
+		a {
+			background-color: $red;
+			transition: 0.2s ease-in;
+				&:hover, &:focus {
+					background-color: $dblue;
+			}
+		}
+	}
+	.donate {
+		a{
+			background-color: $lblue;
+			transition: 0.2s ease-in;
+				&:hover, &:focus {
+					background-color: $dblue;
+			}
+		}	
+	}
+}
+
+.share-widget {
+	color: $dblue;
+	background-color: $white;
+	padding: 0 3em 0 3em;
+	p { 
+		font-size: 1.2em;
+		a {
+			text-decoration: none;
+			font-size: 1.4em;
+			i {
+				letter-spacing: .5em;
+				color: $dblue;
+				&:visited {
+				color: $dblue;
+			}
+				&:hover, &:focus {
+					color: $lblue;
+				}
+			}
+		}
+	}
+}
+

@@ -1,0 +1,97 @@
+footer {
+	max-height: 400px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	padding: 1em 0 1em 0;
+	background-color: $white;
+	.site-info {
+		@include justify-content(space-between);
+		@include align-content(center);
+		margin: 0 auto 0 auto;
+		.footer-inner {
+			width: 30%;
+			@media screen and (max-width: 768px) {
+				width: 100%;
+			}
+		}
+		.disclaimer {
+			p {		
+				margin-left: auto;
+				margin-right: auto;
+			}
+			@media screen and (max-width: 768px) {
+					padding: 0 2em 0 2em 0;
+					@include order(3);
+					p {
+						text-align: center;
+						padding: 0 .5em 0 .5em;
+					}
+			}
+		}
+		.footer-menu {
+			ul {
+				list-style: none;
+				padding: 0 0 0 0;
+				@media screen and (max-width: 768px) {
+					text-align: center;
+				}
+				li {
+					@media screen and (max-width: 768px) {
+						display: inline;
+						padding: 0 .5em;
+						//font-family: $fontdots;
+					}
+					a {
+						line-height: 1.4em;
+						text-decoration: none;
+						color: $dblue;
+						&:hover, &:focus {
+							color: $lblue;
+						}
+					}
+				}
+			}
+		}
+		.dga-logo {
+			text-align: center;
+			padding: 1em;
+			img {
+				width: auto;
+				height: 80%;
+				transition: 1s;
+				&:hover, &:focus {
+					height: 90%;
+				}
+			}
+			@media screen and (max-width: 768px) {
+				height: 100px;
+				@include order(2);
+			}
+		}
+		.footer-share-text {
+
+			text-align: center;
+			p {
+				a {
+					font-size: 2em;
+					padding: 5%;
+					color: $dblue;
+					li {
+						color: $dblue;
+					}
+					&:visited {
+							color: $dblue;
+						}
+					&:hover, &:focus {
+						color: $lblue;
+					}
+				}
+			}
+			@media screen and (max-width: 768px) {
+				@include order(1);
+			}
+		}
+	}
+}

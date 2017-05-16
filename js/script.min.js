@@ -1,0 +1,1 @@
+jQuery(document).ready(function(e){e("iframe").wrap('<div class="video-embed"></div>'),e("#tweeterCloser").click(function(){e("#tweeter").fadeOut("fast")})});

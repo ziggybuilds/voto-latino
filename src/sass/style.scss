@@ -1,0 +1,39 @@
+/*!
+Theme Name: je-starter
+Author: Joshua Ellis
+Description: JE starter theme
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: jestarter
+Tags:
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------*/
+
+@import "variables";
+
+/*--------------------------------------------------------------*/
+@import "mixins-master";
+
+/*--------------------------------------------------------------
+# Normalize 
+--------------------------------------------------------------*/
+@import "normalize";
+
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+@import "main";
+
+@import "header";
+
+@import "index";
+
+@import "donate";
+
+@import "error";
+
+@import "footer";
