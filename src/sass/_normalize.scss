@@ -49,7 +49,7 @@ a {
 a:active,
 a:hover {
 	outline: 0;
-	color: $lblue;
+	color: $first;
 	transition: ease-in-out 0.2s;
 }
 
@@ -229,4 +229,13 @@ table {
 td,
 th {
 	padding: 0;
+}
+
+ul {
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	-webkit-padding-start: 0px;
+	padding-left: 0px;
 }

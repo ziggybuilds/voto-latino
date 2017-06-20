@@ -1,12 +1,15 @@
 .error-404 {
+	min-height: 90vh;
 	text-align: center;
-	min-height: 20em;
-	a {
-		font-size: 4em;
-		color: $red;
-		font-weight: bold;
-		&:hover, &:focus {
-			color: $lblue;
+	padding: 100px;
+	width: 100%;
+	position: relative;
+	@extend .vert-center;
+	.error-image-div {
+		img {
+			width: 100%;
+			height: auto;
+			max-width: 1200px;
 		}
 	}
 }

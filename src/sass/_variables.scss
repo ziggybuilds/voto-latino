@@ -1,8 +1,18 @@
-$fontmain: 'Raleway', sans-serif;
-$fontdots: 'Raleway Dots', cursive;
+$fontmain: 'Roboto', sans-serif;
+$displayfont: 'Poppins', sans-serif;
 
 $white: #ffffff;
-$red: #e3173e;
-$lblue: #3292df;
-$mblue: #132c4c;
-$dblue: #101426;
+$dark: #000;
+$accent: #D10040; //Red
+$first: #01212E; // Dark Blue
+$first-op: rgba(0, 0, 0, 0.1);
+$first-opa: rgba(0, 0, 0, 0.4);
+$second: #FF960D; // Orange
+$third: #A0E2FF; //Blue
+$fourth: #2CDE7F; //Light Green
+
+$xs: 400px;
+$sm: 768px;
+$md: 1000px;
+$lg: 1300px;
+$xlg: 1600px;

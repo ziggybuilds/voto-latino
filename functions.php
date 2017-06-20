@@ -60,12 +60,6 @@ function jestarter_setup() {
 		'caption',
 	) );
 
-	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'jestarter_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
-
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
 }
@@ -106,19 +100,21 @@ add_action( 'widgets_init', 'jestarter_widgets_init' );
  * Enqueue scripts and styles.
  */
 function jestarter_scripts() {
-	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Raleway+Dots|Raleway:400,700', false);
-	
-	wp_enqueue_style( 'jestarter-style', get_stylesheet_uri());
+	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto:400,400i,700', false);
 
-	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'); 
+	wp_enqueue_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
 
-	wp_enqueue_style('animate', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'); 
+	wp_enqueue_script('gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js', true);
 
-	wp_enqueue_script( 'skip-link-focus-fix', get_template_directory_uri() . '/src/js/skip-link-focus-fix.js', array(), true );
+	wp_enqueue_script('Scroll Magic', 'https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js', true);
 
-	wp_enqueue_script( 'wow', 'https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js', array(), true );
+	wp_enqueue_script('Scroll Magic', 'https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.js', true);
 
-	wp_enqueue_script( 'custom-script', get_template_directory_uri() . '/src/js/custom.js', array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script('Scroll Magic Plugin', 'https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js', true);
+
+	wp_enqueue_script( 'skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), true );
+
+	wp_enqueue_script( 'minified-script', get_template_directory_uri() . '/js/script.min.js', array( 'jquery' ), '1.0.0', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -126,11 +122,62 @@ function jestarter_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'jestarter_scripts' );
 
+function namespace_theme_stylesheets() {
+	wp_register_style( 'style-minified', get_template_directory_uri() . '/style.min.css', array(), null, 'all');
+	wp_enqueue_style( 'style-minified' );
+}
+add_action( 'wp_enqueue_scripts', 'namespace_theme_stylesheets' );
+
+
 // Inserting Custom Fields Options Page
 if( function_exists('acf_add_options_page') ) {
 	
-	acf_add_options_page('DGA Theme Options');
+	acf_add_options_page('JGE Theme Options');
 	
+}
+
+// Custom post type for the blog functionality
+add_action( 'init', 'codex_latest_init' );
+/**
+ * Register a book post type.
+ *
+ * @link http://codex.wordpress.org/Function_Reference/register_post_type
+ */
+function codex_latest_init() {
+	$labels = array(
+		'name'               => _x( 'Latest News', 'latest', 'jestarter' ),
+		'singular_name'      => _x( 'Latest', 'post type singular name', 'jestarter' ),
+		'menu_name'          => _x( 'Latest News', 'admin menu', 'jestarter' ),
+		'add_new'            => _x( 'Add New', 'piece', 'jestarter' ),
+		'add_new_item'       => __( 'Add New Latest News', 'jestarter' ),
+		'new_item'           => __( 'New Piece', 'jestarter' ),
+		'edit_item'          => __( 'Edit Piece', 'jestarter' ),
+		'view_item'          => __( 'View Piece', 'jestarter' ),
+		'all_items'          => __( 'All of the Latest', 'jestarter' ),
+		'search_items'       => __( 'Search Pieces', 'jestarter' ),
+		'parent_item_colon'  => __( 'Parent Piece:', 'jestarter' ),
+		'not_found'          => __( 'No pieces found.', 'jestarter' ),
+		'not_found_in_trash' => __( 'No pieces found in Trash.', 'jestarter' )
+	);
+
+	$args = array(
+		'labels'             => $labels,
+                	'description'        => __( 'Post the lastest updates to the Latest News section.', 'jestarter' ),
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => 'latest',
+		'rewrite'            => array( 'slug' => 'latest' ),
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => 5,
+		'menu_icon' => 'dashicons-media-document',
+		'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+	);
+
+	register_post_type( 'latest', $args );
 }
 
 

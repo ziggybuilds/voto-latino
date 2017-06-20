@@ -12,6 +12,15 @@ html {
 
 a {
 	@include transition(ease-in-out .2s);
+	color: $third;
+	&:hover, &:focus {
+		color: $accent;
+	}
+
+}
+::selection {
+	background-color: $accent;
+	color: $white;
 }
 
 body {
@@ -19,148 +28,200 @@ body {
 }
 
 p {
-	font-size: 1em;
+	font-size: 1.1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $displayfont;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
 }
 
 // Standard Helper classes
 .hidden {
+	display: none;
+}
+
+.accent-Center {
+	border: 2px solid $accent;
+	width: 20%;
+	margin: 0 auto 20px auto;
+}
+
+.accent-Right {
+	border: 2px solid $accent;
+	width: 20%;
+	margin: 0 auto 20px 0;
+	@media screen and (max-width: $sm) {
+		margin: 0 auto 20px auto;
+	}
+}
+
+.accent-Left {
+	border: 2px solid $accent;
+	width: 20%;
+	margin: 0 auto 20px 0;
+	@media screen and (max-width: $sm) {
+		margin: 0 auto 20px auto;
+	}
+}
+
+.accent-span {
+	background-color: $accent;
+	color: $dark;
+	padding: 0px 5px;
+}
+
+.ease {
+	@include transition( 0.2s ease-in-out);
+}
+
+.pusher {
+	@include transform(translate(0px, -10px));
+}
+
+.hide {
 	@include opacity(0);
 }
 
-.text-blue {
-	color: $dblue;
+.visible {
+	@include opacity(1);
 }
 
-.text-white {
-	color: $white;
+// layout classes
+
+.container {
+	width: 100%;
+	clear: both;
 }
 
-.back-dblue {
-	background-color: $dblue;
-}
 
-.back-white {
-	background-color: $white;
-}
-
-.back-lblue {
-	background-color: $lblue;
-}
-
-.back-mblue {
-	background-color: $mblue;
-}
-
-.shadow-right {
-	-webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.4);
-	-moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.4);
-	box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.4);
-}
-
-.shadow {
-	-webkit-box-shadow: 0px 10px 10px 5px rgba(0,0,0,0.4);
-	-moz-box-shadow: 0px 10px 10px 5px rgba(0,0,0,0.4);
-	box-shadow: 0px 10px 10px 5px rgba(0,0,0,0.4);
-}
-
-.accent-red {
-	content: "";
-	background-color: $red;
-	height: 4px;
-	width: 20%;
-}
-
-.accent-blue {
-	content: "";
-	background-color: $dblue;
-	height: 2px;
-	width: 20%;
-}
-
-.accent-red-middle {
-	content: "";
-	background-color: $red;
-	height: 2px;
+.inner-wrapper {
+	width: 90%;
+	max-width: 1300px;
 	margin: 0 auto;
-	max-width: 60%;
 }
 
-.expand {
-	animation-timing-function: ease-in-out;
-	animation-name: expand;
+.fill-total {
+	height: 100%;
+	width: 100%;
 }
 
-@keyframes expand {
-	0% { width: 0%; }
-	100% { width: 60%; }
+
+// 8 column layout
+.col {
+	float: left;
+	display: block;
 }
 
-.accent-red-right {
-	content: "";
-	background-color: $red;
-	height: 2px;
-	width: 10%;
+.section {
+	clear: both;
+	@extend .group;
 }
 
-// Standard layout control classes
+.group:before,
+.group:after { content:""; display:table; }
+.group:after { clear:both;}
+.group { zoom:1; /* For IE 6/7 */ }
+
+.col-8 {
+	@extend .col;
+	width: 100%;
+}
+
+.col-7 {
+	@extend .col;
+	width: 87.5%;
+}
+
+.col-6 {
+	@extend .col;
+	width: 75%;
+}
+
+.col-5 {
+	@extend .col;
+	width: 62.5%;
+}
+
+.col-4 {
+	@extend .col;
+	width: 50%;
+}
+
+
+.col-3 {
+	@extend .col;
+	width: 37.5%;
+}
+
+
+.col-2 {
+	@extend .col;
+	width: 25%;
+}
+
+
+.col-1 {
+	@extend .col;
+	width: 12.5%;
+}
+
+.col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {
+	@media screen and (max-width: $sm ) {
+		width: 100%;
+	}
+}
+// Flex Classes
 
 .flex {
 	@include flexbox();
 }
 
-.container {
-	width: 100%;
-}
-
-.inner-wrapper {
-	width: 90%;
-	max-width: 1200px;
-	margin-left: auto;
-	margin-right: auto;
-	@media screen and (max-width: 768px) {
-		width: 100%;
-		padding: 0 2em;
-	}
-}
-
-.horizontal-flex {
-	@include flex-direction(row);
-	@include align-content(center);
-	@include justify-content(center);
+.flex-horiz {
 	@include flexbox();
-	@media screen and (max-width: 768px) {
+	@include flex-direction(row);
+	@media screen and (max-width: $sm) {
 		@include flex-direction(column);
 	}
 }
 
-.horizontal-flex-start {
-	@include flex-direction(row);
-	@include align-content(center);
-	@include justify-content(flex-start);
+.flex-vert {
 	@include flexbox();
-	@media screen and (max-width: 768px) {
-		@include flex-direction(column);
-	}
-}
-
-.horizontal-flex-end {
-	@include flex-direction(row);
-	@include align-content(center);
-	@include justify-content(flex-end);
-	@include flexbox();
-	@media screen and (max-width: 768px) {
-		@include flex-direction(column);
-	}
-}
-
-.vertical-flex {
 	@include flex-direction(column);
-	@include align-content(center);
+}
+
+.vert-center {
 	@include flexbox();
+	@include flex-direction(column);
 	@include justify-content(center);
-}
-
-.center-flex {
 	@include align-content(center);
 }
 
+.horiz-center {
+	@include flexbox();
+	@include flex-direction(row);
+	@include justify-content(center);
+	@include align-content(center);
+	@media screen and (max-width: $sm) {
+		@include flex-direction(column);
+	}
+}
+
+//
+
+.shadow {
+	-webkit-box-shadow: 0px 10px 17px 0px rgba(0,0,0,0.38);
+	-moz-box-shadow: 0px 10px 17px 0px rgba(0,0,0,0.38);
+	box-shadow: 0px 10px 17px 0px rgba(0,0,0,0.38);
+}
+
+.back-main {
+	background-color: $first;
+}

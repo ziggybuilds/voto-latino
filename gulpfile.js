@@ -6,7 +6,8 @@ var gulp = require('gulp'),
 	connect = require('gulp-connect'),
 	browserSync = require('browser-sync').create(),
 	rename = require('gulp-rename'),
-	sourcemaps = require('gulp-sourcemaps');
+	sourcemaps = require('gulp-sourcemaps'),
+	pump = require('pump');
 
 // flag errors
 
@@ -17,7 +18,7 @@ gulp.task('log', function() {
 // Process sass files
 
 gulp.task('sass', function() {
-	gulp.src('./src/sass/**/*.scss')
+	gulp.src('src/sass/**/*.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass({outputStyle: 'compressed'}))
 			.on('error', gutil.log)
@@ -28,17 +29,25 @@ gulp.task('sass', function() {
 });
 
 gulp.task('js', function() {
-	gulp.src(['./src/js/custom.js'])
-		.pipe(sourcemaps.init())
-		.pipe(uglify())
+	gulp.src(['src/js/**/*.js'])
 		.pipe(concat('script.js'))
-		.pipe(gulp.dest('./js'))
-		.pipe(rename('script.min.js'))
 		.pipe(gulp.dest('./js'))
 });
 
+gulp.task('compress', function(cb) {
+		pump([
+			gulp.src('js/script.js'),
+			uglify(),
+			rename('script.min.js'),
+			gulp.dest('js')
+		],
+		cb
+	);
+});
+
 gulp.task('watch', function() {
-  //gulp.watch('src/js/*.js', ['js']);
+  gulp.watch('src/js/*.js', ['js']);
+  gulp.watch('js/*.js', ['compress']);
   gulp.watch('src/sass/**/*.scss', ['sass']);
 });
 
@@ -55,7 +64,7 @@ var browserSyncFiles = [
 // browser-sync options
 // see: https://www.browsersync.io/docs/options/
 var browserSyncOptions = {
-    proxy: "http://localhost/demgovs-trump/wordpress/",
+    proxy: "http://localhost/je-working/wordpress/",
     notify: false,
     injectChanges: false
 };

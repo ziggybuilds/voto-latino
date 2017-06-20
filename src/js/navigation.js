@@ -2,14 +2,6 @@ jQuery( document ).ready( function( $ ) {
 
 "use strict";
 
-
-
-
-} );
-jQuery( document ).ready( function( $ ) {
-
-"use strict";
-
 var $menuPrim = document.getElementById('menuDropdown'),
 	$triggerBtn = document.getElementById('menuBtn'),
 	$navCon = document.getElementById('navContainer'),

@@ -13,9 +13,18 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 			<section class="error-404 not-found flex horizontal-flex back-white">
-				<div>
-					<h1>This page does not exist. Please return home!</h1>
+				<div class="error-main">
+					<?php if(get_field('error_text', 'options') ): ?>
+						<h1><?php the_field('error_text', 'options'); ?></h1>
+					<?php endif; ?>
+
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Return home</a>
+					
+					<?php if( get_field('error_image', 'options') ): ?>
+						<div class="error-image-div">
+							<img src="<?php the_field('error_image', 'options'); ?>" alt="error-image" />
+						</div>
+					<?php endif; ?>
 				</div>
 			</section><!-- .error-404 -->
 

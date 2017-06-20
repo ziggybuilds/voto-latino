@@ -15,9 +15,9 @@
 get_header(); ?>
  <?php $id = get_the_id(); ?>
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main container" role="main">
+		<main id="main" class="site-main" role="main">
 			
-		<h1>This is the index page </h1>
+		
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
