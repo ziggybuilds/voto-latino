@@ -64,6 +64,11 @@
   filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
 }
 
+@mixin box-shadow($args...) {
+  -webkit-box-shadow: $args;
+  -moz-box-shadow: $args;
+  box-shadow: $args;
+}
 
 // --------------------------------------------------
 // Flexbox SASS mixins
@@ -201,4 +206,24 @@
      -moz-align-self: $align;
       -ms-align-self: $align;
           align-self: $align;
+}
+
+// Layout classes built on susy 
+
+@mixin create-column($span, $media) {
+  @media only screen and (max-width: $media) {
+    width: span($span);
+  }
+}
+
+@mixin create-column-medium($span, $start, $end) {
+  @media only screen and (min-width: $start) and (max-width: $end) {
+    width: span($span);
+  }
+}
+
+@mixin create-column-large($span, $start) {
+  @media only screen and (min-width: $start) {
+    width: span($span);
+  }
 }

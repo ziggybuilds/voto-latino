@@ -1,8 +1,8 @@
 html {
-	font-size: 16px;
-	transition: ease-in-out 0.2s;
-	@media screen and (max-width: 768px) {
-		font-size: 12px;
+	font-size: 18px;
+	@extend .ease;
+	@media only screen and (max-width: $sm) {
+		font-size: 14px;
 	}
 }
 
@@ -11,7 +11,6 @@ html {
 }
 
 a {
-	@include transition(ease-in-out .2s);
 	color: $third;
 	&:hover, &:focus {
 		color: $accent;
@@ -25,87 +24,62 @@ a {
 
 body {
 	font-family: $fontmain;
+	font-weight: 300;
 }
 
 p {
-	font-size: 1.1em;
+	font-size: 1em;
+	font-weight: 300;
+	font-family: $fontmain;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: $displayfont;
+	font-family: $fontmain;
+	font-weight: 700;
 }
 
 strong {
-	font-weight: bold;
+	font-weight: $fontbold;
 }
 
 em {
 	font-style: italic;
+	font-weight: $fontitalic;
 }
 
-// Standard Helper classes
-.hidden {
-	display: none;
-}
-
-.accent-Center {
-	border: 2px solid $accent;
-	width: 20%;
-	margin: 0 auto 20px auto;
-}
-
-.accent-Right {
-	border: 2px solid $accent;
-	width: 20%;
-	margin: 0 auto 20px 0;
-	@media screen and (max-width: $sm) {
-		margin: 0 auto 20px auto;
-	}
-}
-
-.accent-Left {
-	border: 2px solid $accent;
-	width: 20%;
-	margin: 0 auto 20px 0;
-	@media screen and (max-width: $sm) {
-		margin: 0 auto 20px auto;
-	}
-}
-
-.accent-span {
+mark {
 	background-color: $accent;
-	color: $dark;
-	padding: 0px 5px;
 }
 
-.ease {
-	@include transition( 0.2s ease-in-out);
+i {
+	font-style: italic;
+	font-weight: $fontitalic;
 }
 
-.pusher {
-	@include transform(translate(0px, -10px));
+button {
+	height: 2.77em;
+	font-weight: $fontbold;
+	border: none;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .90);
+	border-radius: 0 20px 20px 20px;
+	min-width: 8.33em;
+	color: $white;
+	@extend .ease;
+	a {
+		color: $white;
+		text-decoration: none;
+	}
 }
 
-.hide {
-	@include opacity(0);
-}
-
-.visible {
-	@include opacity(1);
-}
-
-// layout classes
-
-.container {
-	width: 100%;
-	clear: both;
-}
-
-
-.inner-wrapper {
-	width: 90%;
-	max-width: 1300px;
-	margin: 0 auto;
+.more-link {
+	a {
+		text-decoration: none;
+		font-weight: 700;
+		i {
+			font-size: 1.5em;
+			padding: 0px 0px 0px 10px;
+		}
+	}
 }
 
 .fill-total {
@@ -113,115 +87,346 @@ em {
 	width: 100%;
 }
 
+// Grid control
 
-// 8 column layout
-.col {
+$susy: (
+	'columns': susy-repeat(12),
+	'gutters': 0,
+	'spread': 'narrow',
+	'contianer-spread': 'narrow',
+);
+
+.container {
+	width: 100%;
+	margin: 0 auto;
+}
+
+
+.inner-wrapper {
+	width: 90%;
+	margin: 0 auto;
+	max-width: 1200px;
+	height: 100%;
+}
+
+.left {
 	float: left;
-	display: block;
 }
 
-.section {
-	clear: both;
-	@extend .group;
+.right {
+	float: right;
 }
 
-.group:before,
-.group:after { content:""; display:table; }
-.group:after { clear:both;}
-.group { zoom:1; /* For IE 6/7 */ }
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
 
-.col-8 {
-	@extend .col;
+.fill-vert {
+	height: 100%;
+}
+
+.fill-horiz {
 	width: 100%;
 }
 
-.col-7 {
-	@extend .col;
-	width: 87.5%;
+/* Creating main layout classes */
+/* Starting small */
+.sm-col-1 {
+	@include create-column(1, $sm);
 }
 
-.col-6 {
-	@extend .col;
-	width: 75%;
+.sm-col-2 {
+	@include create-column(2, $sm);
 }
 
-.col-5 {
-	@extend .col;
-	width: 62.5%;
+.sm-col-3 {
+	@include create-column(3, $sm);
 }
 
-.col-4 {
-	@extend .col;
-	width: 50%;
+.sm-col-4 {
+	@include create-column(4, $sm);
 }
 
-
-.col-3 {
-	@extend .col;
-	width: 37.5%;
+.sm-col-5 {
+	@include create-column(5, $sm);
 }
 
-
-.col-2 {
-	@extend .col;
-	width: 25%;
+.sm-col-6 {
+	@include create-column(6, $sm);
 }
 
-
-.col-1 {
-	@extend .col;
-	width: 12.5%;
+.sm-col-7 {
+	@include create-column(7, $sm);
 }
 
-.col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {
-	@media screen and (max-width: $sm ) {
-		width: 100%;
-	}
-}
-// Flex Classes
-
-.flex {
-	@include flexbox();
+.sm-col-8 {
+	@include create-column(8, $sm);
 }
 
-.flex-horiz {
-	@include flexbox();
-	@include flex-direction(row);
-	@media screen and (max-width: $sm) {
-		@include flex-direction(column);
-	}
+.sm-col-9 {
+	@include create-column(9, $sm);
 }
 
-.flex-vert {
-	@include flexbox();
-	@include flex-direction(column);
+.sm-col-10 {
+	@include create-column(10, $sm);
 }
 
-.vert-center {
-	@include flexbox();
-	@include flex-direction(column);
-	@include justify-content(center);
-	@include align-content(center);
+.sm-col-11 {
+	@include create-column(11, $sm);
 }
 
-.horiz-center {
-	@include flexbox();
-	@include flex-direction(row);
-	@include justify-content(center);
-	@include align-content(center);
-	@media screen and (max-width: $sm) {
-		@include flex-direction(column);
-	}
+.sm-col-12 {
+	@include create-column(12, $sm);
 }
 
-//
+// going to the midsize 
+
+.md-col-1 {
+	@include create-column-medium(1, $sm, $lg);
+}
+
+.md-col-2 {
+	@include create-column-medium(2, $sm, $lg);
+}
+
+.md-col-3 {
+	@include create-column-medium(3, $sm, $lg);
+}
+
+.md-col-4 {
+	@include create-column-medium(4, $sm, $lg);
+}
+
+.md-col-5 {
+	@include create-column-medium(5, $sm, $lg);
+}
+
+.md-col-6 {
+	@include create-column-medium(6, $sm, $lg);
+}
+
+.md-col-7 {
+	@include create-column-medium(7, $sm, $lg);
+}
+
+.md-col-8 {
+	@include create-column-medium(8, $sm, $lg);
+}
+
+.md-col-9 {
+	@include create-column-medium(9, $sm, $lg);
+}
+
+.md-col-10 {
+	@include create-column-medium(10, $sm, $lg);
+}
+
+.md-col-11 {
+	@include create-column-medium(11, $sm, $lg);
+}
+
+.md-col-12 {
+	@include create-column-medium(12, $sm, $lg);
+}
+
+// Going larger
+
+.lg-col-1 {
+	@include create-column-large(1, $lg);
+}
+
+.lg-col-2 {
+	@include create-column-large(2, $lg);
+}
+
+.lg-col-3 {
+	@include create-column-large(3, $lg);
+}
+
+.lg-col-4 {
+	@include create-column-large(4, $lg);
+}
+
+.lg-col-5 {
+	@include create-column-large(5, $lg);
+}
+
+.lg-col-6 {
+	@include create-column-large(6, $lg);
+}
+
+.lg-col-7 {
+	@include create-column-large(7, $lg);
+}
+
+.lg-col-8 {
+	@include create-column-large(8, $lg);
+}
+
+.lg-col-9 {
+	@include create-column-large(9, $lg);
+}
+
+.lg-col-10 {
+	@include create-column-large(10, $lg);
+}
+
+.lg-col-11 {
+	@include create-column-large(11, $lg);
+}
+
+.lg-col-12 {
+	@include create-column-large(12, $lg);
+}
+
+// extra styling
+
+ .overlay-lightblue {
+ 	position: absolute;
+ 	opacity: 0.6;
+ 	top: 0;
+ 	left: 0;
+ 	height: 100%;
+ 	width: 100%;
+ 	content: "";
+ 	background-color: $second;
+ }
+
+  .overlay-blue {
+ 	position: absolute;
+ 	opacity: 0.6;
+ 	top: 0;
+ 	left: 0;
+ 	height: 100%;
+ 	width: 100%;
+ 	content: "";
+ 	background-color: $first;
+ }
+
+ .overlay-green {
+ 	position: absolute;
+ 	opacity: 0.6;
+ 	top: 0;
+ 	left: 0;
+ 	height: 100%;
+ 	width: 100%;
+ 	content: "";
+ 	background-color: $third;
+ }
 
 .shadow {
-	-webkit-box-shadow: 0px 10px 17px 0px rgba(0,0,0,0.38);
-	-moz-box-shadow: 0px 10px 17px 0px rgba(0,0,0,0.38);
-	box-shadow: 0px 10px 17px 0px rgba(0,0,0,0.38);
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
-.back-main {
-	background-color: $first;
+.hide {
+	display: none;
+}
+
+.visible {
+	opacity: 1
+}
+
+.invisible {
+	opacity: 0;
+}
+
+
+// Animation styling 
+
+.ease {
+	transition: 0.2s cubic-bezier(.31,.87,.73,.5);
+}
+
+.push-up {
+	&:hover, &:focus {
+		transform: translateY(-5px);
+		z-index: 100;
+		box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.75);
+	}
+}
+
+.opaque {
+	&:hover, &:focus {
+		opacity: 0.9;
+		@extend .ease;
+	}
+}
+
+.def-push {
+	@extend .push-up;
+	@extend .ease;
+}
+
+/* Layout classes */
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.vertical-align {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.center-align {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.abs-center {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+// Responsive media controls 
+.responsive-video {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	height: 0;
+	iframe {
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		position: absolute;
+	}
+}
+
+// Style Guide
+
+h1 {
+	font-family: $fontmain;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+h2 {
+	font-family: $fontmain;
+	font-size: 1.5556em;
+	font-weight: bold;
+}
+
+h3 {
+	font-family: $fontmain;
+	font-size: 1.333em;
+	font-weight: bold;
+}
+
+button {
+	font-family: $fontmain;
+	font-size: 1em;
+	font-weight: bold;
 }

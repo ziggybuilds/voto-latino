@@ -1,4 +1,4 @@
-var gulp = require('gulp'),
+const gulp = require('gulp'),
 	concat = require('gulp-concat'),
 	sass = require('gulp-sass'),
 	uglify = require('gulp-uglify'),
@@ -7,7 +7,9 @@ var gulp = require('gulp'),
 	browserSync = require('browser-sync').create(),
 	rename = require('gulp-rename'),
 	sourcemaps = require('gulp-sourcemaps'),
-	pump = require('pump');
+	pump = require('pump'),
+	autoprefixer = require('gulp-autoprefixer'),
+	babel = require('gulp-babel');
 
 // flag errors
 
@@ -20,9 +22,13 @@ gulp.task('log', function() {
 gulp.task('sass', function() {
 	gulp.src('src/sass/**/*.scss')
 		.pipe(sourcemaps.init())
-		.pipe(sass({outputStyle: 'compressed'}))
+		.pipe(sass({
+			outputStyle: 'compressed',
+			includePaths: ['node_modules/susy/sass']
+		}))
 			.on('error', gutil.log)
 		.pipe(sourcemaps.write())
+		.pipe(autoprefixer())
 		.pipe(gulp.dest('./'))
 		.pipe(rename('style.min.css'))
 		.pipe(gulp.dest('./'))
@@ -31,7 +37,10 @@ gulp.task('sass', function() {
 gulp.task('js', function() {
 	gulp.src(['src/js/**/*.js'])
 		.pipe(concat('script.js'))
-		.pipe(gulp.dest('./js'))
+		.pipe(babel({
+			presets: ['es2015']
+		}))
+		.pipe(gulp.dest('./js'));
 });
 
 gulp.task('compress', function(cb) {
@@ -64,7 +73,7 @@ var browserSyncFiles = [
 // browser-sync options
 // see: https://www.browsersync.io/docs/options/
 var browserSyncOptions = {
-    proxy: "http://localhost/je-working/wordpress/",
+    proxy: "http://localhost/rbmoco/wordpress/",
     notify: false,
     injectChanges: false
 };

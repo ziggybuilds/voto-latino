@@ -1,120 +1,49 @@
 header {
-	position: relative;
-}
-
-.nav-container {
-	width: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 101;
-	overflow-y: hidden;
-	@extend .ease;
-}
-
-.viewport-fill {
+	background-color: $dark;
+	min-height: 600px;
+	max-height: 800px;
 	height: 100vh;
-}
-
-.menu-button {
-	padding: 0em 1em 0em 1em;
-	#menuBtn {
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	@extend .shadow;
+	.inner-wrapper {
 		position: relative;
-		float: right;
-		z-index: 102;
-		background-color: transparent !important;
-		padding: 20px 20px 0 0;
-		font-size: 1.8em;
-		color: $white;
-		.menu-label {
-			@media screen and (max-width: $xs) {
-				display: none;
-			}
-		}
-	}
-}
-
-.overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: $first;
-}
-
-.overlay-closed {
-	@include transform(translateY(-100%));
-}
-
-.overlay-open {
-	@include transform(translateY(0%));
-}
-
-#menuDropdown {
-	@include transition(0.5s ease-in-out);
-	div {
-		width: 100%;
-		height: 100%;
-		ul {
-			position: relative;
-			list-style: none;
-			margin-left: 0;
-			width: 100%;
-			height: 100%;
-			@extend .flex-vert;
-			@include justify-content(center);
-			li {
-				text-align: center;
-				position: relative;
-				margin: 1em 0;
-				@extend .ease;
-				a {
-					color: $white;
-					text-decoration: none;
-					position: relative;
-			  		text-align: center;
-			  		font-size: 4em;
-			  		&:hover, &:focus {
-			  			color: $second;
-			  		}
+		z-index: 10;
+		.header-text {
+			@extend .abs-center;
+			text-align: center;
+			a {
+				color: $white;
+				text-decoration: none;
+				h1 {
+					font-size: 2.6667em;
 				}
 			}
+			.video-link {
+				i {
+					font-size: 4em;
+					@extend .ease;
+					&:hover, &:focus {
+						color: $accent;
+					}
+				}
+
+			}
+			.greenbar {
+				margin: 30px auto 45px auto;
+			}
 		}
 	}
 }
 
-
-.chapters {
-	position: fixed;
-	z-index: 100;
-	right: 20px;
-	bottom: 20px;
-	a {
-		text-decoration: none;
-	}
-	i {
-		color: $white;
-		display: block;
-		margin: 5px 0;
-		@extend .ease;
-		&:hover, &:focus {
-			color: $third;
-		}
-	}
-	.active {
-		color: $second;
-	}
-}
-
-.headerLogo {
+.header-overlay {
+	background: linear-gradient(62deg, rgba(52, 152, 219, 0.94), rgba(48, 139, 203, 0.3) 98%);
+	content: "";
+	height: 100%;
+	width: 100%;
 	position: absolute;
-	left: 20px;
-	bottom: 20px;
-	width: 150px;
-	z-index: 100;
-	img {
-		width: 100%;
-		height: auto;
-	}
+	top: 0;
+	left: 0;
 }

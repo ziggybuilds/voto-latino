@@ -100,7 +100,7 @@ add_action( 'widgets_init', 'jestarter_widgets_init' );
  * Enqueue scripts and styles.
  */
 function jestarter_scripts() {
-	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto:400,400i,700', false);
+	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Raleway:300,300i,700', false);
 
 	wp_enqueue_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
 
@@ -115,6 +115,15 @@ function jestarter_scripts() {
 	wp_enqueue_script( 'skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), true );
 
 	wp_enqueue_script( 'minified-script', get_template_directory_uri() . '/js/script.min.js', array( 'jquery' ), '1.0.0', true );
+
+	// Localize and expose assets to the JS file for use with REST API
+	wp_localize_script( 'minified-script', 'postdata', 
+		array(
+			'post_id' => get_the_ID(),
+			'theme_uri' => get_stylesheet_directory_uri(),
+			'rest_url' => rest_url('wp/v2/'),
+			)
+		);
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -132,7 +141,8 @@ add_action( 'wp_enqueue_scripts', 'namespace_theme_stylesheets' );
 // Inserting Custom Fields Options Page
 if( function_exists('acf_add_options_page') ) {
 	
-	acf_add_options_page('JGE Theme Options');
+	acf_add_options_page('Theme Options');
+	acf_add_options_page('Pop Up Options');
 	
 }
 

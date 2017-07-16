@@ -1,150 +1,229 @@
-section {
-	min-height: 100vh;
-	width: 100vw;
+// Front Page Topper
+
+.homepage-topper {
 	position: relative;
-	overflow: hidden;
-}
-
-#section0 {
-	background-color: $first;
-	position: relative;
-	height: 100vh;
-	svg {
-		width: 100%;
-		height: 100%;
-		display: block;
-		margin: auto;
-		stroke-width: 2px;
-		stroke-linecap: round;
-	}
-}
-
-.intro-text {
-	position: absolute;
-	top: 30%;
-	transform: translateY(-70%);
-	color: $white;
-	z-index: 5;
-	text-align: center;
-	left: 50%;
-	transform: translateX(-50%);
-	@media screen and (min-width: $sm) {
-	 	width: 75%;
- 	}
- 	@media screen and (max-width: $sm) {
- 		width: 95%;
- 	}
-	 h1 span {
-	 	text-transform: uppercase;
-	 	background-color: $second;
-	 	padding: 0 10px;
-	 	font-family: $fontmain;
-	 }
-	 h1 {
-	 	@media screen and (min-width: $sm) {
-	 		font-size: 48px;
-	 		line-height: 60px;
-	 	}
-	 	@media screen and (max-width: $sm) {
-	 		font-size: 32px;
-	 		line-height: 48px;
-	 	}
-	 }
-}
-
-.parallaxParent {
-	height: 100vh;
-	overflow: hidden;
-}
-.parallaxParent {
-	position: relative;
-	.background {
-		height: 200%;
-		position: relative;
-		top: -100%;
-		background-position: center;
-		background-size: cover;
-		background-repeat: no-repeat;
-	}
-}
-
-#section2 {
-	//color: $white;
-}
-
-.para-section-content {
-	position: absolute;
-	left: 0;
-	z-index: 4;
-	width: 100%;
-	top: 50%;
-	@include transform(translateY(-50%));
-	.text {		
-		//background-color: $second;
-		padding: 05px 20px;
-		span {
-			background-color: $first;
-			padding: 5px 20px;
-			color: $second;
+	.inner-wrapper {
+		@media screen and (min-width: $sm) {
+			padding: 100px 0 40px;
 		}
 		@media screen and (max-width: $sm) {
-			width: 95%;
+			padding: 50px 0;
+		}
+		.topper-text {
+			max-width: 620px;
 			margin: 0 auto;
+			h2 {
+				text-align: center;
+				margin: 0 0 40px 0;
+			}
+			.introduction {
+
+			}
+		}
+		.video-wrapper {
+			max-width: 920px;
+			@media screen and (min-width: $sm) {
+				margin: 80px auto 80px auto;
+			}
+			@media screen and (max-width: $sm) {
+				margin: 40px auto 20px auto;
+			}
+			.video-embed {
+				@extend .responsive-video;
+				@extend .shadow;
+			}
+		}
+		.more-link {
+	
+		}
+	}
+}
+
+// Create vertical split display boxes || Right aligned
+.greenbar {
+	content: "";
+	width: 40%;
+	height: 4px;
+	background-color: $third;
+}
+
+.vertical-split-boxes {
+	display: table;
+	height: 600px;
+	color: $white;
+	background-color: $first;
+	.first, .second {
+		position: relative;
+		@media screen and (max-width: $sm) {
+			display: table-row;
+			height: 50%;
 		}
 		@media screen and (min-width: $sm) {
-			width: 60%;
-			margin: 0 0 0 20px;
+			display: table-cell;
+			height: 100%;
 		}
-		div {
-			background-color: $second;
-			padding: 5px 20px;
-			color: $first;
+	}
+	.first {
+		background-color: $first;
+		.content {
+			height: 100%;
+			width: 100%;
+			position: relative;
+			.text {
+				@extend .abs-center;
+				max-width: 300px;
+				width: 90%;
+			}
+		}
+	}
+	.second {
+		.split-vertical {
+			@extend .def-push;
+			height: 50%;
+			position: relative;
+			background-position: center;
+			background-size: cover;
+			.content {
+				@extend .abs-center;
+				max-width: 400px;
+				z-index: 10;
+				p {
+					font-size: .9em;
+				}
+				@media screen and (min-width: $sm) {
+					max-width: 400px;
+					width: 90%;
+				}
+				@media screen and (max-width: $sm) {
+					width: 90%;
+				}
+			}
 		}
 	}
 }
 
-.featured-image {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	z-index: 2;
-	top: 0;
-	right: 0;
-	img {
-		height: 100%;
-		width: auto;
-		position: absolute;
-		right: 0;
+.social-type {
+	font-weight: bold;
+	font-size: 1em;
+}
+
+.more-link {
+	@extend .center-align;
+	@media screen and (min-width: $sm) {
+		bottom: 40px;
+	}
+	@media screen and (max-width: $sm) {
+		bottom: 20px;
+	}
+	a i {
+		font-size: 1em;
 	}
 }
 
-.section-overlay {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 3;
-	@include gradient($second, $first);
-	@include opacity(0.8);
+// Media fix for issue section
+#policy-section {
+	#policy-flip-small {
+		@media screen and (max-width: $sm) {
+			display: table-row;
+		}
+		@media screen and (min-width: $sm) {
+			display: none;
+		}
+	}
+	#policy-flip-large {
+		@media screen and (max-width: $sm) {
+			display: none;
+		}
+		@media screen and (min-width: $sm) {
+			display: table-cell;
+		}
+	}
 }
 
-.bottom-link {
-	position: absolute;
-	z-index: 4;
-	bottom: 10px;
-	left: 50%;
-	@include transform(translateX(-50%));
-	a {
-		color: $second;
-		&:hover, &:focus {
-			color: $accent;
+// Big button styles
+
+.large-button {
+	height: 400px;
+	position: relative;
+	.inner-wrapper {
+		.content {
+			@extend .abs-center;
+			a {
+				text-decoration: none;
+				&:hover, &:focus {
+					color: $first;
+				}
+			}
+			.big-button {
+				margin: 0 auto;
+				border: 4px solid $third;
+				text-align: center;
+				text-decoration: none;
+				@extend .shadow;
+				@extend .def-push;
+				&:hover, &:focus {
+					border: 4px solid $first;
+					color: $first;
+				}
+				@media screen and (min-width: $sm) {
+					width: 600px;
+					
+					border-radius: 60px;
+				}
+				@media screen and (max-width: $sm) {
+					width: 300px;
+					padding: 2px;
+					border-radius: 60px;
+				}
+			}
 		}
-		i {
-			font-size: 60px;
-			@extend .ease;
-			&:hover, &:focus {
-				@include transform(translateY(-5px));
+	}
+}
+
+// Controls the topper for both the button and the latest news
+.topper {
+	@extend .center-align;
+	top: 40px;
+	color: $third;
+	font-size: 1.33em;
+}
+
+.latest-news {
+	position: relative;
+	background-color:  $first;
+	color: $white;
+	@media screen and (max-width: $sm) {
+		height: 400px;
+	}
+	@media screen and (min-width: $sm) {
+		height: 600px;
+	}
+	.inner-wrapper {
+		.content {
+			@extend .abs-center;
+			@media screen and (min-width: $sm) {
+				max-width: 400px;
+				width: 90%;
+			}
+			@media screen and (max-width: $sm) {
+				width: 90%;
+			}
+			a { 
+				color: $white;
+				text-decoration: none;
+				&:hover, &:focus {
+					color: $accent;
+				}
+				.article {
+					max-width: 620px;
+					h2 {
+						text-align: center;
+						margin: 40px 0;
+					}
+					.greenbar {
+						margin: 40px auto;
+					}
+				}
 			}
 		}
 	}

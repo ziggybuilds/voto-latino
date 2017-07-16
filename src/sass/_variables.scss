@@ -1,15 +1,20 @@
-$fontmain: 'Roboto', sans-serif;
-$displayfont: 'Poppins', sans-serif;
+$fontmain: 'Raleway', sans-serif;
+$displayfont: 'Roboto', sans-serif;
+
+$fontthin: 300;
+$fontitalic: 300i;
+$fontbold: 700;
 
 $white: #ffffff;
-$dark: #000;
-$accent: #D10040; //Red
-$first: #01212E; // Dark Blue
-$first-op: rgba(0, 0, 0, 0.1);
-$first-opa: rgba(0, 0, 0, 0.4);
-$second: #FF960D; // Orange
-$third: #A0E2FF; //Blue
-$fourth: #2CDE7F; //Light Green
+$dark: #0d1634;
+$accent: #f1c40f; //yellow
+$first: #0d1634; // Dark Blue
+$second: #4990e2; // ligth blue
+$second-op: rgba( 41, 128, 185, 0.7);
+$third: #5bac17; //green
+$third-op: rgba( 91, 172, 23, 0.7);
+$fourth: #d8d8d8; // Grey
+$fourth-op: rgba(0, 0, 0, 0.42);
 
 $xs: 400px;
 $sm: 768px;
