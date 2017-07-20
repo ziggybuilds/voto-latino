@@ -21,12 +21,27 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php if( is_home() || is_front_page() ) {
+		 $pageStyle = "home-header";
+	 } elseif( !is_home() || !is_front_page()) {
+	 	 $pageStyle = "page-header";
+	 }
+?>
 <div id="page" class="site">
-	<header id="masthead" class="site-header container" role="banner"
+	<header id="masthead" class="site-header container <?php echo $pageStyle; ?>" role="banner"
 	<?php if(get_field('header_image', $id) ): ?>
 		style="background-image: url(<?php the_field('header_image', $id); ?>"
 	<?php endif; ?>
 	>
+
+	<?php 
+		get_template_part('inc/menu-overlay');
+	?>
+
+	<?php // Insert menu control
+		get_template_part('inc/main-menu');
+	?>
+
 		<div class="inner-wrapper">
 			<div class="header-text sm-col-12 md-col-8 lg-col-8">
 					<div class="hero-text">
@@ -58,12 +73,17 @@
 						<?php endif;
 					endif; ?>
 			</div>
-
-			<?php if( get_field('ticker_tape_display', 'options') ): 
-				get_template_part('inc/ticker-tape');
-			endif;
-			?>
 		</div>
+
+		<div id="socialCorner">
+			<?php get_template_part('inc/social-profiles'); ?>
+		</div>
+
+		<?php if( get_field('ticker_tape_display', 'options') ): 
+			get_template_part('inc/ticker-tape');
+		endif;
+		?>
+
 		<div class="header-overlay"></div>
 	</header><!-- #masthead -->
 <div id="content" class="site-content">

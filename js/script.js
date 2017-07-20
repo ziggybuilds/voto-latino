@@ -1,44 +1,16 @@
-"use strict";
+'use strict';
 
 jQuery(document).ready(function ($) {
 
 	"use strict";
 
-	var twUser = "Iam_J_Ellis";
-	var twCount = '1';
-	var twUrl = 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=' + twUser + '&count=' + twCount;
+	// Hover State of the vertical boxes
 
-	function twitterAjax() {
-
-		$.ajax({
-			method: "GET",
-			url: twUrl,
-			dataType: "JSON",
-			beforeSend: function beforeSend(xhr) {
-				xhr.setRequestHeader('OAuth', '6CFKNHE1v2jtzMW29pfV8zRm5');
-			}
-		}).done(function (response) {
-			console.log(response);
-		}).fail(function () {
-			console.log('failed');
-		}).always(function () {
-			console.log('complete');
-		});
-	}
-
-	//twitterAjax();
-
-	// Hover State of tegh vertical boxes
 	function classOnHover(list) {
 		list.forEach(function (item) {
 			var color = item.querySelector('div.overlay');
 			var content = item.querySelector('div.content');
-			item.addEventListener('mouseenter', function (event) {
-				TweenMax.to(color, .4, { css: { opacity: '.9' } });
-			});
-			item.addEventListener('mouseleave', function (event) {
-				TweenMax.to(color, .4, { css: { opacity: '.6' } });
-			});
+
 			content.addEventListener('mouseenter', function (event) {
 				TweenMax.to(color, .4, { css: { opacity: '.9' } });
 			});
@@ -49,34 +21,70 @@ jQuery(document).ready(function ($) {
 	}
 
 	var vertBoxes = document.querySelectorAll('div.split-vertical');
-	console.log(vertBoxes);
 	classOnHover(vertBoxes);
+
+	// Ticker Tape hider
+	function hideTicker() {
+		var ticker = document.getElementById('tickerHide');
+		var tape = document.getElementById('tickerTape');
+		var social = document.getElementById('socialCorner');
+		ticker.addEventListener('click', function (e) {
+			TweenMax.to(tape, .4, { css: { opacity: '0' } });
+
+			var timeline = new TimelineMax();
+			timeline.to(social, .4, { bottom: '20px' });
+			timeline.to(tape, 0, { css: { display: 'none' } });
+		});
+	}
+	hideTicker();
+
+	// Responsize menu
+
+	var menu = document.querySelector('.primary-menu');
+	var navbar = document.querySelector('.navbar');
+
+	function responsiveMenu() {
+		var more = navbar.querySelector('li.menuDropCtrl');
+		more.innerHTML = 'More <i class="fa fa-chevron-down" aria-hidden="true"></i>';
+
+		var addMenu = document.querySelector('#addMenu');
+		more.addEventListener('click', function (e) {
+			if (addMenu.getAttribute('data-state') === 'closed') {
+				TweenMax.to(addMenu, 0, { css: { display: 'block' } });
+				addMenu.setAttribute('data-state', 'open');
+			} else {
+				TweenMax.to(addMenu, 0, { css: { display: 'none' } });
+				addMenu.setAttribute('data-state', 'closed');
+			}
+		});
+	}
+
+	responsiveMenu();
+
+	window.addEventListener('resize', function () {});
 });
 jQuery(document).ready(function ($) {
 
 	"use strict";
 
-	var $menuPrim = document.getElementById('menuDropdown'),
-	    $triggerBtn = document.getElementById('menuBtn'),
-	    $navCon = document.getElementById('navContainer'),
-	    $hamburger = $(".hamburger");
+	var $mobileNav = document.getElementById('mobileNav'),
+	    $mobileBtn = document.getElementById('mobileMenuBtn'),
+	    $mobileMenu = document.getElementById('menuDropdown');
 
-	$($triggerBtn).click(function () {
+	$($mobileBtn).click(function () {
 		// Check if target has open class
-		if ($($menuPrim).hasClass('overlay-open')) {
-			$($menuPrim).removeClass('overlay-open');
-			$($menuPrim).addClass('overlay-closed');
-			$hamburger.toggleClass("is-active");
-			setTimeout(function () {
-				$($navCon).toggleClass('viewport-fill');
-			}, 1000);
-			//remove open classn
-		} else if (!$($menuPrim).hasClass('overlay-open')) {
-			$($navCon).toggleClass('viewport-fill');
-			$($menuPrim).removeClass('overlay-closed');
-			$($menuPrim).addClass('overlay-open');
-			$hamburger.toggleClass("is-active");
-			// add open class
+		if ($($mobileMenu).hasClass('mobile-overlay-closed')) {
+			TweenMax.to($mobileMenu, 1, { top: '0' });
+
+			$($mobileMenu).removeClass('mobile-overlay-closed');
+
+			$($mobileBtn).toggleClass("is-active");
+		} else if (!$($mobileMenu).hasClass('mobile-overlay-closed')) {
+			TweenMax.to($mobileMenu, 1, { top: '-200%' });
+
+			$($mobileMenu).addClass('mobile-overlay-closed');
+
+			$($mobileBtn).toggleClass("is-active");
 		}
 	});
 

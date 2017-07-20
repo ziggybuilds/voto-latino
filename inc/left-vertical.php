@@ -24,26 +24,39 @@ $record = get_field('record_photo', $id);
 				?>
 					<div class="greenbar"></div>
 				</div>
-				<div class="more-link"><a href="">Learn More  <i class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+				<div class="more-link"><a href="<?php the_field('more_link_issues', $id); ?>"><?php the_field('more_text_issues', $id); ?> </a></div>
 			</div>
 		</div>
 		<div class="lg-col-6 md-col-6 sm-col-12 second">
 			<div class="split-vertical" style="background-image: url(<?php echo $issue; ?>);">
-				<div class="content">
-					<div>
-						<p class="social-type">This is a title</p class="social-type">
-						<p>Aged espresso strong skinny, java caramelization breve cup chicory body frappuccino. Frappuccino mazagran latte arabica, aromatic, caramelization espresso</p>
-					</div>
-				</div>
+					<?php
+					function getIssue($area) {
+						$type = $area . '_box';
+						if( have_rows($type, $id) ):
+							while( have_rows($type, $id) ): the_row();
+									$link = get_sub_field('url');
+									$headline = get_sub_field('headline');
+									$excerpt = get_sub_field('excerpt');
+								
+								echo '<a href="'. $link . '"/><div class="content">';
+
+								echo '<div><p class="social-type">' . 
+									$headline . '</p>' . $excerpt . '</div></div>';
+
+								echo '</a>';
+							endwhile;
+						endif;
+					}
+					getIssue('issue');
+					?>
 				<div class="overlay-green overlay"></div>
 			</div>
 			<div class="split-vertical" style="background-image: url(<?php echo $record; ?>);">
-				<div class="content">
-					<div>
-						<p class="social-type">This is a title</p class="social-type">
-						<p>Aged espresso strong skinny, java caramelization breve cup chicory body frappuccino. Frappuccino mazagran latte arabica, aromatic, caramelization espresso</p>
-					</div>
-				</div>
+					<?php 
+
+					getIssue('record');
+
+					?>
 				<div class="overlay-lightblue overlay"></div>
 			</div>
 		</div>
@@ -59,7 +72,7 @@ $record = get_field('record_photo', $id);
 				?>
 					<div class="greenbar"></div>
 				</div>
-				<div class="more-link"><a href="">Learn More<i class="fa fa-caret-right" aria-hidden="true"></i></a></div>
+				<div class="more-link"><a href="<?php the_field('more_link_issues', $id); ?>"><?php the_field('more_text_issues', $id); ?> </a></div>
 			</div>
 		</div>
 </section>

@@ -29,7 +29,7 @@
 			?>
 		</div>
 		<div class="more-link">
-			<a href="">More News  <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+			<a href="<?php echo get_post_type_archive_link('latest'); ?>">More News</a>
 		</div>
 	</div>
 </section>

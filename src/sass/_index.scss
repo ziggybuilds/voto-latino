@@ -33,9 +33,6 @@
 				@extend .shadow;
 			}
 		}
-		.more-link {
-	
-		}
 	}
 }
 
@@ -78,25 +75,49 @@
 	}
 	.second {
 		.split-vertical {
-			@extend .def-push;
 			height: 50%;
 			position: relative;
 			background-position: center;
 			background-size: cover;
-			.content {
-				@extend .abs-center;
-				max-width: 400px;
-				z-index: 10;
-				p {
-					font-size: .9em;
-				}
-				@media screen and (min-width: $sm) {
+				.content {
+					color: $white;
+					text-decoration: none;
+					@extend .abs-center;
 					max-width: 400px;
-					width: 90%;
+					z-index: 10;
+					a {
+						color: $white;
+						text-decoration: none;
+					}
+					p {
+						font-size: .9em;
+					}
+					@media screen and (min-width: $sm) {
+						max-width: 400px;
+						width: 90%;
+					}
+					@media screen and (max-width: $sm) {
+						width: 90%;
+					}
 				}
-				@media screen and (max-width: $sm) {
-					width: 90%;
+			
+		}
+	}
+}
+
+.social-section-home {
+	.content {
+		a {
+			.social-type {
+				text-align: center;
+				i {
+					font-size: 1.8em; 
 				}
+			}
+			.date {
+				text-align: center;
+				font-size: .6em;
+				font-weight: bold;
 			}
 		}
 	}
@@ -109,14 +130,17 @@
 
 .more-link {
 	@extend .center-align;
+	a {
+		&:after {
+			font-family: FontAwesome;
+			content: " \f054";
+		}
+	}
 	@media screen and (min-width: $sm) {
 		bottom: 40px;
 	}
 	@media screen and (max-width: $sm) {
 		bottom: 20px;
-	}
-	a i {
-		font-size: 1em;
 	}
 }
 
@@ -145,7 +169,18 @@
 .large-button {
 	height: 400px;
 	position: relative;
+	@media screen and (min-width: $sm) {
+		height: 400px;
+	}
+	@media screen and (max-width: $sm) {
+		height: 300px;
+	}
 	.inner-wrapper {
+		.topper {
+			p {
+				text-align: center;
+			}
+		}
 		.content {
 			@extend .abs-center;
 			a {
@@ -167,7 +202,6 @@
 				}
 				@media screen and (min-width: $sm) {
 					width: 600px;
-					
 					border-radius: 60px;
 				}
 				@media screen and (max-width: $sm) {

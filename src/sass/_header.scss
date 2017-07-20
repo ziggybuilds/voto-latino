@@ -1,8 +1,18 @@
-header {
-	background-color: $dark;
+.home-header {
 	min-height: 600px;
 	max-height: 800px;
 	height: 100vh;
+}
+
+.page-header {
+	height: 600px;
+	@media screen and (max-width:  $sm) {
+			height: 400px;
+	}
+}
+
+header {
+	background-color: $dark;
 	position: relative;
 	background-size: cover;
 	background-position: center;
@@ -11,6 +21,7 @@ header {
 	.inner-wrapper {
 		position: relative;
 		z-index: 10;
+		color: $white;
 		.header-text {
 			@extend .abs-center;
 			text-align: center;
@@ -46,4 +57,289 @@ header {
 	position: absolute;
 	top: 0;
 	left: 0;
+}
+
+.ticker-tape {
+	@extend .center-align;
+	width: 100%;
+	bottom: 0;
+	min-height: 60px;
+	background-color: $third;
+	z-index: 10;
+	color: $white;
+	.ticker-text {
+		@extend .abs-center;
+		width: 80%;
+		padding: 0 20px;
+		text-align: center;
+	}
+	#tickerHide {
+		@extend .vertical-align;
+		right: 20px;
+		cursor: pointer;
+		@extend .ease;
+		&:hover, &:focus {
+			color: $first;
+		}
+	}
+}
+
+// Menu control
+.navbar {
+	background-color: rgba(13, 22, 52, 0.7);
+	@media screen and (min-width: $sm) {
+		height: 100px;
+	}
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	width: 100%;
+	@media screen and (max-width: $sm) {
+		display: none;
+	}
+	.navigation {
+		position: absolute;
+		height: 100%;
+		display: table;
+		@media screen and (min-width: $md) {
+			right: 460px;
+		}
+		@media screen and (max-width: $md) {
+			right: 300px;
+		}
+		.menu-primary-container {
+			display: table-cell;
+    			vertical-align: middle;
+			ul {
+				list-style: none;
+				margin: 0;
+	    			padding: 0;
+	    			white-space: nowrap;
+				li {
+					white-space: nowrap;
+					//float: left;
+					display: inline-block;
+					padding: 0 8px;
+					a {
+						display: block;
+						text-decoration: none;
+						font-size: .8em;
+						color: $white;
+					}
+				}
+			}
+		}
+	}
+	.buttons {
+		@extend .vertical-align;
+		@media screen and (min-width: $md) {
+			right: 130px;
+		}
+		@media screen and (max-width: $md) {
+			right: 20px;
+		}
+		button {
+			font-weight: $fontbold;
+			border: none;
+			box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .90);
+			border-radius: 0 20px 20px 20px;
+			color: $white;
+			@extend .ease;
+			@media screen and (min-width: $lg) {
+				width: 8em;
+				height: 2.5em;
+			}
+			@media screen and (max-width: $lg) {
+				width: 7em;
+				height: 2.2em;
+			}
+		}
+		a {
+			margin: 0 5px;
+			color: $white;
+			text-decoration: none;
+		}
+	}
+	.social-profiles {
+		@media screen and (max-width: $md) {
+			display: none;
+		}
+		@extend .vertical-align;
+		right: 10px;
+	}
+}
+
+.logo {
+	@extend .vertical-align;
+	height: 80px;
+	left: 20px;
+	#headerLogo {
+		position: relative;
+		height: 100%;
+		width: auto;
+	}
+}
+
+header {
+	.social-profiles {
+		a div {
+			float: left;
+			margin: 5px;
+			border: 2px solid $white;
+			border-radius: 50px;
+			height: 30px;
+			width: 30px;
+			position: relative;
+			color: $white;
+			@extend .ease;
+			&:hover, &:focus {
+				color: $accent;
+				border: 2px solid $accent;
+			}
+			i {
+				@extend .abs-center;
+				font-size: .8em;
+			}
+		}
+	}
+}
+
+#socialCorner {
+	position: absolute;
+	bottom: 80px;
+	left: 20px;
+	z-index: 10;
+}
+
+#addMenu {
+	display: none;
+	position: absolute;
+	top: 100px;
+	left: 0;
+	z-index: 100;
+	background-color: rgba(13, 22, 52, 0.7);
+	.menu-additional-container {
+		padding: 10px 5px;
+		position: relative;
+		//width: 100%;
+		ul {
+			position: relative;
+			text-align: center;
+			li {
+				display: inline-block;
+				position: relative;
+				text-align: left;
+				padding: 10px 20px;
+				a {
+					color: $white;
+				}
+				ul {
+					display: table-cell;
+					li {
+						text-align: left;
+						display: block;
+						padding: 5px 4px;
+						margin: 10px 0;
+						border-left: 2px solid $third;
+						a {
+							color: $third;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+/// Mobile Menu Config
+
+#mobileNav {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	@extend .ease;
+	@media screen and (min-width: $sm) {
+		display: none;
+	}
+}
+
+.mobile-menu-button {
+	position: absolute;
+	top: 1em;
+	right: 1em;
+	z-index: 101;
+	#menuBtn {
+		@extend .abs-center;
+		background-color: transparent !important;
+		font-size: 1.8em;
+		color: $white;
+	}
+}
+
+#menuDropdown {
+	.menu-primary-container {
+		width: 100%;
+		height: 100%;
+		overflow-y: scroll; 
+		ul {
+			list-style: none;
+			margin-left: 0;
+			@extend .abs-center;
+			li {
+				text-align: center;
+				position: relative;
+				margin: 10px 0;
+				@extend .ease;
+				a {
+					color: $white;
+					font-size: 1.2em;
+					text-decoration: none;
+			  		&:hover, &:focus {
+			  			color: $second;
+			  		}
+				}
+			}
+		}
+	}
+	.social-profiles {
+		@extend .center-align;
+		bottom: 20px;
+		z-index: 105;
+	}
+}
+
+.mobile-overlay {
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: $first;
+}
+
+.mobile-overlay-open {
+}
+
+.mobile-overlay-closed {
+}
+
+.mobileLogo {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	height: 60px;
+	width: 60px;
+	z-index: 105;
+	#mobileHeaderLogo {
+		position: relative;
+		height: 100%;
+		width: auto;
+	}
 }

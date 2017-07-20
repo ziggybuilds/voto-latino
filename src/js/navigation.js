@@ -2,28 +2,26 @@ jQuery( document ).ready( function( $ ) {
 
 "use strict";
 
-var $menuPrim = document.getElementById('menuDropdown'),
-	$triggerBtn = document.getElementById('menuBtn'),
-	$navCon = document.getElementById('navContainer'),
-	$hamburger = $(".hamburger");
+const $mobileNav = document.getElementById('mobileNav'),
+	$mobileBtn = document.getElementById('mobileMenuBtn'),
+	$mobileMenu = document.getElementById('menuDropdown');
 
 
-$($triggerBtn).click(function() {
+$($mobileBtn).click(function() {
 	// Check if target has open class
-	if( $($menuPrim).hasClass('overlay-open') ) {
-		$($menuPrim).removeClass('overlay-open');
-		$($menuPrim).addClass('overlay-closed');
-		$hamburger.toggleClass("is-active");
-		setTimeout(function() {
-			$($navCon).toggleClass('viewport-fill');
-		}, 1000);
-		//remove open classn
-	} else if ( !$($menuPrim).hasClass('overlay-open') ) {
-		$($navCon).toggleClass('viewport-fill');
-		$($menuPrim).removeClass('overlay-closed');
-		$($menuPrim).addClass('overlay-open');
-		$hamburger.toggleClass("is-active");
-		// add open class
+	if(  $($mobileMenu).hasClass('mobile-overlay-closed') ) {
+		TweenMax.to($mobileMenu, 1, {top: '0'});
+
+		$($mobileMenu).removeClass('mobile-overlay-closed');
+
+		$($mobileBtn).toggleClass("is-active");
+
+	} else if ( !$($mobileMenu).hasClass('mobile-overlay-closed') ) {
+		TweenMax.to($mobileMenu, 1, {top: '-200%'});
+
+		$($mobileMenu).addClass('mobile-overlay-closed');
+		
+		$($mobileBtn).toggleClass("is-active");
 	}
 });
 

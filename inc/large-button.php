@@ -16,7 +16,7 @@
 		<div class="content">
 			<a href="<?php echo $link ?>">
 				<div class="big-button">
-					<h3><?php echo $button ?> <i class="fa fa-caret-right" aria-hidden="true"></i></h3>
+					<h3><?php echo $button ?>  <i class="fa fa-chevron-right" aria-hidden="true"></i></h3>
 				</div>
 			</a>
 		</div>

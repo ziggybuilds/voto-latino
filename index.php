@@ -19,6 +19,7 @@ get_header(); ?>
 			
 		<h1>This is the index page </h1>
 
+
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

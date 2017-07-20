@@ -45,7 +45,8 @@ function jestarter_setup() {
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
 		'menu-1' => esc_html__( 'Primary', 'jestarter' ),
-		'menu-2' => esc_html__( 'Secondary', 'jestarter' ),
+		'menu-2' => esc_html__( 'Additional', 'jestarter' ),
+		'menu-3' => esc_html__( 'Secondary', 'jestarter' ),
 	) );
 
 	/*
@@ -190,5 +191,14 @@ function codex_latest_init() {
 	register_post_type( 'latest', $args );
 }
 
+// Functions to help display social
+function grabSocial($platform) {
+	$profile = $platform . '_profile';
+	$page = 'options';
+	if( get_field($profile, $page) ):
+		$render = '<a href="'  .  get_field($profile, $page) . '"><div class="circle-social"><i class="fa fa-' . $platform . '" aria-hidden="true"></i></div></a>';
+	return $render;
+	endif;
+}
 
 

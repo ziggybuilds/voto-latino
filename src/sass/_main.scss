@@ -8,6 +8,7 @@ html {
 
 * {
 	box-sizing: border-box;
+	text-rendering: optimizeLegibility;
 }
 
 a {
@@ -56,20 +57,6 @@ i {
 	font-weight: $fontitalic;
 }
 
-button {
-	height: 2.77em;
-	font-weight: $fontbold;
-	border: none;
-	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .90);
-	border-radius: 0 20px 20px 20px;
-	min-width: 8.33em;
-	color: $white;
-	@extend .ease;
-	a {
-		color: $white;
-		text-decoration: none;
-	}
-}
 
 .more-link {
 	a {
@@ -287,7 +274,7 @@ $susy: (
 
  .overlay-lightblue {
  	position: absolute;
- 	opacity: 0.6;
+ 	opacity: 0.7;
  	top: 0;
  	left: 0;
  	height: 100%;
@@ -298,7 +285,7 @@ $susy: (
 
   .overlay-blue {
  	position: absolute;
- 	opacity: 0.6;
+ 	opacity: 0.7;
  	top: 0;
  	left: 0;
  	height: 100%;
@@ -309,7 +296,7 @@ $susy: (
 
  .overlay-green {
  	position: absolute;
- 	opacity: 0.6;
+ 	opacity: 0.7;
  	top: 0;
  	left: 0;
  	height: 100%;
@@ -425,8 +412,3 @@ h3 {
 	font-weight: bold;
 }
 
-button {
-	font-family: $fontmain;
-	font-size: 1em;
-	font-weight: bold;
-}

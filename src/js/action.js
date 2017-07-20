@@ -2,45 +2,12 @@ jQuery( document ).ready( function( $ ) {
 
 "use strict";
 
-const twUser = "Iam_J_Ellis";
-const twCount = '1';
-const twUrl = 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=' + twUser + '&count=' + twCount;
-
-
-function twitterAjax() {
-
-	$.ajax({
-		method: "GET",
-		url: twUrl,
-		dataType: "JSON",
-		beforeSend: function(xhr) {
-			xhr.setRequestHeader('OAuth', '6CFKNHE1v2jtzMW29pfV8zRm5');
-		}
-	})
-	.done(function(response) {
-		console.log(response);
-	})
-	.fail(function() {
-		console.log('failed');
-	})
-	.always(function() {
-		console.log('complete')
-	})
-}
-
-//twitterAjax();
-
-// Hover State of tegh vertical boxes
+// Hover State of the vertical boxes
 function classOnHover(list) {
 	list.forEach( function(item) {
 		let color = item.querySelector('div.overlay');
 		let content = item.querySelector('div.content');
-		item.addEventListener('mouseenter', function(event) {
-			TweenMax.to(color, .4, {css: {opacity: '.9'}});
-		});
-		item.addEventListener('mouseleave', function(event) {
-			TweenMax.to(color, .4, {css: {opacity: '.6'}});
-		});
+		
 		content.addEventListener('mouseenter', function(event) {
 			TweenMax.to(color, .4, {css: {opacity: '.9'}});
 		});
@@ -51,8 +18,48 @@ function classOnHover(list) {
 }
 
 const vertBoxes = document.querySelectorAll('div.split-vertical');
-console.log(vertBoxes);
 classOnHover(vertBoxes);
 
+// Ticker Tape hider
+function hideTicker() {
+	const ticker = document.getElementById('tickerHide');
+	const tape = document.getElementById('tickerTape');
+	const social = document.getElementById('socialCorner');
+	ticker.addEventListener('click', (e) => {
+		TweenMax.to(tape, .4, {css: {opacity: '0'}});
+
+		let timeline = new TimelineMax();
+		timeline.to(social, .4, {bottom: '20px'});
+		timeline.to(tape, 0, {css: {display: 'none'}});
+	});
+}
+hideTicker();
+
+// Responsize menu
+
+const menu = document.querySelector('.primary-menu');
+const navbar = document.querySelector('.navbar');
+
+function responsiveMenu() {
+	let more = navbar.querySelector('li.menuDropCtrl');
+	more.innerHTML = 'More <i class="fa fa-chevron-down" aria-hidden="true"></i>'
+
+	const addMenu = document.querySelector('#addMenu');
+	more.addEventListener('click', (e) => {
+		if(addMenu.getAttribute('data-state') === 'closed') {
+			TweenMax.to(addMenu, 0, {css: {display: 'block'}});
+			addMenu.setAttribute('data-state', 'open');
+		} else {
+			TweenMax.to(addMenu, 0, {css: {display: 'none'}});
+			addMenu.setAttribute('data-state', 'closed');
+		}
+	});
+}
+
+responsiveMenu();
+
+window.addEventListener('resize', function() {
+	
+});
 
 });
