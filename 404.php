@@ -12,19 +12,10 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-			<section class="error-404 not-found flex horizontal-flex back-white">
-				<div class="error-main">
-					<?php if(get_field('error_text', 'options') ): ?>
-						<h1><?php the_field('error_text', 'options'); ?></h1>
-					<?php endif; ?>
-
+			<section class="error-404 not-found">
+				<div class="error-main inner-wrapper">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Return home</a>
-					
-					<?php if( get_field('error_image', 'options') ): ?>
-						<div class="error-image-div">
-							<img src="<?php the_field('error_image', 'options'); ?>" alt="error-image" />
-						</div>
-					<?php endif; ?>
+					<div class="greenbar"></div>
 				</div>
 			</section><!-- .error-404 -->
 

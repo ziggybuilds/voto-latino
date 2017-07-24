@@ -48,12 +48,18 @@ jQuery(document).ready(function ($) {
 		more.innerHTML = 'More <i class="fa fa-chevron-down" aria-hidden="true"></i>';
 
 		var addMenu = document.querySelector('#addMenu');
-		more.addEventListener('click', function (e) {
+		menu.addEventListener('mouseover', function (e) {
 			if (addMenu.getAttribute('data-state') === 'closed') {
+				TweenMax.to(addMenu, 0, { css: { opacity: '0' } });
 				TweenMax.to(addMenu, 0, { css: { display: 'block' } });
+				TweenMax.to(addMenu, .4, { css: { opacity: '1' } });
 				addMenu.setAttribute('data-state', 'open');
-			} else {
-				TweenMax.to(addMenu, 0, { css: { display: 'none' } });
+			}
+		});
+		addMenu.addEventListener('mouseleave', function (e) {
+			if (addMenu.getAttribute('data-state') === 'open') {
+				TweenMax.to(addMenu, .4, { css: { opacity: '0' } });
+				TweenMax.to(addMenu, .2, { css: { display: 'none' } });
 				addMenu.setAttribute('data-state', 'closed');
 			}
 		});
@@ -62,6 +68,9 @@ jQuery(document).ready(function ($) {
 	responsiveMenu();
 
 	window.addEventListener('resize', function () {});
+
+	// Fix WP Caption width
+	$('.wp-caption').removeAttr('style');
 });
 jQuery(document).ready(function ($) {
 

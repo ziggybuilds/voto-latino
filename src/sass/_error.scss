@@ -1,3 +1,16 @@
 .error-404 {
-	
+	min-height: 80vh;
+	padding: 10%;
+	position: relative;
+	.error-main {
+		text-align: center;
+		a {
+			font-size: 4em;
+			text-decoration: none;
+			font-weight: bold;
+		}
+		.greenbar {
+			margin: 1em auto;
+		}
+	}
 }

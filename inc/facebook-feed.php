@@ -54,7 +54,8 @@ if ( $textLen > 140 ) {
 } else {
 	echo	'<a href="' . $fbProfile . '"><div>' .
 		'<p class="social-type"><i class="fa fa-facebook" aria-hidden="true"></i></p>' .
-		'<p>' . $text . '</p><p class="date">' . $months[substr($date, 5, 2)] . ' ' . $newDate .'</p>' .
+		'<p>' . $text . '</p>' .
+		'<p class="date">' . $months[substr($date, 5, 2)] . ' ' . $newDate .'</p>' .
 		'</div></a>';
 }
 }

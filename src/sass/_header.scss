@@ -118,14 +118,22 @@ header {
 	    			white-space: nowrap;
 				li {
 					white-space: nowrap;
-					//float: left;
 					display: inline-block;
 					padding: 0 8px;
+					letter-spacing: .6px;
+					font-size: .8em;
+					color: $white;
+					cursor: pointer;
+					&:hover, &:focus {
+						color: $accent;
+					}
 					a {
 						display: block;
 						text-decoration: none;
-						font-size: .8em;
 						color: $white;
+						&:hover, &:focus {
+							color: $accent;
+						}
 					}
 				}
 			}
@@ -146,13 +154,25 @@ header {
 			border-radius: 0 20px 20px 20px;
 			color: $white;
 			@extend .ease;
-			@media screen and (min-width: $lg) {
+			@media screen and (min-width: $md) {
 				width: 8em;
 				height: 2.5em;
 			}
-			@media screen and (max-width: $lg) {
-				width: 7em;
-				height: 2.2em;
+			@media screen and (max-width: $md) {
+				width: 7.2em;
+				height: 2.4em;
+			}
+		}
+		.donate-button {
+			background-color: $third;
+			&:hover, &:focus {
+				background-color: rgba(91, 172, 23, 0.8);
+			}
+		}
+		.signup-button {
+			background-color: $second;
+			&:hover, &:focus {
+				background-color: rgba(73, 144, 226, 0.8);
 			}
 		}
 		a {
@@ -219,10 +239,10 @@ header {
 	left: 0;
 	z-index: 100;
 	background-color: rgba(13, 22, 52, 0.7);
+	@extend .shadow;
 	.menu-additional-container {
 		padding: 10px 5px;
 		position: relative;
-		//width: 100%;
 		ul {
 			position: relative;
 			text-align: center;
@@ -230,9 +250,17 @@ header {
 				display: inline-block;
 				position: relative;
 				text-align: left;
-				padding: 10px 20px;
+				padding: 10px 10px;
+				letter-spacing: .6px;
+				font-size: .8em;
+				color: $white;
+				cursor: pointer;
 				a {
 					color: $white;
+					text-decoration: none;
+					&:hover, &:focus {
+						color: $accent;
+					}
 				}
 				ul {
 					display: table-cell;
@@ -242,6 +270,7 @@ header {
 						padding: 5px 4px;
 						margin: 10px 0;
 						border-left: 2px solid $third;
+						font-size: 1em;
 						a {
 							color: $third;
 						}

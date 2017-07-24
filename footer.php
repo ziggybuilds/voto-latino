@@ -28,7 +28,7 @@
 				<?php
 					// echoing the nav menu
 					wp_nav_menu( array(
-						'menu' => 'Secondary',
+						'menu' => 'Footer',
 						'menu_class' => 'secondary-menu',
 					) );
 				?>

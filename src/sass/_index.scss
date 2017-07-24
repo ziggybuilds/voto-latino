@@ -236,7 +236,7 @@
 		.content {
 			@extend .abs-center;
 			@media screen and (min-width: $sm) {
-				max-width: 400px;
+				max-width: 600px;
 				width: 90%;
 			}
 			@media screen and (max-width: $sm) {
@@ -250,12 +250,22 @@
 				}
 				.article {
 					max-width: 620px;
+					.greenbar {
+						@media screen and (max-width: $sm) {
+							margin: 20px auto;
+						}
+						@media screen and (min-width: $sm) {
+							margin: 40px auto;
+						}
+					}
 					h2 {
 						text-align: center;
-						margin: 40px 0;
-					}
-					.greenbar {
-						margin: 40px auto;
+						@media screen and (max-width: $sm) {
+							margin: 20px 0;
+						}
+						@media screen and (min-width: $sm) {
+							margin: 40px 0;
+						}
 					}
 				}
 			}

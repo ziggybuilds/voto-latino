@@ -17,12 +17,15 @@
 			$query = new WP_Query('post_type=latest&posts_per_page=1');
 			while( $query->have_posts() ):
 				$query->the_post(); 
+				$link = get_the_permalink(); 
 			?>
-			<a href="<?php get_the_permalink(); ?>"><div class="article">
-				<h2><?php the_title(); ?></h2>
-				<div class="greenbar"></div>
-				<div class="excerpt"><?php the_excerpt(); ?></div>
-			</div></a>
+			<a href="<?php echo $link; ?>">
+				<div class="article">
+					<h2><?php the_title(); ?></h2>
+					<div class="greenbar"></div>
+					<div class="excerpt"><?php the_excerpt(); ?></div>
+				</div>
+			</a>
 			<?php
 			endwhile;
 			wp_reset_postdata();

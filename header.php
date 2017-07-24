@@ -52,9 +52,13 @@
 								echo '<a href="' . get_home_url() . '"><h1>' . $title . '</h1>' . '</a>';
 							endif;
 						endif; ?>
-						<?php if(!is_home() && !is_front_page() ): 
+						<?php if(!is_home() && !is_front_page() && !is_404()): 
 							// Conditional header text based on page
 							echo '<h1>' . get_the_title() . '</h1>';
+						endif; ?>
+						<?php if(!is_home() && !is_front_page() && is_404()): 
+							// Conditional header text based on page
+							echo '<h1>Error: This page has no results</h1>';
 						endif; ?>
 						<div class="greenbar"></div>
 					</div>

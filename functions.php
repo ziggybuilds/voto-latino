@@ -46,7 +46,7 @@ function jestarter_setup() {
 	register_nav_menus( array(
 		'menu-1' => esc_html__( 'Primary', 'jestarter' ),
 		'menu-2' => esc_html__( 'Additional', 'jestarter' ),
-		'menu-3' => esc_html__( 'Secondary', 'jestarter' ),
+		'menu-3' => esc_html__( 'Footer', 'jestarter' ),
 	) );
 
 	/*
@@ -185,7 +185,7 @@ function codex_latest_init() {
 		'hierarchical'       => false,
 		'menu_position'      => 5,
 		'menu_icon' => 'dashicons-media-document',
-		'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+		'supports'           => array( 'title', 'editor', 'author')
 	);
 
 	register_post_type( 'latest', $args );
@@ -201,4 +201,30 @@ function grabSocial($platform) {
 	endif;
 }
 
+// Filter excerpt length
 
+function custom_excerpt_length( $length ) {
+	return 40;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+/**
+ * Filter the excerpt "read more" string.
+ *
+ * @param string $more "Read more" excerpt string.
+ * @return string (Maybe) modified "read more" excerpt string.
+ */
+function wpdocs_excerpt_more( $more ) {
+    return '   . . .';
+}
+add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
+
+
+
+/**
+ * Remove Default Post Type
+ */
+add_action('admin_menu','remove_default_post_type');
+function remove_default_post_type() {
+	remove_menu_page('edit.php');
+}

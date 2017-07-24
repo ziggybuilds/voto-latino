@@ -50,6 +50,12 @@ get_header(); ?>
 			get_template_part('inc/left-vertical'); 
 			endif;
 		?>
+
+		<?php if( get_field('display_sign_up', $id) === true ):
+			get_template_part('inc/sign-up');
+			endif;
+		?>
+
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
