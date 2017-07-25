@@ -67,6 +67,17 @@ jQuery(document).ready(function ($) {
 
 	responsiveMenu();
 
+	var videoModules = document.querySelectorAll('.video-module');
+	function stripIframe(list) {
+		list.forEach(function (item) {
+			var video = item.querySelector('iframe');
+			video.removeAttribute("width");
+			video.removeAttribute("height");
+		});
+	}
+
+	stripIframe(videoModules);
+
 	window.addEventListener('resize', function () {});
 
 	// Fix WP Caption width

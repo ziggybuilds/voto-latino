@@ -22,6 +22,7 @@
 			<a href="<?php echo $link; ?>">
 				<div class="article">
 					<h2><?php the_title(); ?></h2>
+					<p class="post-date"><?php the_date(); ?></p>
 					<div class="greenbar"></div>
 					<div class="excerpt"><?php the_excerpt(); ?></div>
 				</div>

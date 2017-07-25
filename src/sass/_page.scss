@@ -216,3 +216,108 @@ img.aligncenter {
 		}
 	}
 }
+
+// Post Navigation 
+
+.post-navigation, .posts-navigation {
+	@extend .container;
+	padding: 40px 0;
+	h2 {
+		text-align: center;
+		display: none;
+	}
+	.nav-links {
+		@extend .inner-wrapper;
+		display: table;
+		div {
+			display: table-cell;
+			width: 50%;
+			text-align: center;
+			a {
+				text-decoration: none;
+			}
+			.nav {
+				font-weight: bold;
+				font-size: .8em;
+				color: $first;
+			}
+			.nav-title {
+				margin-top: 20px;
+				display: block;
+				font-weight: bold;
+			}
+		}
+		.nav-previous {
+			.nav-title {
+				&:before {
+					font-family: FontAwesome;
+					content: "\f053";
+				}
+			}
+		}
+		.nav-next {
+			.nav-title {
+				&:after {
+					font-family: FontAwesome;
+					content: " \f054";
+				}
+			}
+		}
+	}
+}
+
+.posts-navigation {
+	.nav-previous {
+			a {
+				color: $first;
+				font-weight: bold;
+				&:hover, &:focus {
+					color: $third;
+				}
+				&:before {
+					font-family: FontAwesome;
+					content: "\f053";
+				}
+			}
+		}
+		.nav-next {
+			a {
+				color: $first;
+				font-weight: bold;
+				&:hover, &:focus {
+					color: $third;
+				}
+				&:after {
+					font-family: FontAwesome;
+					content: " \f054";
+				}
+			}
+		}
+}
+
+// Post title control 
+.posted-on {
+	text-align: center;
+	p {
+		font-size: .8em;
+		color: $third;
+		font-weight: bold;
+		margin: 5px auto;
+	}
+	margin: 0 auto 40px auto;
+	.post-date {
+		color: $first;
+		font-weight: 400;
+		font-size: 1em;
+	}
+}
+
+.post-article {
+	a {
+		color: $first;
+		text-decoration: none;
+		&:hover, &:focus {
+			color: $third;
+		}
+	}
+}

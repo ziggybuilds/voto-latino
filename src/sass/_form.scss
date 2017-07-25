@@ -53,7 +53,7 @@
 
 .nf-form-content {
 	.nf-field-element {
-		input {
+		input[type="text"], input[type="email"] {
 			height: 3em;
 			border: none;
 			width: 100%;
@@ -100,6 +100,7 @@
 		input[type="button"] {
 			color: $white;
 			font-weight: bold;
+			border: none;
 			width: 10em;
 			height: 3em;
 			border-radius: 0 20px 20px 20px;

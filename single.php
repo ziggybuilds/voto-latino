@@ -1,8 +1,8 @@
 <?php 
-/*
+/**
 * This is the single paeg post template
 *
-*
+* @package je-starter
 *
 */ 
 get_header(); ?>
@@ -11,87 +11,27 @@ get_header(); ?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
-	<div class="inner-wrapper">
-				<div class="main-page-content">
-				<?php if(get_field('sub_header', $id) ): ?>
-					<div class="sub-header"><?php the_field('sub_header', $id); ?></div>
-				<?php endif; ?>
-
 				<?php
-				// check if the flexible content field has rows of data
-				if( have_rows('module') ):
+					/* Start the Loop */
+					while ( have_posts() ) : the_post();
+						echo '<div class="inner-wrapper">';
+						echo '<div class="full-width">';
+							echo '<div class="posted-on"><p>Posted on</p><p class="post-date">' . get_the_date() . '</p></div>';
+							the_content();
+						echo '</div>';
 
-				 	// loop through the rows of data
-				    while ( have_rows('module') ) : the_row();
+						get_template_part('inc/module-loop');
 
-						// check current row layout
-				        if( get_row_layout() == 'cards' ):
 
-				        	// check if the nested repeater field has rows of data
-				        	if( have_rows('individual_card') ):
-				        			echo '<div class="cards">';
-							    while ( have_rows('individual_card') ) : the_row();
+						echo '</div>';  // closes out the inner wrapper class
 
-									$name = get_sub_field('name');
-									$picture = get_sub_field('picture');
-									$content = get_sub_field('content');
-									$link = get_sub_field('link');
+						the_post_navigation( array(
+							'prev_text' => '<span class="screen-reader-text nav">' . __( 'Previous Post', 'je-starter' ) . '</span><span class="nav-title">   %title</span>',
+							'next_text' => '<span class="screen-reader-text nav">' . __( 'Next Post', 'je-starter' ) . '</span><span class="nav-title">%title   </span>',
+						) );
 
-									if( $picture ):
-										$cardImage =	'<div class="card-image"><img src="' . $picture . '" alt="' . $name . '"></div>';
-									endif;
-									
-									echo '<div class="single-card">' .
-											'<div class="card-title">' . 
-												$cardImage .
-												'<h3>' . $name . '</h3>' .
-											'</div>' .
-											'<div class="card-content">' . $content .
-											'</div><div class="card-more"><a href="' . $link . '">More</a></div>' . 
-										'</div>';
-
-								endwhile;
-
-								echo '</div>';
-
-							endif;
-
-				        endif;
-
-				          if( get_row_layout() == 'long_list' ):
-
-				        	$content  = get_sub_field('long_list_content');
-
-				        	echo '<div class="long-list">' . $content . '</div>';
-
-				        endif;
-
-				            if( get_row_layout() == 'sub_header' ):
-
-				        	$content = get_sub_field('sub_header_text');
-
-				        	echo '<div class="sub-header-module">' . $content . '</div>';
-
-				        endif;
-
-				         if( get_row_layout() == 'full_width_content'):
-
-				        	$content = get_sub_field('content');
-
-				        	echo '<div class="full-width">' . $content . '</div>';
-
-				        endif;
-
-				    endwhile;
-
-				else :
-
-				    // no layouts found
-
-				endif;
+					endwhile; // End of the loop.
 				?>
-				</div>
-			</div>
 
 			<?php if( get_field('display_sign_up', $id) === true ):
 				get_template_part('inc/sign-up');

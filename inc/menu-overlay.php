@@ -26,7 +26,7 @@
 	<?php
 		// This displays the primary menu
 		wp_nav_menu( array(
-			'menu' => 'primary',
+			'menu' => 'additional',
 			'menu_class' => 'mobile-dropdown-menu',
 			) );
 	?>

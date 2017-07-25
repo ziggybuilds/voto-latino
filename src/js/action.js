@@ -64,6 +64,18 @@ function responsiveMenu() {
 
 responsiveMenu();
 
+const videoModules = document.querySelectorAll('.video-module');
+function stripIframe(list) {
+	list.forEach(function(item) {
+		let video = item.querySelector('iframe');
+			video.removeAttribute("width");
+			video.removeAttribute("height");
+	});
+}
+
+stripIframe(videoModules);
+
+
 window.addEventListener('resize', function() {
 
 });

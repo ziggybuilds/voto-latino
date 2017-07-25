@@ -48,7 +48,7 @@ if ( $textLen > 140 ) {
 	$newText = substr($text, 0, 139);
 	echo 	'<a href="' . $fbProfile . '"><div>' .
 		'<p class="social-type"><i class="fa fa-facebook" aria-hidden="true"></i></p>' .
-		'<p>' . $newText . ' ...</p><p>' . $months[substr($date, 5, 2)] . ' ' . $newDate . '</p>' .
+		'<p>' . $newText . ' ...</p><p class="date">' . $months[substr($date, 5, 2)] . ' ' . $newDate . '</p>' .
 		'</div></a>';
 
 } else {

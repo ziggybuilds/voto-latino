@@ -52,13 +52,17 @@
 								echo '<a href="' . get_home_url() . '"><h1>' . $title . '</h1>' . '</a>';
 							endif;
 						endif; ?>
-						<?php if(!is_home() && !is_front_page() && !is_404()): 
+						<?php if(!is_home() && !is_front_page() && !is_404() && !is_archive()): 
 							// Conditional header text based on page
-							echo '<h1>' . get_the_title() . '</h1>';
+							echo '<h2>' . get_the_title() . '</h2>';
 						endif; ?>
 						<?php if(!is_home() && !is_front_page() && is_404()): 
 							// Conditional header text based on page
-							echo '<h1>Error: This page has no results</h1>';
+							echo '<h2>Error: This page has no results</h2>';
+						endif; ?>
+						<?php if(!is_home() && !is_front_page() && !is_404() && is_archive()): 
+							// Conditional header text based on page
+							post_type_archive_title( '<h2 class="archive-title">', '</h2>' );
 						endif; ?>
 						<div class="greenbar"></div>
 					</div>
