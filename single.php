@@ -16,7 +16,9 @@ get_header(); ?>
 					while ( have_posts() ) : the_post();
 						echo '<div class="inner-wrapper">';
 						echo '<div class="full-width">';
-							echo '<div class="posted-on"><p>Posted on</p><p class="post-date">' . get_the_date() . '</p></div>';
+							if( 'latest' == get_post_type() ) {
+								echo '<div class="posted-on"><p>Posted on</p><p class="post-date">' . get_the_date() . '</p></div>';
+							}
 							the_content();
 						echo '</div>';
 

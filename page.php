@@ -7,7 +7,7 @@
 
 get_header(); ?>
  <?php $id = get_the_id(); ?>
-	<div id="primary" class="content-area">
+	<div id="primary" class="content-area fadeIn">
 		<main id="main" class="site-main container" role="main">
 			<div class="inner-wrapper">
 				<?php get_template_part('inc/module-loop'); ?>

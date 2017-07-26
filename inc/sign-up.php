@@ -20,10 +20,13 @@
 			<?php endif; ?>
 			<div class="greenbar"></div>
 
-			<?php
-			// Render Form
-			echo do_shortcode("[ninja_form id=2]");
-			?>
+			<div class="embed-form">
+				<?php
+				// Render Form
+				$form = get_field('form_shortcode', 'options');
+				echo do_shortcode($form);
+				?>
+			</div>
 		</div>
 	</div>
 	<div class="overlay-sign-up"></div>

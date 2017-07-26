@@ -143,7 +143,7 @@ add_action( 'wp_enqueue_scripts', 'namespace_theme_stylesheets' );
 if( function_exists('acf_add_options_page') ) {
 	
 	acf_add_options_page('Theme Options');
-	acf_add_options_page('Pop Up Options');
+	acf_add_options_page('Sign Up & Pop Up Options');
 	
 }
 

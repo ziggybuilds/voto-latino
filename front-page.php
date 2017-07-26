@@ -14,7 +14,7 @@
 
 get_header(); ?>
  <?php $id = get_the_id(); ?>
-	<div id="primary" class="content-area home-page">
+	<div id="primary" class="content-area home-page fadeIn">
 		<main id="main" class="site-main" role="main">
 		
 		<?php if( get_field('display_home_page_topper', $id) === true ): 

@@ -9,7 +9,7 @@
 <?php
 
 function fireFb() {
-	$pageID = get_field('facebook_rest_api', 'options');
+	$pageID = "supportdemocrats";
 	$appID = "165099730702015";
 	$appS = "9fbced6409d7a0d3f6c495cfde7694a9";
 	$url = "https://graph.facebook.com/" . $pageID . "/posts?access_token=" . $appID . "|" . $appS;
@@ -64,4 +64,4 @@ fireFb();
 
 
 
-?>
+?

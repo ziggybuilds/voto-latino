@@ -10,10 +10,13 @@
  */
 
 ?>
-
 	</div><!-- #content -->
 </div><!-- #page -->
-<footer class="container">
+<?php if(is_home() || is_front_page() ) {
+		get_template_part('inc/pop-up'); 
+	}
+?>
+<footer class="container fadeIn">
 	<div class="inner-wrapper">
 		<div class="social-footer">
 			<div class="social-footer-text">

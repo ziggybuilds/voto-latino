@@ -83,4 +83,75 @@ window.addEventListener('resize', function() {
 // Fix WP Caption width
 $('.wp-caption').removeAttr('style');
 
+function formControl() {
+	let time = 9000;
+	if( popUp.getAttribute('data-control') === 'active') {
+		setTimeout(function(time){
+			let tl = new TimelineMax();
+				tl.to(popUp, 0, {
+					css: {
+						opacity: '0',
+						display: 'block'
+					}
+				})
+				tl.to(popUp, .2, {
+					css: {
+						opacity: '1'
+					}
+				})
+		}, time);
+	}
+}
+
+function formClose() {
+	let button = popUp.querySelector('#formClose');
+	button.addEventListener('click', function(e) {
+		let tl = new TimelineMax();
+				tl.to(popUp, .2, {
+					css: {
+						opacity: '0',
+						display: 'none'
+					}
+				})
+	});
+}
+//formClose();
+function checkHome() {
+  if( document.body.classList.contains('home')) {
+  	const popUp = document.getElementById('#popUp');
+   	formControl(popUp);
+   	formClose(popUp);
+  }
+}
+checkHome();
+
+// Form submission redirect
+document.addEventListener( 'wpcf7mailsent', function( event ) {
+    location = 'http://example.com/';
+}, false );
+
+// Fade In Controls
+
+const controllerViews = new ScrollMagic.Controller();
+const sections = document.querySelectorAll('.fadeIn');
+
+function createAnimation(list) {
+	list.forEach(function(item) {
+		let elem = item.querySelector('.inner-wrapper');
+		TweenMax.to(elem, 0, {css: {opacity: '0'}});
+
+
+		let height = item.offsetHeight;
+
+		let scene = new ScrollMagic.Scene({
+			triggerElement: item,
+			offset: 0
+		})
+		.setTween(TweenMax.to(elem, .2, {css: {opacity: '1'}}))
+		.addTo(controllerViews);
+	});
+}
+createAnimation(sections);
+console.log(sections);
+// Bottom of wrapper function
 });

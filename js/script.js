@@ -82,6 +82,75 @@ jQuery(document).ready(function ($) {
 
 	// Fix WP Caption width
 	$('.wp-caption').removeAttr('style');
+
+	function formControl() {
+		var time = 9000;
+		if (popUp.getAttribute('data-control') === 'active') {
+			setTimeout(function (time) {
+				var tl = new TimelineMax();
+				tl.to(popUp, 0, {
+					css: {
+						opacity: '0',
+						display: 'block'
+					}
+				});
+				tl.to(popUp, .2, {
+					css: {
+						opacity: '1'
+					}
+				});
+			}, time);
+		}
+	}
+
+	function formClose() {
+		var button = popUp.querySelector('#formClose');
+		button.addEventListener('click', function (e) {
+			var tl = new TimelineMax();
+			tl.to(popUp, .2, {
+				css: {
+					opacity: '0',
+					display: 'none'
+				}
+			});
+		});
+	}
+	//formClose();
+	function checkHome() {
+		if (document.body.classList.contains('home')) {
+			var _popUp = document.getElementById('#popUp');
+			formControl(_popUp);
+			formClose(_popUp);
+		}
+	}
+	checkHome();
+
+	// Form submission redirect
+	document.addEventListener('wpcf7mailsent', function (event) {
+		location = 'http://example.com/';
+	}, false);
+
+	// Fade In Controls
+
+	var controllerViews = new ScrollMagic.Controller();
+	var sections = document.querySelectorAll('.fadeIn');
+
+	function createAnimation(list) {
+		list.forEach(function (item) {
+			var elem = item.querySelector('.inner-wrapper');
+			TweenMax.to(elem, 0, { css: { opacity: '0' } });
+
+			var height = item.offsetHeight;
+
+			var scene = new ScrollMagic.Scene({
+				triggerElement: item,
+				offset: 0
+			}).setTween(TweenMax.to(elem, .2, { css: { opacity: '1' } })).addTo(controllerViews);
+		});
+	}
+	createAnimation(sections);
+	console.log(sections);
+	// Bottom of wrapper function
 });
 jQuery(document).ready(function ($) {
 
@@ -109,29 +178,32 @@ jQuery(document).ready(function ($) {
 	});
 
 	// Smooth scrolling behavior
+	function smoothScroll() {
+		$(document).ready(function () {
+			// Add smooth scrolling to all links
+			$("a").on('click', function (event) {
 
-	$(document).ready(function () {
-		// Add smooth scrolling to all links
-		$("a").on('click', function (event) {
+				// Make sure this.hash has a value before overriding default behavior
+				if (this.hash !== "") {
+					// Prevent default anchor click behavior
+					event.preventDefault();
 
-			// Make sure this.hash has a value before overriding default behavior
-			if (this.hash !== "") {
-				// Prevent default anchor click behavior
-				event.preventDefault();
+					// Store hash
+					var hash = this.hash;
 
-				// Store hash
-				var hash = this.hash;
+					// Using jQuery's animate() method to add smooth page scroll
+					// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+					$('html, body').animate({
+						scrollTop: $(hash).offset().top
+					}, 500, function () {
 
-				// Using jQuery's animate() method to add smooth page scroll
-				// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-				$('html, body').animate({
-					scrollTop: $(hash).offset().top
-				}, 500, function () {
-
-					// Add hash (#) to URL when done scrolling (default click behavior)
-					window.location.hash = hash;
-				});
-			} // End if
+						// Add hash (#) to URL when done scrolling (default click behavior)
+						window.location.hash = hash;
+					});
+				} // End if
+			});
 		});
-	});
+	}
+
+	smoothScroll();
 });
