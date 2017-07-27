@@ -6,13 +6,13 @@
 */
 ?>
 
-<section class="container signup-section"
+<section class="container signup-section anim-push"
 <?php if( get_field('sign_up_photo', 'options') ):
 	echo 'style="background-image: url(' . get_field('sign_up_photo', 'options') . ');"';
 	endif;
 ?>
 >
-	<div class="inner-wrapper">
+	<div class="inner-wrapper anim-target">
 		<div class="sign-up-form">
 			<?php 
 			if( get_field('sign_up_headline', 'options') ): ?>

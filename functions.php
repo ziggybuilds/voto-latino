@@ -47,6 +47,7 @@ function jestarter_setup() {
 		'menu-1' => esc_html__( 'Primary', 'jestarter' ),
 		'menu-2' => esc_html__( 'Additional', 'jestarter' ),
 		'menu-3' => esc_html__( 'Footer', 'jestarter' ),
+		'menu-4' => esc_html__( 'Mobile', 'jestarter' )
 	) );
 
 	/*
@@ -107,11 +108,11 @@ function jestarter_scripts() {
 
 	wp_enqueue_script('gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js', true);
 
-	wp_enqueue_script('Scroll Magic', 'https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js', true);
+	wp_enqueue_script('ScrollToPlugin', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/plugins/ScrollToPlugin.min.js', true);
 
-	wp_enqueue_script('Scroll Magic', 'https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.js', true);
+	wp_enqueue_script('ScrollMagic', 'https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js', true);
 
-	wp_enqueue_script('Scroll Magic Plugin', 'https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js', true);
+	wp_enqueue_script('ScrollMagicPlugin', 'https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js', true);
 
 	wp_enqueue_script( 'skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), true );
 

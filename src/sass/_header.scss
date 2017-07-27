@@ -50,6 +50,9 @@ header {
 						color: $accent;
 					}
 				}
+				@media screen and (max-width: $xs) {
+					display: none;
+				}
 
 			}
 			.greenbar {
@@ -101,11 +104,13 @@ header {
 
 // Menu control
 .navbar {
-	background-color: rgba(13, 22, 52, 0.7);
+	//background-color: rgba(13, 22, 52, 0.7);
+	background-color: $first;
+	@extend .shadow;
 	@media screen and (min-width: $sm) {
 		height: 100px;
 	}
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 999;
@@ -249,7 +254,7 @@ header {
 
 #addMenu {
 	display: none;
-	position: absolute;
+	position: fixed;
 	top: 100px;
 	left: 0;
 	z-index: 100;
@@ -302,8 +307,9 @@ header {
 /// Mobile Menu Config
 
 #mobileNav {
-	background-color: rgba(13, 22, 52, 0.7);
-	height: 80px;
+	background-color: $first;
+	@extend .shadow;
+	height: 60px;
 	width: 100%;
 	position: fixed;
 	top: 0;
@@ -317,7 +323,7 @@ header {
 
 .mobile-menu-button {
 	position: absolute;
-	top: 1em;
+	@extend .vertical-align;
 	right: 1em;
 	z-index: 101;
 	#menuBtn {
@@ -332,7 +338,6 @@ header {
 	.menu-primary-container, .menu-additional-container, .menu-mobile-container {
 		width: 100%;
 		height: 100%;
-		overflow-y: scroll; 
 		display: table;
 		#menu-additional, #menu-primary, #menu-mobile {
 			list-style: none;
@@ -363,11 +368,6 @@ header {
 			}
 		}
 	}
-	.social-profiles {
-		@extend .center-align;
-		bottom: 20px;
-		z-index: 105;
-	}
 }
 
 .mobile-overlay {
@@ -378,6 +378,7 @@ header {
 	width: 100vw;
 	height: 100vh;
 	background-color: $first;
+	overflow-y: scroll; 
 }
 
 .mobile-overlay-open {
@@ -388,8 +389,7 @@ header {
 
 .mobileLogo {
 	position: absolute;
-	top: 10px;
-	left: 10px;
+	left: 5px;
 	height: 60px;
 	width: 60px;
 	z-index: 105;

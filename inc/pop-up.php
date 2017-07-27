@@ -19,10 +19,8 @@
 	<div class="inner-wrapper">
 		<div class="sign-up-form">
 		<div class="close-form">
-			<button class="hamburger hamburger--elastic is-active" type="button" id="formClose" aria-label="Form" aria-controls="form">
-				<span class="hamburger-box">
-					<span class="hamburger-inner"></span>
-				</span>
+			<button class="" type="button" id="formClose" aria-label="Form" aria-controls="form">
+				<i class="fa fa-times" aria-hidden="true"></i>
 			</button>
 		</div>
 			<?php 
@@ -33,7 +31,7 @@
 			<div class="embed-form">
 				<?php
 				// Render Form
-				$form = get_field('form_shortcode', 'options');
+				$form = get_field('pop_up_form_shortcode', 'options');
 				echo do_shortcode($form);
 				?>
 			</div>

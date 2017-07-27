@@ -2,6 +2,13 @@ jQuery( document ).ready( function( $ ) {
 
 "use strict";
 
+// Helper function to check homepage
+function checkHome() {
+  if( document.body.classList.contains('home')) {
+  	return true;
+  }
+}
+
 // Hover State of the vertical boxes
 function classOnHover(list) {
 	list.forEach( function(item) {
@@ -84,7 +91,7 @@ window.addEventListener('resize', function() {
 $('.wp-caption').removeAttr('style');
 
 function formControl() {
-	let time = 9000;
+	let time = 5000;
 	if( popUp.getAttribute('data-control') === 'active') {
 		setTimeout(function(time){
 			let tl = new TimelineMax();
@@ -113,45 +120,58 @@ function formClose() {
 						display: 'none'
 					}
 				})
+		this.classList.remove('is-active');
 	});
 }
-//formClose();
-function checkHome() {
-  if( document.body.classList.contains('home')) {
-  	const popUp = document.getElementById('#popUp');
-   	formControl(popUp);
-   	formClose(popUp);
+
+// Set session
+function cachedForm() {
+	var test = sessionStorage.getItem('firstVisit');
+	 if (test == null) {
+	      if(checkHome() === true) {
+	      	const popUp = document.getElementById('#popUp');
+		formControl();
+		formClose();
+	      }
+	      sessionStorage.setItem('firstVisit', '1');
+	    }
+}
+cachedForm();
+
+
+// Smooth scrolling behavior for video link
+function smoothScroll() {
+  if(checkHome() === true) {
+  	let videoLink = document.querySelector('.video-link > a');
+  	let anchor = document.querySelector('#home-page-video');
+  	let posTop = anchor.offsetTop + 300;
+  	videoLink.addEventListener('click', function(event) {
+  		TweenMax.to(window, .5, {scrollTo: posTop});
+  	});
   }
 }
-checkHome();
-
-// Form submission redirect
-document.addEventListener( 'wpcf7mailsent', function( event ) {
-    location = 'http://example.com/';
-}, false );
+smoothScroll();
 
 // Fade In Controls
 
 const controllerViews = new ScrollMagic.Controller();
-const sections = document.querySelectorAll('.fadeIn');
 
-function createAnimation(list) {
+const targets = document.querySelectorAll('.anim-push');
+function fadeIn(list) {
 	list.forEach(function(item) {
-		let elem = item.querySelector('.inner-wrapper');
+		let elem = item.querySelector('.anim-target');
 		TweenMax.to(elem, 0, {css: {opacity: '0'}});
 
-
-		let height = item.offsetHeight;
-
 		let scene = new ScrollMagic.Scene({
-			triggerElement: item,
-			offset: 0
+			triggerElement: item
 		})
-		.setTween(TweenMax.to(elem, .2, {css: {opacity: '1'}}))
+		.setTween(TweenMax.to(elem, .4, {css: {opacity: '1'}}))
 		.addTo(controllerViews);
+
+		scene.reverse(false);
 	});
 }
-createAnimation(sections);
-console.log(sections);
+fadeIn(targets);
+
 // Bottom of wrapper function
 });

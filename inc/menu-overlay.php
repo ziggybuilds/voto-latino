@@ -26,13 +26,9 @@
 	<?php
 		// This displays the primary menu
 		wp_nav_menu( array(
-			'menu' => 'additional',
+			'menu' => 'mobile',
 			'menu_class' => 'mobile-dropdown-menu',
 			) );
 	?>
-	<?php 
-		get_template_part('inc/social-profiles');
-	?>
-
 	</div>
 </div>

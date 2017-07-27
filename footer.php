@@ -16,7 +16,7 @@
 		get_template_part('inc/pop-up'); 
 	}
 ?>
-<footer class="container fadeIn">
+<footer class="container">
 	<div class="inner-wrapper">
 		<div class="social-footer">
 			<div class="social-footer-text">

@@ -24,7 +24,9 @@ $facebook = get_field('facebook_photo', $id);
 				?>
 					<div class="greenbar"></div>
 				</div>
+				<?php if( get_field('more_link_sm', $id) ): ?>
 				<div class="more-link"><a href="<?php the_field('more_link_sm', $id); ?>"><?php the_field('more_text_sm', $id); ?> </a></div>
+				<?php endif; ?>
 			</div>
 		</div>
 		<div class="lg-col-6 md-col-6 sm-col-12 second">

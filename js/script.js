@@ -4,8 +4,15 @@ jQuery(document).ready(function ($) {
 
 	"use strict";
 
-	// Hover State of the vertical boxes
+	// Helper function to check homepage
 
+	function checkHome() {
+		if (document.body.classList.contains('home')) {
+			return true;
+		}
+	}
+
+	// Hover State of the vertical boxes
 	function classOnHover(list) {
 		list.forEach(function (item) {
 			var color = item.querySelector('div.overlay');
@@ -84,7 +91,7 @@ jQuery(document).ready(function ($) {
 	$('.wp-caption').removeAttr('style');
 
 	function formControl() {
-		var time = 9000;
+		var time = 5000;
 		if (popUp.getAttribute('data-control') === 'active') {
 			setTimeout(function (time) {
 				var tl = new TimelineMax();
@@ -113,43 +120,56 @@ jQuery(document).ready(function ($) {
 					display: 'none'
 				}
 			});
+			this.classList.remove('is-active');
 		});
 	}
-	//formClose();
-	function checkHome() {
-		if (document.body.classList.contains('home')) {
-			var _popUp = document.getElementById('#popUp');
-			formControl(_popUp);
-			formClose(_popUp);
+
+	// Set session
+	function cachedForm() {
+		var test = sessionStorage.getItem('firstVisit');
+		if (test == null) {
+			if (checkHome() === true) {
+				var _popUp = document.getElementById('#popUp');
+				formControl();
+				formClose();
+			}
+			sessionStorage.setItem('firstVisit', '1');
 		}
 	}
-	checkHome();
+	cachedForm();
 
-	// Form submission redirect
-	document.addEventListener('wpcf7mailsent', function (event) {
-		location = 'http://example.com/';
-	}, false);
+	// Smooth scrolling behavior for video link
+	function smoothScroll() {
+		if (checkHome() === true) {
+			var videoLink = document.querySelector('.video-link > a');
+			var anchor = document.querySelector('#home-page-video');
+			var posTop = anchor.offsetTop + 300;
+			videoLink.addEventListener('click', function (event) {
+				TweenMax.to(window, .5, { scrollTo: posTop });
+			});
+		}
+	}
+	smoothScroll();
 
 	// Fade In Controls
 
 	var controllerViews = new ScrollMagic.Controller();
-	var sections = document.querySelectorAll('.fadeIn');
 
-	function createAnimation(list) {
+	var targets = document.querySelectorAll('.anim-push');
+	function fadeIn(list) {
 		list.forEach(function (item) {
-			var elem = item.querySelector('.inner-wrapper');
+			var elem = item.querySelector('.anim-target');
 			TweenMax.to(elem, 0, { css: { opacity: '0' } });
 
-			var height = item.offsetHeight;
-
 			var scene = new ScrollMagic.Scene({
-				triggerElement: item,
-				offset: 0
-			}).setTween(TweenMax.to(elem, .2, { css: { opacity: '1' } })).addTo(controllerViews);
+				triggerElement: item
+			}).setTween(TweenMax.to(elem, .4, { css: { opacity: '1' } })).addTo(controllerViews);
+
+			scene.reverse(false);
 		});
 	}
-	createAnimation(sections);
-	console.log(sections);
+	fadeIn(targets);
+
 	// Bottom of wrapper function
 });
 jQuery(document).ready(function ($) {
@@ -177,33 +197,17 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	// Smooth scrolling behavior
-	function smoothScroll() {
-		$(document).ready(function () {
-			// Add smooth scrolling to all links
-			$("a").on('click', function (event) {
+	var menuController = new ScrollMagic.Controller();
+	// Downsize menu on scroll
+	function menuSmall(elem, trigger) {
 
-				// Make sure this.hash has a value before overriding default behavior
-				if (this.hash !== "") {
-					// Prevent default anchor click behavior
-					event.preventDefault();
-
-					// Store hash
-					var hash = this.hash;
-
-					// Using jQuery's animate() method to add smooth page scroll
-					// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-					$('html, body').animate({
-						scrollTop: $(hash).offset().top
-					}, 500, function () {
-
-						// Add hash (#) to URL when done scrolling (default click behavior)
-						window.location.hash = hash;
-					});
-				} // End if
-			});
-		});
+		var scene = new ScrollMagic.Scene({
+			triggerElement: item,
+			offset: 0
+		}).setTween(TweenMax.to(elem, .2, { css: { opacity: '1' } })).addTo(menuController);
 	}
 
-	smoothScroll();
+	var primaryMenu = document.querySelector('.navbar');
+	var addMenu = document.querySelector('#addMenu');
+	var heroText = document.querySelector('.hero-text');
 });

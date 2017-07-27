@@ -7,6 +7,8 @@
 ?>
 
 <?php 
+
+function fireTwitter() {
 require_once('TwitterAPIExchange.php');
 
 $settings = array(
@@ -20,11 +22,16 @@ $settings = array(
 $url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
 $requestMethod = 'GET';
 $user = get_field('twitter_rest_api', 'options');
-$getfield = '?username=' . $user . '&count=1';
+$getfield = '?screen_name=' . $user . '&count=1';
 $requestMethod = 'GET';
 $twitter = new TwitterAPIExchange($settings);
 echo $twitter->setGetfield($getfield)
              ->buildOauth($url, $requestMethod)
              ->performRequest();
-             
+
+}
+
+fireTwitter();
+
+
 ?>

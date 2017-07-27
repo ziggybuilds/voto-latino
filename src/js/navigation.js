@@ -25,36 +25,22 @@ $($mobileBtn).click(function() {
 	}
 });
 
-// Smooth scrolling behavior
-function smoothScroll() {
-  $(document).ready(function(){
-    // Add smooth scrolling to all links
-    $("a").on('click', function(event) {
 
-      // Make sure this.hash has a value before overriding default behavior
-      if (this.hash !== "") {
-        // Prevent default anchor click behavior
-        event.preventDefault();
 
-        // Store hash
-        var hash = this.hash;
+const menuController = new ScrollMagic.Controller();
+// Downsize menu on scroll
+function menuSmall(elem, trigger) {
 
-        // Using jQuery's animate() method to add smooth page scroll
-        // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-        $('html, body').animate({
-          scrollTop: $(hash).offset().top
-        }, 500, function(){
-     
-          // Add hash (#) to URL when done scrolling (default click behavior)
-          window.location.hash = hash;
-        });
-      } // End if
-    });
-  });
+  let scene = new ScrollMagic.Scene({
+      triggerElement: item,
+      offset: 0
+    })
+    .setTween(TweenMax.to(elem, .2, {css: {opacity: '1'}}))
+    .addTo(menuController);
 }
 
-smoothScroll();
-
-
+const primaryMenu = document.querySelector('.navbar');
+const addMenu = document.querySelector('#addMenu');
+const heroText = document.querySelector('.hero-text');
 
 } );
