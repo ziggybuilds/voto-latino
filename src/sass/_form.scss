@@ -59,6 +59,9 @@
 			padding: 1em;
 			@extend .abs-center;
 			@extend .shadow;
+			input {
+				border: 1px solid $first;
+			}
 			.close-form {
 				text-align: right;
 				button {

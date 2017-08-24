@@ -25,6 +25,7 @@ header {
 		.header-text {
 			@extend .abs-center;
 			text-align: center;
+			visibility: hidden;
 			a {
 				color: $white;
 				text-decoration: none;
@@ -250,6 +251,7 @@ header {
 	bottom: 80px;
 	left: 20px;
 	z-index: 10;
+	visibility: hidden;
 }
 
 #addMenu {

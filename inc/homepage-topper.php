@@ -26,8 +26,8 @@
 		endif; 
 		?>
 
-		<div class="more-link">
-			<a href="">Learn More</a>
-		</div>
+		<?php if( get_field('more_link_topper', $id) ): ?>
+				<div class="more-link"><a href="<?php the_field('more_link_topper', $id); ?>"><?php the_field('more_text_topper', $id); ?> </a></div>
+		<?php endif; ?>
 	</div>
 </section>

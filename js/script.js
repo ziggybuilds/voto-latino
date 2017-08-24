@@ -12,19 +12,73 @@ jQuery(document).ready(function ($) {
 		}
 	}
 
+	// animate on load after delay
+	function animLoad(list) {
+		for (var i = 0; i < list.length; i++) {
+			var _item = list[i];
+
+			var tl = new TimelineMax();
+			tl.set(_item, { css: { opacity: '0', top: '80%' } });
+			tl.to(_item, 1, {
+				css: {
+					opacity: '1',
+					top: '50%',
+					visibility: 'visible'
+				}
+			}, '.5');
+		}
+	}
+	var heroText = document.querySelectorAll('.header-text');
+	animLoad(heroText);
+
+	function socialSlide(list) {
+		for (var i = 0; i < list.length; i++) {
+			var _item2 = list[i];
+
+			if (_item2.classList.contains('tickerLive') === true) {
+				var tl = new TimelineMax();
+				tl.set(_item2, { css: { opacity: '0', bottom: '0px' } });
+				tl.to(_item2, 1, {
+					css: {
+						opacity: '1',
+						bottom: '80px',
+						visibility: 'visible'
+					}
+				}, '.5');
+			} else {
+				var tl = new TimelineMax();
+				tl.set(_item2, { css: { opacity: '0', bottom: '0px' } });
+				tl.to(_item2, 1, {
+					css: {
+						opacity: '1',
+						bottom: '20px',
+						visibility: 'visible'
+					}
+				}, '.5');
+			}
+		}
+	}
+	var socialCorner = document.querySelectorAll('#socialCorner');
+	socialSlide(socialCorner);
+
 	// Hover State of the vertical boxes
 	function classOnHover(list) {
-		list.forEach(function (item) {
+		var _loop = function _loop(i) {
+			var item = list[i];
 			var color = item.querySelector('div.overlay');
 			var content = item.querySelector('div.content');
 
 			content.addEventListener('mouseenter', function (event) {
-				TweenMax.to(color, .4, { css: { opacity: '.9' } });
+				TweenMax.to(color, '.4', { css: { opacity: '1' } });
 			});
 			content.addEventListener('mouseleave', function (event) {
-				TweenMax.to(color, .4, { css: { opacity: '.6' } });
+				TweenMax.to(color, '.4', { css: { opacity: '.8' } });
 			});
-		});
+		};
+
+		for (var i = 0; i < list.length; i++) {
+			_loop(i);
+		}
 	}
 
 	var vertBoxes = document.querySelectorAll('div.split-vertical');
@@ -32,16 +86,19 @@ jQuery(document).ready(function ($) {
 
 	// Ticker Tape hider
 	function hideTicker() {
-		var ticker = document.getElementById('tickerHide');
-		var tape = document.getElementById('tickerTape');
 		var social = document.getElementById('socialCorner');
-		ticker.addEventListener('click', function (e) {
-			TweenMax.to(tape, .4, { css: { opacity: '0' } });
 
-			var timeline = new TimelineMax();
-			timeline.to(social, .4, { bottom: '20px' });
-			timeline.to(tape, 0, { css: { display: 'none' } });
-		});
+		if (social.classList.contains('tickerLive') === true) {
+			var ticker = document.getElementById('tickerHide');
+			var tape = document.getElementById('tickerTape');
+			ticker.addEventListener('click', function (e) {
+				TweenMax.to(tape, '.4', { css: { opacity: '0' } });
+
+				var timeline = new TimelineMax();
+				timeline.to(social, '.4', { bottom: '20px' });
+				timeline.to(tape, 0, { css: { display: 'none' } });
+			});
+		}
 	}
 	hideTicker();
 
@@ -59,14 +116,14 @@ jQuery(document).ready(function ($) {
 			if (addMenu.getAttribute('data-state') === 'closed') {
 				TweenMax.to(addMenu, 0, { css: { opacity: '0' } });
 				TweenMax.to(addMenu, 0, { css: { display: 'block' } });
-				TweenMax.to(addMenu, .4, { css: { opacity: '1' } });
+				TweenMax.to(addMenu, '.4', { css: { opacity: '1' } });
 				addMenu.setAttribute('data-state', 'open');
 			}
 		});
 		addMenu.addEventListener('mouseleave', function (e) {
 			if (addMenu.getAttribute('data-state') === 'open') {
-				TweenMax.to(addMenu, .4, { css: { opacity: '0' } });
-				TweenMax.to(addMenu, .2, { css: { display: 'none' } });
+				TweenMax.to(addMenu, '.4', { css: { opacity: '0' } });
+				TweenMax.to(addMenu, '.2', { css: { display: 'none' } });
 				addMenu.setAttribute('data-state', 'closed');
 			}
 		});
@@ -76,22 +133,21 @@ jQuery(document).ready(function ($) {
 
 	var videoModules = document.querySelectorAll('.video-module');
 	function stripIframe(list) {
-		list.forEach(function (item) {
-			var video = item.querySelector('iframe');
+		for (var i = 0; i < list.length; i++) {
+			var _item3 = list[i];
+			var video = _item3.querySelector('iframe');
 			video.removeAttribute("width");
 			video.removeAttribute("height");
-		});
+		}
 	}
 
 	stripIframe(videoModules);
-
-	window.addEventListener('resize', function () {});
 
 	// Fix WP Caption width
 	$('.wp-caption').removeAttr('style');
 
 	function formControl() {
-		var time = 5000;
+		var time = 3000;
 		if (popUp.getAttribute('data-control') === 'active') {
 			setTimeout(function (time) {
 				var tl = new TimelineMax();
@@ -101,7 +157,7 @@ jQuery(document).ready(function ($) {
 						display: 'block'
 					}
 				});
-				tl.to(popUp, .2, {
+				tl.to(popUp, '.2', {
 					css: {
 						opacity: '1'
 					}
@@ -114,7 +170,7 @@ jQuery(document).ready(function ($) {
 		var button = popUp.querySelector('#formClose');
 		button.addEventListener('click', function (e) {
 			var tl = new TimelineMax();
-			tl.to(popUp, .2, {
+			tl.to(popUp, '.2', {
 				css: {
 					opacity: '0',
 					display: 'none'
@@ -142,11 +198,13 @@ jQuery(document).ready(function ($) {
 	function smoothScroll() {
 		if (checkHome() === true) {
 			var videoLink = document.querySelector('.video-link > a');
-			var anchor = document.querySelector('#home-page-video');
-			var posTop = anchor.offsetTop + 300;
-			videoLink.addEventListener('click', function (event) {
-				TweenMax.to(window, .5, { scrollTo: posTop });
-			});
+			if (!videoLink === null || !videoLink === undefined) {
+				var anchor = document.querySelector('#home-page-video');
+				var posTop = anchor.offsetTop + 300;
+				videoLink.addEventListener('click', function (event) {
+					TweenMax.to(window, '.5', { scrollTo: posTop });
+				});
+			}
 		}
 	}
 	smoothScroll();
@@ -157,16 +215,17 @@ jQuery(document).ready(function ($) {
 
 	var targets = document.querySelectorAll('.anim-push');
 	function fadeIn(list) {
-		list.forEach(function (item) {
-			var elem = item.querySelector('.anim-target');
+		for (var i = 0; i < list.length; i++) {
+			var _item4 = list[i];
+			var elem = _item4.querySelector('.anim-target');
 			TweenMax.to(elem, 0, { css: { opacity: '0' } });
 
 			var scene = new ScrollMagic.Scene({
-				triggerElement: item
-			}).setTween(TweenMax.to(elem, .4, { css: { opacity: '1' } })).addTo(controllerViews);
+				triggerElement: _item4
+			}).setTween(TweenMax.to(elem, '.3', { css: { opacity: '1' } })).addTo(controllerViews);
 
 			scene.reverse(false);
-		});
+		}
 	}
 	fadeIn(targets);
 
@@ -204,7 +263,7 @@ jQuery(document).ready(function ($) {
 		var scene = new ScrollMagic.Scene({
 			triggerElement: item,
 			offset: 0
-		}).setTween(TweenMax.to(elem, .2, { css: { opacity: '1' } })).addTo(menuController);
+		}).setTween(TweenMax.to(elem, '.2', { css: { opacity: '1' } })).addTo(menuController);
 	}
 
 	var primaryMenu = document.querySelector('.navbar');

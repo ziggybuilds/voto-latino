@@ -40,8 +40,8 @@
 				<?php 
 					$home = get_home_url();
 					// echo the optional header menu logo
-					if( get_field('header_logo', 'options') ): 
-						echo '<a href="' . $home . '"><img id="headerLogo" src="' . get_field('header_logo', 'options') . '" alt="logo"></a>';
+					if( get_field('footer_logo', 'options') ): 
+						echo '<a href="' . $home . '"><img id="footerLogo" src="' . get_field('footer_logo', 'options') . '" alt="logo"></a>';
 					endif;
 				?>
 			</div>

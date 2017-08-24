@@ -35,7 +35,7 @@ function menuSmall(elem, trigger) {
       triggerElement: item,
       offset: 0
     })
-    .setTween(TweenMax.to(elem, .2, {css: {opacity: '1'}}))
+    .setTween(TweenMax.to(elem, '.2', {css: {opacity: '1'}}))
     .addTo(menuController);
 }
 

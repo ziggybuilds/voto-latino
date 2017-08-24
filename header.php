@@ -28,7 +28,7 @@
 	 }
 ?>
 <div id="page" class="site">
-	<header id="masthead" class="site-header container  anim-push <?php echo $pageStyle; ?>" role="banner"
+	<header id="masthead" class="site-header container <?php echo $pageStyle; ?>" role="banner"
 	<?php if(get_field('header_image1', $id) ): ?>
 		style="background-image: url(<?php the_field('header_image1', $id); ?>"
 	<?php endif; ?>
@@ -43,7 +43,7 @@
 	?>
 
 		<div class="inner-wrapper">
-			<div class="header-text sm-col-12 md-col-8 lg-col-8 anim-target">
+			<div class="header-text sm-col-12 md-col-8 lg-col-8">
 					<div class="hero-text">
 						<?php if( is_home() || is_front_page() ):
 							// Conditional header text based on page
@@ -85,7 +85,12 @@
 			</div>
 		</div>
 
-		<div id="socialCorner">
+		<div id="socialCorner" class="
+		<?php if( get_field('ticker_tape_display', 'options') ): 
+			echo 'tickerLive';
+		endif;
+		?>
+		">
 			<?php get_template_part('inc/social-profiles'); ?>
 		</div>
 

@@ -30,6 +30,11 @@
 							$picture = get_sub_field('picture');
 							$text = get_sub_field('content');
 							$link = get_sub_field('link');
+							if($link) {
+								$linkHTML = '<div class="card-more"><a href="' . $link . '">More</a></div>';
+							} else {
+								$linkHTML = '<div class="card-more"></div>';
+							}
 
 							if( $picture ):
 								$cardImage =	'<div class="card-image"><img src="' . $picture . '" alt="' . $name . '"></div>';
@@ -41,7 +46,7 @@
 										'<h3>' . $name . '</h3>' .
 									'</div>' .
 									'<div class="card-content">' . $text .
-									'</div><div class="card-more"><a href="' . $link . '">More</a></div>' . 
+									'</div>' . $linkHTML .
 								'</div>';
 
 						endwhile;

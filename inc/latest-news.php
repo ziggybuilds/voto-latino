@@ -1,7 +1,7 @@
 <?php
 /*
 *
-* This is thelatest news display module
+* This is the latest news display module
 *
 *
 */
