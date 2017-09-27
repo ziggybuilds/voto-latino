@@ -40,6 +40,13 @@ get_header(); ?>
 
 					// reset wp loop
 					wp_reset_postdata();
+
+				echo '<div class="all-posts">' .
+						'<a href="' . get_category_link( $catId ) . '">' . 
+						'<p>View All ' . get_cat_name( $catId ) . '</p>' . 
+						'</a>' .
+					'</div>';
+
 				}
 				?>
 			</div>

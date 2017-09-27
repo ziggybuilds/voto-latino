@@ -79,6 +79,19 @@
 	 }
 }
 
+// Front page view more link
+.all-posts {
+	text-align: center;
+	a {
+		text-decoration: none;
+		color: $accent;
+		p { font-weight: $bold; }
+		&:hover, &:focus {
+			color: $dark;
+		}
+	}
+}
+
 blockquote {
 	border-left: 2px dashed $accent;
 	padding: 0 0 0 1em;
@@ -141,5 +154,22 @@ nav {
 				}
 			}
 		}
+	}
+}
+
+// Post share icons
+.post-share-wrapper {
+	width: 100%;
+	margin: 2em 0;
+	text-align: center;
+	color: $accent;
+	font-size: 1.5em;
+	p {
+		display: inline-block;
+		font-weight: $bold;
+	}
+	a {
+		display: inline-block;
+		padding: 0 .5em;
 	}
 }

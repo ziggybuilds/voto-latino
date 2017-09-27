@@ -36,9 +36,8 @@
 
 			endif;
 		?>
-
 		<a href="<?php the_permalink(); ?>">
-			<p class="post-date">- <?php the_date(); ?></p>
+			<p class="post-date">- <?php the_date(); ?> // <?php echo displayCats(); ?></p>
 			<h3><?php the_title(); ?></h3>
 			<p>Read More</p>
 		</a>

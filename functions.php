@@ -188,3 +188,11 @@ function my_theme_archive_title( $title ) {
 }
  
 add_filter( 'get_the_archive_title', 'my_theme_archive_title' );
+
+// helper function to display post category
+function displayCats() {
+	$categories = get_the_category();
+	if ( ! empty( $categories ) ) {
+		return $categories[0]->name;
+	}
+}
