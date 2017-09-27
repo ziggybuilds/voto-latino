@@ -12,8 +12,14 @@
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
-		<div class="inner-wrapper">
-			<?php
+		<section class="container posts-container">
+			<div class="inner-wrapper">
+				<?php 
+					// echo the category title before loop
+					echo '<div class="category-name"><h1>' . get_the_archive_title() . '</h1></div>';
+
+					echo '<div class="display-posts">';
+					
 				/* Start the Loop */
 				while ( have_posts() ) : the_post();
 					
@@ -23,8 +29,9 @@
 				endwhile; // End of the loop.
 
 				the_posts_navigation();
-			?>
-		</div>
+				?>
+			</div>
+		</section>
 	</main><!-- #main -->
 </div><!-- #primary -->
 

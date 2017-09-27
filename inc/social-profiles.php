@@ -6,11 +6,10 @@
 */
 ?>
 
-
 <div class="social-profiles">
 <?php 
-echo grabSocial('facebook');
-echo grabSocial('youtube');
-echo grabSocial('twitter');
+	grabSocial('facebook');
+	grabSocial('youtube');
+	grabSocial('twitter');
 ?>
 </div>	

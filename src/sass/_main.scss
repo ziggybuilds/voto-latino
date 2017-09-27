@@ -1,5 +1,5 @@
 html {
-	font-size: 18px;
+	font-size: 16px;
 	@media only screen and (max-width: $sm) {
 		font-size: 14px;
 	}
@@ -11,7 +11,7 @@ html {
 }
 
 a {
-	color: $third;
+	color: $second;
 	&:hover, &:focus {
 		color: $accent;
 	}
@@ -24,28 +24,27 @@ a {
 
 body {
 	font-family: $fontmain;
-	font-weight: 300;
-	color: $first;
+	font-weight: $fontreg;
+	color: $dark;
 }
 
 p {
-	font-size: 1em;
-	font-weight: 300;
+	font-weight: $fontreg;
 	font-family: $fontmain;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: $fontmain;
-	font-weight: 700;
+	font-weight: $bold;
 }
 
 strong {
-	font-weight: $fontbold;
+	font-weight: $bold;
 }
 
 em {
 	font-style: italic;
-	font-weight: $fontitalic;
+	font-weight: $italic;
 }
 
 mark {
@@ -54,14 +53,14 @@ mark {
 
 i {
 	font-style: italic;
-	font-weight: $fontitalic;
+	font-weight: $italic;
 }
 
 
 .more-link {
 	a {
 		text-decoration: none;
-		font-weight: 700;
+		font-weight: $bold;
 		i {
 			font-size: 1.5em;
 			padding: 0px 0px 0px 10px;
@@ -76,13 +75,6 @@ i {
 
 // Grid control
 
-$susy: (
-	'columns': susy-repeat(12),
-	'gutters': 0,
-	'spread': 'narrow',
-	'contianer-spread': 'narrow',
-);
-
 .container {
 	width: 100%;
 	margin: 0 auto;
@@ -96,217 +88,10 @@ $susy: (
 	height: 100%;
 }
 
-.left {
-	float: left;
-}
-
-.right {
-	float: right;
-}
-
-.clearfix:after {
-   content: " "; /* Older browser do not support empty content */
-   visibility: hidden;
-   display: block;
-   height: 0;
-   clear: both;
-}
-
-.fill-vert {
-	height: 100%;
-}
-
-.fill-horiz {
-	width: 100%;
-}
-
-/* Creating main layout classes */
-/* Starting small */
-.sm-col-1 {
-	@include create-column(1, $sm);
-}
-
-.sm-col-2 {
-	@include create-column(2, $sm);
-}
-
-.sm-col-3 {
-	@include create-column(3, $sm);
-}
-
-.sm-col-4 {
-	@include create-column(4, $sm);
-}
-
-.sm-col-5 {
-	@include create-column(5, $sm);
-}
-
-.sm-col-6 {
-	@include create-column(6, $sm);
-}
-
-.sm-col-7 {
-	@include create-column(7, $sm);
-}
-
-.sm-col-8 {
-	@include create-column(8, $sm);
-}
-
-.sm-col-9 {
-	@include create-column(9, $sm);
-}
-
-.sm-col-10 {
-	@include create-column(10, $sm);
-}
-
-.sm-col-11 {
-	@include create-column(11, $sm);
-}
-
-.sm-col-12 {
-	@include create-column(12, $sm);
-}
-
-// going to the midsize 
-
-.md-col-1 {
-	@include create-column-medium(1, $sm, $lg);
-}
-
-.md-col-2 {
-	@include create-column-medium(2, $sm, $lg);
-}
-
-.md-col-3 {
-	@include create-column-medium(3, $sm, $lg);
-}
-
-.md-col-4 {
-	@include create-column-medium(4, $sm, $lg);
-}
-
-.md-col-5 {
-	@include create-column-medium(5, $sm, $lg);
-}
-
-.md-col-6 {
-	@include create-column-medium(6, $sm, $lg);
-}
-
-.md-col-7 {
-	@include create-column-medium(7, $sm, $lg);
-}
-
-.md-col-8 {
-	@include create-column-medium(8, $sm, $lg);
-}
-
-.md-col-9 {
-	@include create-column-medium(9, $sm, $lg);
-}
-
-.md-col-10 {
-	@include create-column-medium(10, $sm, $lg);
-}
-
-.md-col-11 {
-	@include create-column-medium(11, $sm, $lg);
-}
-
-.md-col-12 {
-	@include create-column-medium(12, $sm, $lg);
-}
-
-// Going larger
-
-.lg-col-1 {
-	@include create-column-large(1, $lg);
-}
-
-.lg-col-2 {
-	@include create-column-large(2, $lg);
-}
-
-.lg-col-3 {
-	@include create-column-large(3, $lg);
-}
-
-.lg-col-4 {
-	@include create-column-large(4, $lg);
-}
-
-.lg-col-5 {
-	@include create-column-large(5, $lg);
-}
-
-.lg-col-6 {
-	@include create-column-large(6, $lg);
-}
-
-.lg-col-7 {
-	@include create-column-large(7, $lg);
-}
-
-.lg-col-8 {
-	@include create-column-large(8, $lg);
-}
-
-.lg-col-9 {
-	@include create-column-large(9, $lg);
-}
-
-.lg-col-10 {
-	@include create-column-large(10, $lg);
-}
-
-.lg-col-11 {
-	@include create-column-large(11, $lg);
-}
-
-.lg-col-12 {
-	@include create-column-large(12, $lg);
-}
-
 // extra styling
 
- .overlay-lightblue {
- 	position: absolute;
- 	opacity: 0.8;
- 	top: 0;
- 	left: 0;
- 	height: 100%;
- 	width: 100%;
- 	content: "";
- 	background-color: $second;
- }
-
-  .overlay-blue {
- 	position: absolute;
- 	opacity: 0.7;
- 	top: 0;
- 	left: 0;
- 	height: 100%;
- 	width: 100%;
- 	content: "";
- 	background-color: $first;
- }
-
- .overlay-green {
- 	position: absolute;
- 	opacity: 0.8;
- 	top: 0;
- 	left: 0;
- 	height: 100%;
- 	width: 100%;
- 	content: "";
- 	background-color: $third;
- }
-
 .shadow {
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 .hide {
@@ -321,7 +106,6 @@ $susy: (
 	opacity: 0;
 }
 
-
 // Animation styling 
 
 .ease {
@@ -333,13 +117,6 @@ $susy: (
 		transform: translateY(-5px);
 		z-index: 100;
 		box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.75);
-	}
-}
-
-.opaque {
-	&:hover, &:focus {
-		opacity: 0.9;
-		@extend .ease;
 	}
 }
 
@@ -383,12 +160,22 @@ $susy: (
 	position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
 	height: 0;
+	background-color: $dark;
 	iframe {
 		width: 100%;
 		height: 100%;
 		top: 0;
 		left: 0;
 		position: absolute;
+	}
+}
+
+.responsive-image {
+	position: relative;
+	background-color: $dark;
+	img {
+		width: 100%;
+		height: auto;
 	}
 }
 

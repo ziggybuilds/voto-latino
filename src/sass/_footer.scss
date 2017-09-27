@@ -1,114 +1,64 @@
 footer {
-	background-color: $third;
-	color: $white;
-	padding: .5em;
-	position: relative;
-}
-
-.footer-menu {
-	width: 80%;
-	position: relative;
-	margin: 0 auto;
-	div {
-		width: 100%;
-		max-width: 940px;
-		margin:  0 auto 2.77em auto;
-		text-align: center;
-		ul {
-			list-style: none;
-			li {
-				display: inline-block;
-				margin: 0 10px;
-				a {
-					text-decoration: none;
-					color: $white;
-					font-weight: bold;
-					font-size: .8em;
-				}
-			}
-		}
+	background-color: $dark;
+	padding: 2em 0;
+	.inner-wrapper {
+		display: table;
 	}
 }
 
 .footer-logo {
 	position: relative;
-	height: 100px;
 	text-align: center;
+	@media screen and (max-width: $md) {
+		display: table-row;
+	}
+	@media screen and (min-width: $md) {
+		display: table-cell;
+		vertical-align: middle;
+	}
 	img {
-		height: 100%;
-		width: auto;
-		@extend .ease;
+		height: auto;
+		width: 8em;
+		margin-top: 1em;
+	}
+}
+
+footer .inner-wrapper .social-profiles {
+	text-align: center;
+	@media screen and (max-width: $md) {
+		display: table-row;
+		width: 100%;
+	}
+	@media screen and (min-width: $md) {
+		display: table-cell;
+		width: 33%;
+		vertical-align: middle;
+	}
+	a {
+		display: inline-block;
+		font-size: 2em;
+		padding: 0 1em;
+		color: $white;
 		&:hover, &:focus {
-			transform: scale(1.1);
+			color: $accent;
 		}
 	}
 }
 
 .disclaimer {
-	width: 80%;
-	max-width: 300px;
-	text-align: center;
-	position: relative;
-	margin: 2.22em auto 2.22em auto;
-	p {
-		font-size: .6em;
-		height: 100%;
+	color: $white;
+	font-size: .7em;
+	line-height: 1.6em;
+	@media screen and (max-width: $md) {
+		display: table-row;
+		width: 100%;
 	}
-}
-
-.social-footer {
-	height: 13.88em;
-	position: relative;
-	.social-footer-text {
-		height: 4em;
-		@extend .center-align;
-		text-align: center;
+	@media screen and (min-width: $md) {
+		display: table-cell;
+		width: 33%;
+		vertical-align: middle;
 	}
-	.social-profiles {
-		width: 80%;
-		margin: 0 auto;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		@extend .abs-center;
-		@media screen and (min-width: $md) {
-			max-width: 600px;
-		}
-		@media screen and (min-width: $sm) and (max-width: $md) {
-			max-width: 400px;
-		}
-		@media screen and (max-width: $sm) {
-			max-width: 200px;
-		}
-		a div {
-			margin: 5px;
-			border-radius: 50px;
-			position: relative;
-			color: $white;
-			@extend .ease;
-			@media screen and (min-width: $md) {
-				height: 100px;
-				width: 100px;
-				border: 4px solid $white;
-			}
-			@media screen and (min-width: $sm) and (max-width: $md) {
-				height: 80px;
-				width: 80px;
-				border: 3px solid $white;
-			}
-			@media screen and (max-width: $sm) {
-				height: 50px;
-				width: 50px;
-				border: 2px solid $white;
-			}
-			&:hover, &:focus {
-				color: $accent;
-				border-color:  $accent;
-			}
-			i {
-				@extend .abs-center;
-				font-size: 2em;
-			}
-		}
+	a {
+		text-decoration: none;
 	}
 }

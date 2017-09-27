@@ -45,9 +45,7 @@ function jestarter_setup() {
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
 		'menu-1' => esc_html__( 'Primary', 'jestarter' ),
-		'menu-2' => esc_html__( 'Additional', 'jestarter' ),
-		'menu-3' => esc_html__( 'Footer', 'jestarter' ),
-		'menu-4' => esc_html__( 'Mobile', 'jestarter' )
+		'menu-2' => esc_html__( 'Footer', 'jestarter' )
 	) );
 
 	/*
@@ -102,7 +100,7 @@ add_action( 'widgets_init', 'jestarter_widgets_init' );
  * Enqueue scripts and styles.
  */
 function jestarter_scripts() {
-	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Raleway:300,300i,700', false);
+	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700', false);
 
 	wp_enqueue_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
 
@@ -142,70 +140,22 @@ add_action( 'wp_enqueue_scripts', 'namespace_theme_stylesheets' );
 
 // Inserting Custom Fields Options Page
 if( function_exists('acf_add_options_page') ) {
-	
 	acf_add_options_page('Theme Options');
-	acf_add_options_page('Sign Up & Pop Up Options');
-	
-}
-
-// Custom post type for the blog functionality
-add_action( 'init', 'codex_latest_init' );
-/**
- * Register a book post type.
- *
- * @link http://codex.wordpress.org/Function_Reference/register_post_type
- */
-function codex_latest_init() {
-	$labels = array(
-		'name'               => _x( 'Latest News', 'latest', 'jestarter' ),
-		'singular_name'      => _x( 'Latest', 'post type singular name', 'jestarter' ),
-		'menu_name'          => _x( 'Latest News', 'admin menu', 'jestarter' ),
-		'add_new'            => _x( 'Add New', 'piece', 'jestarter' ),
-		'add_new_item'       => __( 'Add New Latest News', 'jestarter' ),
-		'new_item'           => __( 'New Piece', 'jestarter' ),
-		'edit_item'          => __( 'Edit Piece', 'jestarter' ),
-		'view_item'          => __( 'View Piece', 'jestarter' ),
-		'all_items'          => __( 'All of the Latest', 'jestarter' ),
-		'search_items'       => __( 'Search Pieces', 'jestarter' ),
-		'parent_item_colon'  => __( 'Parent Piece:', 'jestarter' ),
-		'not_found'          => __( 'No pieces found.', 'jestarter' ),
-		'not_found_in_trash' => __( 'No pieces found in Trash.', 'jestarter' )
-	);
-
-	$args = array(
-		'labels'             => $labels,
-                	'description'        => __( 'Post the lastest updates to the Latest News section.', 'jestarter' ),
-		'public'             => true,
-		'publicly_queryable' => true,
-		'show_ui'            => true,
-		'show_in_menu'       => true,
-		'query_var'          => 'latest',
-		'rewrite'            => array( 'slug' => 'latest' ),
-		'capability_type'    => 'post',
-		'has_archive'        => true,
-		'hierarchical'       => false,
-		'menu_position'      => 5,
-		'menu_icon' => 'dashicons-media-document',
-		'supports'           => array( 'title', 'editor', 'author')
-	);
-
-	register_post_type( 'latest', $args );
 }
 
 // Functions to help display social
 function grabSocial($platform) {
-	$profile = $platform . '_profile';
 	$page = 'options';
-	if( get_field($profile, $page) ):
-		$render = '<a href="'  .  get_field($profile, $page) . '"><div class="circle-social"><i class="fa fa-' . $platform . '" aria-hidden="true"></i></div></a>';
-	return $render;
+	if( get_field($platform, $page) ):
+		$render = '<a href="'  .  get_field($platform, $page) . '"><div class="circle-social"><i class="fa fa-' . $platform . '" aria-hidden="true"></i></div></a>';
+		echo $render;
 	endif;
 }
 
 // Filter excerpt length
 
 function custom_excerpt_length( $length ) {
-	return 40;
+	return 80;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
@@ -220,12 +170,21 @@ function wpdocs_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
 
-
-
-/**
- * Remove Default Post Type
- */
-add_action('admin_menu','remove_default_post_type');
-function remove_default_post_type() {
-	remove_menu_page('edit.php');
+// Remove the "Category:" from the archive title
+function my_theme_archive_title( $title ) {
+    if ( is_category() ) {
+        $title = single_cat_title( '', false );
+    } elseif ( is_tag() ) {
+        $title = single_tag_title( '', false );
+    } elseif ( is_author() ) {
+        $title = '<span class="vcard">' . get_the_author() . '</span>';
+    } elseif ( is_post_type_archive() ) {
+        $title = post_type_archive_title( '', false );
+    } elseif ( is_tax() ) {
+        $title = single_term_title( '', false );
+    }
+  
+    return $title;
 }
+ 
+add_filter( 'get_the_archive_title', 'my_theme_archive_title' );

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!
-Theme Name: je-starter
+Theme Name: Base Template
 Author: Joshua Ellis
 Description: JE starter theme
 Version: 1.0.0
@@ -13,8 +13,6 @@ Tags:
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------*/
-@import 'susy';
-
 @import "variables";
 
 /*--------------------------------------------------------------*/
@@ -34,12 +32,7 @@ Tags:
 
 @import "index";
 
-@import "error";
-
 @import "footer";
 
-@import "page";
+@import "error";
 
-@import "form";
-
-@import "hamburgers/hamburgers";

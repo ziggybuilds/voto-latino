@@ -19,16 +19,20 @@ gulp.task('log', function() {
 
 // Process sass files
 
+// autoprefixer autoprefixerOptions
+const autoprefixerOptions = {
+  browsers: ['last 2 versions', '> 5%', 'Firefox ESR']
+};
+
 gulp.task('sass', function() {
 	gulp.src('src/sass/**/*.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass({
-			outputStyle: 'compressed',
-			includePaths: ['node_modules/susy/sass']
+			outputStyle: 'compressed'
 		}))
 			.on('error', gutil.log)
 		.pipe(sourcemaps.write())
-		.pipe(autoprefixer())
+		.pipe(autoprefixer(autoprefixerOptions))
 		.pipe(gulp.dest('./'))
 		.pipe(rename('style.min.css'))
 		.pipe(gulp.dest('./'))
@@ -37,9 +41,7 @@ gulp.task('sass', function() {
 gulp.task('js', function() {
 	gulp.src(['src/js/**/*.js'])
 		.pipe(concat('script.js'))
-		.pipe(babel({
-			presets: ['es2015']
-		}))
+		.pipe(babel())
 		.pipe(gulp.dest('./js'));
 });
 
@@ -73,7 +75,7 @@ var browserSyncFiles = [
 // browser-sync options
 // see: https://www.browsersync.io/docs/options/
 var browserSyncOptions = {
-    proxy: "http://localhost/rbmoco/wordpress/",
+    proxy: "http://localhost/base-template/wordpress/",
     notify: false,
     injectChanges: false
 };

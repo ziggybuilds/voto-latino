@@ -12,54 +12,36 @@
 ?>
 	</div><!-- #content -->
 </div><!-- #page -->
-<?php if(is_home() || is_front_page() ) {
-		get_template_part('inc/pop-up'); 
-	}
-?>
 <footer class="container">
 	<div class="inner-wrapper">
-		<div class="social-footer">
-			<div class="social-footer-text">
-				<h3>Follow Us</h3>
-			</div>
-			<?php 
-				get_template_part('inc/social-profiles');
+		<?php 
+		// get social profiles
+		get_template_part('inc/social-profiles');
+
+		// display logo
+		if( get_field('logo', 'options') ) {
+			echo '<div class="footer-logo"><img src="' . get_field('logo', 'options') . '" alt="logo" /></div>';
+		}
+
+		?>
+		<div class="disclaimer">
+			<?php
+				// display disclaimer
+				if( get_field('disclaimer', 'options') ) {
+					echo get_field('disclaimer', 'options');
+				}
+				if( get_field('copyright_holder', 'options') ) {
+					echo get_field('copyright_holder', 'options') . ' &copy ' . date("Y");
+				}
+				if( get_field('privacy_policy', 'options') ) {
+					echo ', <a href="' . get_field('privacy_policy', 'options') . '">Privacy Policy</a>';
+				}
 			?>
-		</div>
-		<div class="site-info">
-			<div class="footer-menu">
-				<?php
-					// echoing the nav menu
-					wp_nav_menu( array(
-						'menu' => 'Footer',
-						'menu_class' => 'secondary-menu',
-					) );
-				?>
-			</div>
-			<div class="footer-logo">
-				<?php 
-					$home = get_home_url();
-					// echo the optional header menu logo
-					if( get_field('footer_logo', 'options') ): 
-						echo '<a href="' . $home . '"><img id="footerLogo" src="' . get_field('footer_logo', 'options') . '" alt="logo"></a>';
-					endif;
-				?>
-			</div>
-			<div class="disclaimer">
-				<p>
-				<?php if( get_field('disclaimer', 'options') ):
-					the_field('disclaimer', 'options');
-					endif;
-				?>
-				</p>
-			</div>
 		</div>
 	</div>
 </footer>
 
 <?php wp_footer(); ?>
-
-
 
 </body>
 </html>

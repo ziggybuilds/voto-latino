@@ -16,46 +16,34 @@ get_header(); ?>
  <?php $id = get_the_id(); ?>
 	<div id="primary" class="content-area home-page fadeIn">
 		<main id="main" class="site-main" role="main">
-		
-		<?php if( get_field('display_home_page_topper', $id) === true ): 
-			get_template_part('inc/homepage-topper');
-			endif;
-		?>
 
-		<?php if( get_field('display_section_sm', $id) === true ): 
-			get_template_part('inc/right-vertical'); 
-			endif;
-		?>
+		<section class="container posts-container">
+			<div class="inner-wrapper">
+				<?php 
+				if( get_field('first_category', $id) ) {
+					$catId = get_field('first_category', $id);
 
-		<?php 
-			function buttonCall($field, $pageID) {
-				if( get_field($field, $pageID) === true ):
-					$title = get_field($field . '_title', $pageID);
-					$button = get_field($field . '_button', $pageID);
-					$link = get_field($field . '_link', $pageID);
-					include(locate_template('inc/large-button.php') );
-				endif;
-			}
-			buttonCall('display_donate', $id);
-		?>
 
-		<?php if( get_field('display_latest_news') ):
-			get_template_part('inc/latest-news');
-		endif; 
-		?>
+					// echo the category title before loop
+					echo '<div class="category-name"><h1>' . get_cat_name( $catId ) . '</h1></div>';
 
-		<?php buttonCall('display_calendar', $id); ?>
+					echo '<div class="display-posts">';
+					// start wp query and loop
+					$query = new WP_Query( array( 'cat' => $catId ));
+					while( $query->have_posts() ):
+						$query->the_post(); 
+					
+						get_template_part( 'template-parts/archive-loop');
+						
+					endwhile;
+					echo '</div>';
 
-		<?php if( get_field('display_issues_section', $id) === true ):
-			get_template_part('inc/left-vertical'); 
-			endif;
-		?>
-
-		<?php if( get_field('display_sign_up', $id) === true ):
-			get_template_part('inc/sign-up');
-			endif;
-		?>
-
+					// reset wp loop
+					wp_reset_postdata();
+				}
+				?>
+			</div>
+		</section>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

@@ -13,9 +13,9 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 			<section class="error-404 not-found">
-				<div class="error-main inner-wrapper">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Return home</a>
-					<div class="greenbar"></div>
+				<div class="error-main">
+					<h1>Looks like you took a wrong turn.</h1>
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><h1>Return home</h1></a>
 				</div>
 			</section><!-- .error-404 -->
 

@@ -1,301 +1,130 @@
-.home-header {
-	min-height: 600px;
-	max-height: 800px;
-	height: 100vh;
-}
-
-.page-header {
-	height: 600px;
-	@media screen and (max-width:  $sm) {
-			height: 400px;
-	}
-}
+// Header styles, universal
 
 header {
-	background-color: $dark;
-	position: relative;
-	background-size: cover;
+	height: 80vh;
 	background-position: center;
 	background-repeat: no-repeat;
-	@extend .shadow;
-	.inner-wrapper {
-		position: relative;
-		z-index: 10;
-		color: $white;
-		.header-text {
-			@extend .abs-center;
-			text-align: center;
-			visibility: hidden;
-			a {
-				color: $white;
-				text-decoration: none;
-				h1 {
-					@media screen and (max-width: $sm) {
-						font-size: 2.5em;
-					}
-					@media screen and (min-width: $sm) {
-						font-size: 2.6667em;
-					}
-				}
-			}
-			.video-link {
-				i {
-					@extend .ease;
-					@media screen and (max-width: $sm) {
-						font-size: 3.5em;
-					}
-					@media screen and (min-width: $sm) {
-						font-size: 4em;
-					}
-					&:hover, &:focus {
-						color: $accent;
-					}
-				}
-				@media screen and (max-width: $xs) {
-					display: none;
-				}
-
-			}
-			.greenbar {
-				@media screen and (max-width: $sm) {
-					margin: 15px auto 22.5px auto;
-				}
-				@media screen and (min-width: $sm) {
-					margin: 30px auto 45px auto;
-				}
-			}
-		}
-	}
-}
-
-.header-overlay {
-	background: linear-gradient(62deg, rgba(52, 152, 219, 0.94), rgba(48, 139, 203, 0.3) 98%);
-	content: "";
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.ticker-tape {
-	@extend .center-align;
-	width: 100%;
-	bottom: 0;
-	min-height: 60px;
-	background-color: $third;
-	z-index: 10;
-	color: $white;
-	.ticker-text {
-		@extend .abs-center;
-		width: 80%;
-		padding: 0 20px;
-		text-align: center;
-	}
-	#tickerHide {
-		@extend .vertical-align;
-		right: 20px;
-		cursor: pointer;
-		@extend .ease;
-		&:hover, &:focus {
-			color: $first;
-		}
-	}
-}
-
-// Menu control
-.navbar {
-	//background-color: rgba(13, 22, 52, 0.7);
-	background-color: $first;
-	@extend .shadow;
+	background-size: cover;
+	position: relative;
+	background-color: $accent;
 	@media screen and (min-width: $sm) {
-		height: 100px;
+		min-height: 600px;
 	}
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 999;
-	width: 100%;
 	@media screen and (max-width: $sm) {
-		display: none;
+		min-height: 400px;
 	}
-	.navigation {
+}
+
+.header-branding {
+	position: relative;
+	.share-wrapper {
 		position: absolute;
-		height: 100%;
-		display: table;
-		@media screen and (min-width: $md) {
-			right: 460px;
-		}
-		@media screen and (max-width: $md) {
-			right: 300px;
-		}
-		.menu-primary-container {
-			display: table-cell;
-    			vertical-align: middle;
-			ul {
-				list-style: none;
-				margin: 0;
-	    			padding: 0;
-	    			white-space: nowrap;
-				li {
-					white-space: nowrap;
-					display: inline-block;
-					padding: 0 8px;
-					letter-spacing: .6px;
-					font-size: .8em;
-					color: $white;
-					cursor: pointer;
-					&:hover, &:focus {
-						color: $accent;
-					}
-					a {
-						display: block;
-						text-decoration: none;
-						color: $white;
-						&:hover, &:focus {
-							color: $accent;
-						}
-					}
-				}
-			}
-		}
-	}
-	.buttons {
-		@extend .vertical-align;
-		@media screen and (min-width: $md) {
-			right: 130px;
-		}
-		@media screen and (max-width: $md) {
-			right: 20px;
-		}
-		button {
-			font-weight: $fontbold;
-			border: none;
-			box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .90);
-			border-radius: 0 20px 20px 20px;
-			color: $white;
-			@extend .ease;
-			@media screen and (min-width: $md) {
-				width: 8em;
-				height: 2.5em;
-			}
-			@media screen and (max-width: $md) {
-				width: 7.2em;
-				height: 2.4em;
-			}
-		}
-		.donate-button {
-			background-color: $third;
-			&:hover, &:focus {
-				background-color: rgba(91, 172, 23, 0.8);
-			}
-		}
-		.signup-button {
-			background-color: $second;
-			&:hover, &:focus {
-				background-color: rgba(73, 144, 226, 0.8);
-			}
+		left: 0;
+		top: 20px;
+		p {
+			display: inline-block;
+			font-weight: bold;
 		}
 		a {
-			margin: 0 5px;
-			color: $white;
-			text-decoration: none;
-		}
-	}
-	.social-profiles {
-		@media screen and (max-width: $md) {
-			display: none;
-		}
-		@extend .vertical-align;
-		right: 10px;
-	}
-}
-
-.logo {
-	@extend .vertical-align;
-	height: 80px;
-	left: 20px;
-	#headerLogo {
-		position: relative;
-		height: 100%;
-		width: auto;
-	}
-}
-
-header {
-	.social-profiles {
-		a div {
-			float: left;
-			margin: 5px;
-			border: 2px solid $white;
-			border-radius: 50px;
-			height: 30px;
-			width: 30px;
-			position: relative;
-			color: $white;
-			@extend .ease;
+			display: inline-block;
+			padding: 0 .5em;
+			color: $dark;
 			&:hover, &:focus {
 				color: $accent;
-				border: 2px solid $accent;
 			}
 			i {
-				@extend .abs-center;
-				font-size: .8em;
+				font-size: 1.5em;
+			}
+		}
+	}
+	.logo {
+		position: absolute;
+		right: 0;
+		top: 20px;
+		img {
+			width: auto;
+			@media screen and (min-width: $sm) {
+				height: 6em;
+			}
+			@media screen and (max-width: $sm) {
+				height: 4em;
 			}
 		}
 	}
 }
 
-#socialCorner {
+.header-content {
 	position: absolute;
-	bottom: 80px;
-	left: 20px;
-	z-index: 10;
-	visibility: hidden;
+	top: 65%;
+	left: 50%;
+	transform: translate(-50%, -35%);
+	width: 100%;
+	@media screen and (min-width: $sm) {
+		top: 60%;
+		left: 50%;
+		transform: translate(-50%, -40%);
+	}
+	@media screen and (max-width: $sm) {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+.header-text {
+		@media screen and (min-width: $sm) {
+			text-align: center;
+		}
+		@media screen and (max-width: $sm) {
+			text-align: left;
+		}
+	span {
+		background-color: $dark;
+		color: $white;
+		padding: .1em .5em;
+		line-height: 1.4em;
+	}
+	h1 {
+		@media screen and (min-width: $sm) {
+			font-size: 2.2em;
+		}
+		@media screen and (max-width: $sm) {
+			font-size: 2em;
+		}
+	}
 }
 
-#addMenu {
-	display: none;
-	position: fixed;
-	top: 100px;
-	left: 0;
-	z-index: 100;
-	background-color: rgba(13, 22, 52, 0.7);
-	@extend .shadow;
-	.menu-additional-container {
-		padding: 10px 5px;
-		position: relative;
+.header-menu {
+	position: absolute;
+	bottom: 0;
+	z-index: 999;
+	background-color: $accent;
+}
+
+
+
+@media screen and (min-width: $sm) {
+	.header-menu {
+		padding: .8em 0;
+	}
+
+	#mobileBtn { display: none; }
+
+	.menu-primary-container {
+		display: table;
+		height: 100%;
+		width: 100%;
 		ul {
-			position: relative;
+			display: table-cell;
+			vertical-align: middle;
 			text-align: center;
 			li {
 				display: inline-block;
-				position: relative;
-				text-align: left;
-				padding: 10px 10px;
-				letter-spacing: .6px;
-				font-size: .8em;
-				color: $white;
-				cursor: pointer;
+				margin: 0 1em;
 				a {
 					color: $white;
 					text-decoration: none;
-					&:hover, &:focus {
-						color: $accent;
-					}
-				}
-				ul {
-					display: table-cell;
-					li {
-						text-align: left;
-						display: block;
-						padding: 5px 4px;
-						margin: 10px 0;
-						border-left: 2px solid $third;
-						font-size: 1em;
-						a {
-							color: $third;
-						}
+					&:hover, &:hover {
+						content: ">";
 					}
 				}
 			}
@@ -303,101 +132,56 @@ header {
 	}
 }
 
-
-
-
-/// Mobile Menu Config
-
-#mobileNav {
-	background-color: $first;
-	@extend .shadow;
-	height: 60px;
-	width: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 100;
-	@extend .ease;
-	@media screen and (min-width: $sm) {
-		display: none;
-	}
-}
-
-.mobile-menu-button {
-	position: absolute;
-	@extend .vertical-align;
-	right: 1em;
-	z-index: 101;
-	#menuBtn {
-		@extend .abs-center;
-		background-color: transparent !important;
-		font-size: 1.8em;
+@media screen and (max-width: $sm) {
+	#mobileBtn {
 		color: $white;
-	}
-}
-
-#menuDropdown {
-	.menu-primary-container, .menu-additional-container, .menu-mobile-container {
+		font-size: 1em;
+		font-weight: bold;
+		position: relative;
 		width: 100%;
-		height: 100%;
-		display: table;
-		#menu-additional, #menu-primary, #menu-mobile {
-			list-style: none;
-			margin-left: 0;
-			display: table-cell;
-			vertical-align: middle;
+		background-color: $dark;
+		text-align: right;
+		padding: 1em 1em;
+		i {
+			text-align: right;
+		}
+	}
+
+	.menu-primary-container {
+		//background-color: $accent;
+		ul {
 			li {
+				padding: 1em 1em;
 				text-align: center;
-				position: relative;
-				margin: 2em 0;
-				@extend .ease;
 				a {
 					color: $white;
-					font-size: 1.4em;
 					text-decoration: none;
-			  		&:hover, &:focus {
-			  			color: $second;
-			  		}
-				}
-				.sub-menu {
-					li {
-						margin: 5px 0;
-						a {
-							font-size: 1em;
-						}
-					}
 				}
 			}
 		}
 	}
+
+	.current-menu-item {
+		font-weight: $bold;
+	}
+	.current_page_item {
+		font-weight: $bold;
+	}
 }
 
-.mobile-overlay {
-	position: fixed;
-	z-index: 100;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: $first;
-	overflow-y: scroll; 
+.menu-open {
+	opacity: 0;
+	transform: translateX(15px);
+	animation: menu-opener 300ms ease-in forwards;
 }
 
-.mobile-overlay-open {
-}
-
-.mobile-overlay-closed {
-}
-
-.mobileLogo {
-	position: absolute;
-	left: 5px;
-	height: 60px;
-	width: 60px;
-	z-index: 105;
-	#mobileHeaderLogo {
-		position: relative;
-		height: 100%;
-		width: auto;
+@keyframes menu-opener {
+	from {
+		opacity: 0;
+		transform: translateX(15px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0px);
 	}
 }
