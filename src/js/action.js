@@ -14,7 +14,7 @@ jQuery(document).ready(($) => {
 	}
 
 	function renderMarker(location, title, desc, link) {
-		const linkContent = link > 0 ? `<a href="${link}">Learn More</a>` : '';
+		const linkContent = link.length > 0 ? `<a href="${link}">Learn More</a>` : '';
 		const contentString = `<div><h3>${title}</h3><p>${desc}</p>${linkContent}</div>`;
 
 		const infowindow = new google.maps.InfoWindow({
@@ -76,7 +76,7 @@ jQuery(document).ready(($) => {
 					const desc = event.description !== undefined ? event.description : '';
 					const address = event.event.address;
 					let link;
-					if (event.link != undefined && event.link.length > 0) {
+					if (event.link) {
 						link = event.link;
 					} else {
 						link = '';

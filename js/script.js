@@ -1241,7 +1241,7 @@ jQuery(document).ready(function ($) {
   }
 
   function renderMarker(location, title, desc, link) {
-    var linkContent = link > 0 ? '<a href="' + link + '">Learn More</a>' : '';
+    var linkContent = link.length > 0 ? '<a href="' + link + '">Learn More</a>' : '';
     var contentString = '<div><h3>' + title + '</h3><p>' + desc + '</p>' + linkContent + '</div>';
 
     var infowindow = new google.maps.InfoWindow({
@@ -1302,7 +1302,7 @@ jQuery(document).ready(function ($) {
         var desc = event.description !== undefined ? event.description : '';
         var address = event.event.address;
         var link = void 0;
-        if (event.link != undefined && event.link.length > 0) {
+        if (event.link) {
           link = event.link;
         } else {
           link = '';
