@@ -44,7 +44,7 @@ if( get_field('topper_image', $pageID ) ) {
 	<header id="masthead" <?php echo $headerImage ?> class="site-header container <?php echo $pageStyle; ?>" role="banner">
 		<div class="header-menu">
 			<div class="dga-link">
-				<a href="https://democraticgovernors.org/">Democratic Governors</a>
+				<a href="https://democraticgovernors.org/">DGA</a>
 			</div>
 			<div class="header-menu-control">
 				<button id="menuBtn" class="link">Menu</button>
