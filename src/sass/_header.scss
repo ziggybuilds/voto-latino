@@ -22,7 +22,8 @@ header {
 			ul {
 				li {
 					padding: 1em 0;
-
+					list-style-type: none;
+					
 					a {
 						text-decoration: none;
 						font-family: $displayfont;
