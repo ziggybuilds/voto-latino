@@ -100,7 +100,7 @@ add_action( 'widgets_init', 'jestarter_widgets_init' );
  * Enqueue scripts and styles.
  */
 function jestarter_scripts() {
-	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Bowlby+One+SC|Source+Sans+Pro:400,700', false);
+	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Sigmar+One|Source+Sans+Pro:400,700', false);
 
 	wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyC9pn3p6hiRCYRbDVN6AynUySqLjy3yztQ', true);
 

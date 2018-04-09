@@ -7,7 +7,6 @@ html {
 
 * {
 	box-sizing: border-box;
-	text-rendering: optimizeLegibility;
 }
 
 a {
@@ -35,6 +34,7 @@ p {
 h1, h2, h3, h4, h5, h6 {
 	font-family: $fontmain;
 	font-weight: bold;
+	letter-spacing: .01em;
 }
 
 .title {
