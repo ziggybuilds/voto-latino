@@ -1,16 +1,16 @@
-$fontmain: 'Open Sans', sans-serif;
-$displayfont: 'Open Sans', sans-serif;
+$fontmain: 'Source Sans Pro', sans-serif;
+$displayfont: 'Bowlby One SC', cursive;
 
-$fontreg: 400;
+$fontreg: 300;
 $italic: 400i;
 $bold: 700;
 
-$white: #ffffff;
-$dark: #000000;
-$accent: #D0021B; // dark red
-$first: #0d1634; // Dark Blue
-$second: #4990e2; // ligth blue
-$third: linear-gradient(135deg, rgba(208,2,26,1) 0%, rgba(208,2,26,0.83) 34%, rgba(255,0,60,0.51) 100%);
+$red: #d0021b;
+$darkred: #a1081a;
+$blue: #3498db;
+$darkblue: #0d1634;
+$gradient: linear-gradient(45deg, rgba(52,152,219,0.6) 0%,rgba(214,5,30,1) 100%);
+
 
 $xs: 400px;
 $sm: 768px;

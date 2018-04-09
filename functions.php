@@ -100,7 +100,9 @@ add_action( 'widgets_init', 'jestarter_widgets_init' );
  * Enqueue scripts and styles.
  */
 function jestarter_scripts() {
-	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700', false);
+	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Bowlby+One+SC|Source+Sans+Pro:400,700', false);
+
+	wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyC9pn3p6hiRCYRbDVN6AynUySqLjy3yztQ', true);
 
 	wp_enqueue_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
 
@@ -196,3 +198,10 @@ function displayCats() {
 		return $categories[0]->name;
 	}
 }
+
+// ACF Google Maps API Key
+function my_acf_init() {
+	acf_update_setting('google_api_key', 'AIzaSyC9pn3p6hiRCYRbDVN6AynUySqLjy3yztQ');
+}
+
+add_action('acf/init', 'my_acf_init');

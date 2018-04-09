@@ -1,175 +1,93 @@
-// Index stylesheet
+.map-section {
+	position: relative;
 
-.posts-container {
-	@media screen and (min-width: $sm) {
-		border-left: 2em solid $dark;
-		border-top: 2em solid $dark;
-		border-right: 2em solid $dark;
+	.inner-wrapper {
+		padding-top: 60px;
 	}
-	@media screen and (max-width: $sm) {
-		border-left: .5em solid $dark;
-		border-top: .5em solid $dark;
-		border-right: .5em solid $dark;
+
+	#map {
+		height: 80vh;
+		width: 100%;
+		background-color: $darkblue;
+		content: "";
+		box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 	}
-	padding-bottom: 1em;
+
+	.map-description {
+		max-width: 640px;
+		margin: 60px auto;
+
+		h2 {
+			text-align: center;
+		}
+	}
 }
 
-.category-name {
-	margin: 3em 0;
-	padding-left: 2em; 
-}
-
-.display-posts {
-	border-left: 4px solid $dark;
+.map-section-top-bar {
+	content: "";
+	height: 150px;
+	background-color: $blue;
+	position: absolute;
+	z-index: -1;
+	top: 0;
 	width: 100%;
-	max-width: 800px;
-	@media screen and (min-width: $sm) {
-		padding: 0 20px 0 20px;
-		margin: 40px auto;
-	}
-	@media screen and (max-width: $sm) {
-		padding: 0 5px 0 5px;
-	}
 }
 
-.display-posts .article {
-	margin: 0  0 6em 0;
-	 a {
-	 	color: $dark;
-	 	text-decoration: none;
-	 	p {
-	 		color: $accent;
-	 		margin: 1em 0 0 0;
-	 		font-size: .8em;
-	 	}
-	 	h3 {
-	 		margin: .1em 0;
-	 	}
-	 	&:hover, &:focus {
-	 		color: $accent;
-	 	}
-	 }
-	.excerpt {
-		line-height: 1.5em;
- 	}
-	 .responsive-image {
-	 	@extend .shadow;
-	 }
-	 .responsive-video {
-	 	@extend .shadow;
-	 }
-}
+#latest-events {
+	background-color: $blue;
+	color: white;
+	padding: 1em 0 4em 0;
 
-// Post styles
-.single-post-display {
-	article {
-		margin: 4em auto;
-		max-width: 900px;
-		.post-date {
-	 		color: $accent;
-	 		margin: 1em 0 0 0;
-	 		font-size: .8em;
-	 	}
-	 	h3 {
-	 		margin: .1em 0;
-	 	}
-	 	.content {
-	 		margin-top: 4em;
-	 	}
-	 }
-}
-
-// Front page view more link
-.all-posts {
-	text-align: center;
-	a {
-		text-decoration: none;
-		color: $accent;
-		p { font-weight: $bold; }
-		&:hover, &:focus {
-			color: $dark;
-		}
-	}
-}
-
-blockquote {
-	border-left: 2px dashed $accent;
-	padding: 0 0 0 1em;
-	font-style: italic;
-	p { line-height: 1.8em; }
-	&:before {
-		font-style: normal;
-		content: '"';
-		font-size: 4em;
-		color: $accent;
-	}
-	&:after {
-		font-style: normal;
-		content: '"';
-		font-size: 4em;
-		color: $accent;
-	}
-}
-
-article {
-	ul, ol {
-		margin: 0 0 0 2em;
-		li {
-			padding: 1em 0;
-		}
-	}
-	a {
-		color: $accent;
-		text-decoration: none;
-		&:hover, &:focus {
-			color: $first;
-		}
-	}
-}
-
-// post navigation
-nav {
-	margin: 4em 0 2em 0;
-	.screen-reader-text {
+	.title {
 		text-align: center;
-		font-size: 1em;
-		font-weight: $fontreg;
-		opacity: 0;
 	}
-	.nav-links {
-		div {
-			display: inline-block;
-			width: 50%;
-			a{
-				text-decoration: none;
-				color: $accent;
-				&:hover, &:focus {
-					color: $dark;
-				}
-				.nav {
-					display: block;
-					font-weight: $bold;
-					font-size: 1.2em;
-					opacity: 1;
-				}
+
+	.events-list {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		position: relative;
+
+		&:after {
+			content: "";
+			display: block;
+			background-color: white;
+			height: 80%;
+			@extend .abs-center;
+			width: 1px;
+
+			@media screen and (max-width: $sm) {
+				display: none;
 			}
 		}
 	}
-}
 
-// Post share icons
-.post-share-wrapper {
-	width: 100%;
-	margin: 2em 0;
-	text-align: center;
-	color: $accent;
-	font-size: 1.5em;
-	p {
-		display: inline-block;
-		font-weight: $bold;
-	}
-	a {
-		display: inline-block;
-		padding: 0 .5em;
+	.event {
+		@media screen and (min-width: $sm) {
+			width: 50%;
+			margin: 2em 0;
+			padding: 0 4em;
+		} 
+
+		@media screen and (max-width: $sm) {
+			width: 100%;
+			margin: 1em 0;
+			padding: 0 2em;
+		}
+
+		h4 {
+			margin: .2em 0;
+		}
+		a {
+			color: $red;
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: .8em;
+			text-decoration: none;
+			margin: 0;
+		}
+		p {
+			margin: 0;
+		}
 	}
 }

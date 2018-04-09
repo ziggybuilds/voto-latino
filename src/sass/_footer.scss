@@ -1,64 +1,40 @@
 footer {
-	background-color: $dark;
-	padding: 2em 0;
-	.inner-wrapper {
-		display: table;
-	}
-}
+	background-color: $blue;
 
-.footer-logo {
-	position: relative;
-	text-align: center;
-	@media screen and (max-width: $md) {
-		display: table-row;
-	}
-	@media screen and (min-width: $md) {
-		display: table-cell;
-		vertical-align: middle;
-	}
-	img {
-		height: auto;
-		width: 8em;
-		margin-top: 1em;
-	}
-}
+	.footer-social-bar {
+		background-color: $red;
+		padding: 2em 0;
+		text-align: center;
+		a {
+			display: inline-block;
+			color: white;
+			font-size: 1.6em;
+			margin: 0 1em;
 
-footer .inner-wrapper .social-profiles {
-	text-align: center;
-	@media screen and (max-width: $md) {
-		display: table-row;
-		width: 100%;
-	}
-	@media screen and (min-width: $md) {
-		display: table-cell;
-		width: 33%;
-		vertical-align: middle;
-	}
-	a {
-		display: inline-block;
-		font-size: 2em;
-		padding: 0 1em;
-		color: $white;
-		&:hover, &:focus {
-			color: $accent;
+			&:hover, &:focus {
+				color: $darkblue;
+			}
 		}
 	}
-}
 
-.disclaimer {
-	color: $white;
-	font-size: .7em;
-	line-height: 1.6em;
-	@media screen and (max-width: $md) {
-		display: table-row;
-		width: 100%;
+	.footer-logo {
+		width: 80%;
+		max-width: 200px;
+		text-align: center;
+		margin: 3em auto;
+		img {
+			width: 100%;
+			height: auto;
+		}
 	}
-	@media screen and (min-width: $md) {
-		display: table-cell;
-		width: 33%;
-		vertical-align: middle;
-	}
-	a {
-		text-decoration: none;
+
+	.disclaimer {
+		max-width: 400px;
+		margin: 0 auto 3em auto;
+		font-size: .8em;
+		color: white;
+		a {
+			color: $red;
+		}
 	}
 }

@@ -7,8 +7,8 @@
 */
 ?>
 <article class="article">
-			<h3><?php the_title(); ?></h3>
 			<p class="post-date"><?php the_date(); ?></p>
+			<h1 class="title"><?php the_title(); ?></h1>
 			<div class="content"><?php the_content(); ?></div>
 
 			<?php
@@ -40,17 +40,4 @@
 
 			endif;
 		?>
-
-		<?php 
-		//Begin Social Profile Loop this while render as <a></a>
-		$twitter = "https://twitter.com/intent/tweet?url=";
-		$fb = "https://www.facebook.com/sharer/sharer.php?u="; 
-		$postLink = urlencode( get_permalink() );
-		?>
-
-		<div class="post-share-wrapper">
-				<p>Share: </p>
-				<a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-				<a class="facebook" href="http://www.facebook.com/sharer.php?u=<?php $postLink ?>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-		</div>
 </article>

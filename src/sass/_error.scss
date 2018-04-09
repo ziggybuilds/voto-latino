@@ -7,8 +7,8 @@
 		position: absolute;
 		@extend .abs-center;
 		a {
-			color: $accent;
-			font-weight: $bold;
+			color: $red;
+			font-weight: bold;
 			text-decoration: none;
 		}
 	}

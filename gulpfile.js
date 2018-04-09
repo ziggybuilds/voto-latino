@@ -9,7 +9,8 @@ const gulp = require('gulp'),
 	sourcemaps = require('gulp-sourcemaps'),
 	pump = require('pump'),
 	autoprefixer = require('gulp-autoprefixer'),
-	babel = require('gulp-babel');
+	babel = require('gulp-babel'),
+	eslint = require('gulp-eslint');
 
 // flag errors
 
@@ -31,7 +32,7 @@ gulp.task('sass', function() {
 			outputStyle: 'compressed'
 		}))
 			.on('error', gutil.log)
-		.pipe(sourcemaps.write())
+		// .pipe(sourcemaps.write())
 		.pipe(autoprefixer(autoprefixerOptions))
 		.pipe(gulp.dest('./'))
 		.pipe(rename('style.min.css'))
@@ -40,9 +41,11 @@ gulp.task('sass', function() {
 
 gulp.task('js', function() {
 	gulp.src(['src/js/**/*.js'])
+		.pipe(eslint())
 		.pipe(concat('script.js'))
+		.pipe(eslint.format())
 		.pipe(babel())
-		.pipe(gulp.dest('./js'));
+		.pipe(gulp.dest('./js'))
 });
 
 gulp.task('compress', function(cb) {

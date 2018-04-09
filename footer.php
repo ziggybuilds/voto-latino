@@ -13,11 +13,14 @@
 	</div><!-- #content -->
 </div><!-- #page -->
 <footer class="container">
+	<div class="footer-social-bar">
+		<?php
+			// get social profiles
+			get_template_part('inc/social-profiles');
+		?>
+	</div>
 	<div class="inner-wrapper">
-		<?php 
-		// get social profiles
-		get_template_part('inc/social-profiles');
-
+		<?php
 		// display logo
 		if( get_field('logo', 'options') ) {
 			echo '<div class="footer-logo"><img src="' . get_field('logo', 'options') . '" alt="logo" /></div>';

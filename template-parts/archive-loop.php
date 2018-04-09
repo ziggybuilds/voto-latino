@@ -6,40 +6,26 @@
 *
 */
 ?>
-<article class="article anim-load">
-		<?php
-			// check if the flexible content field has rows of data
-			if( have_rows('featured_media') ):
+<article class="article">
+			<?php
+				if( get_field('date_picker') ) {
+					$datePick = get_field('date_picker', false, false);
+					$datePick = new DateTime($datePick);
 
-			     // loop through the rows of data
-			    while ( have_rows('featured_media') ) : the_row();
+					// allows user to select year display only
+					if ( get_field('display_year_only') === true ) {
+						$datePick = $datePick->format('Y');
+					} else {
+						$datePick = $datePick->format('F Y');
+					}
 
-			        if( get_row_layout() == 'video' ):
-
-			        	$video = get_sub_field('video');
-
-			        	echo '<div class="post-video responsive-video"><iframe src="' . $video . '" frameborder="0" allowfullscreen></iframe></div>';
-
-			        elseif( get_row_layout() == 'image' ): 
-
-			        	$image = get_sub_field('image');
-
-			        	echo '<div class="post-image responsive-image"><img src="' . $image . '" alt="post-image" /></div>';
-
-			        endif;
-
-			    endwhile;
-
-			else :
-
-			    // no layouts found
-
-			endif;
-		?>
-		<a href="<?php the_permalink(); ?>">
-			<p class="post-date">- <?php the_date(); ?> // <?php echo displayCats(); ?></p>
-			<h3><?php the_title(); ?></h3>
-			<p>Read More</p>
-		</a>
-		<div class="excerpt"><?php the_excerpt(); ?></div>
+				}
+			?>
+			<a href="<?php echo get_permalink(); ?>">
+				<p><span class="post-date"><?php echo $datePick; ?></span></p>
+				<h3><?php the_title(); ?></h3>
+				<div class="article-inner">
+					<div class="article-content"><?php the_excerpt(); ?></div>
+				</div>
+			</a>
 </article>

@@ -1,19 +1,64 @@
-jQuery( document ).ready( function( $ ) {
-
-"use strict";
+jQuery(document).ready(function($) {
+	'use strict';
 	function mobileMenu() {
-		let mobileBtn = document.getElementById('mobileBtn');
-		if( mobileBtn != undefined ) {
-			let menu = document.querySelector('.menu-primary-container');
-			menu.classList.toggle('hide');
-
-			mobileBtn.addEventListener('click', function() {
-				menu.classList.toggle('hide');
-				menu.classList.toggle('menu-open');
-				console.log('clicked');
+		const $mobileBtn = $('#menuBtn');
+		if ($mobileBtn != undefined) {
+			const $menu = $('.header-navigation');
+			$mobileBtn.on('click', () => {
+				$menu.toggleClass('hide');
+				$menu.toggleClass('menu-open');
+			});
+			
+			const $menuLinks = $('.header-navigation a');
+			$menuLinks.on('click', () => {
+				$menu.toggleClass('hide');
+				$menu.toggleClass('menu-open');
 			});
 		}
 	}
 	mobileMenu();
 
-} );
+	// Select all links with hashes
+	$('a[href*="#"]')
+		// Remove links that don't actually link to anything
+		.not('[href="#"]')
+		.not('[href="#0"]')
+		.click(function(event) {
+			// On-page links
+			if (
+				location.pathname.replace(/^\//, '') ==
+					this.pathname.replace(/^\//, '') &&
+				location.hostname == this.hostname
+			) {
+				// Figure out element to scroll to
+				var target = $(this.hash);
+				target = target.length
+					? target
+					: $('[name=' + this.hash.slice(1) + ']');
+				// Does a scroll target exist?
+				if (target.length) {
+					// Only prevent default if animation is actually gonna happen
+					event.preventDefault();
+					$('html, body').animate(
+						{
+							scrollTop: target.offset().top,
+						},
+						500,
+						function() {
+							// Callback after animation
+							// Must change focus!
+							var $target = $(target);
+							$target.focus();
+							if ($target.is(':focus')) {
+								// Checking if the target was focused
+								return false;
+							} else {
+								$target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+								$target.focus(); // Set focus again
+							}
+						},
+					);
+				}
+			}
+		});
+});

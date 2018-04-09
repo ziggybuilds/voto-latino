@@ -41,42 +41,102 @@ if( get_field('topper_image', $pageID ) ) {
 ?>
 
 <div id="page" class="site">
-	<header id="masthead" class="site-header container <?php echo $pageStyle; ?>" role="banner" <?php echo $headerImage; ?>>
-		<div class="inner-wrapper header-branding">
-				<?php
-					get_template_part('inc/share-fb-tw');
-				?>
-			<div class="logo">
-				<?php
-					if( get_field('display_logo', $pageID ) === true && get_field('logo', 'options') ) {
-						echo '<img src="' . get_field('logo', 'options') . '" alt="logo" />';
-					}
-				?>
+	<header id="masthead" <?php echo $headerImage ?> class="site-header container <?php echo $pageStyle; ?>" role="banner">
+		<div class="header-menu">
+			<div class="dga-link">
+				<a href="https://democraticgovernors.org/">Democratic Governors</a>
 			</div>
+			<div class="header-menu-control">
+				<button id="menuBtn" class="link">Menu</button>
+			</div>
+			<div class="header-view-map">
+				<a href="<?php echo get_home_url() . '/#map'; ?>">View Map</a>
+			</div>
+		</div>
+		<div class="header-navigation hide">
+			<?php
+				$args = array(
+					'menu' => 'menu-1',
+				);
+
+				wp_nav_menu($args);
+			?>
+		</div>
+		<div class="header-wrapper inner-wrapper header-wrapper-<?php echo $pageStyle; ?>">
 			<div class="header-content">
 				<div class="header-text">
 					<?php 
-					if( get_field( 'title', $pageID ) ) {
-						echo '<h1><span>' . get_field( 'title', $pageID ) . '</span></h1>';
-					}
-					if( get_field( 'subtitle', $pageID ) ) {
-						echo '<h3><span>' . get_field( 'subtitle', $pageID ) . '</span></h3>';
-					}
+						if( get_field( 'title', $pageID ) ) {
+							echo '<a href="' . get_home_url() . '"><h1 class="title"><span>' . get_field( 'title', $pageID ) . '</span></h1></a>';
+						}
+						if( get_field( 'subtitle', $pageID ) && $pageStyle == "home-header" ) {
+							echo '<div class="header-intro">' . get_field( 'subtitle', $pageID ) . '</div>';
+						}
 					?>
 				</div>
 			</div>
-		</div>
+	<?php
+		if( is_home() || is_front_page() ) :
+	?>
+			<div class="header-card">
+				<div class="header-card-inner">
+					<div class="header-card-image">
+						<?php
+							if ( get_field('card_image', $pageID) ) {
+								echo '<img class="card-image" src="' . get_field('card_image', $pageID) . '" alt="card"></img>';
+							}
+						?>
+					</div>
+					<div class="header-card-details">
+						<?php
+							if ( get_field('card_title', $pageID) ) {
+								echo '<h4>' . get_field('card_title', $pageID) . '</h4>';
+							}
+						?>
+						<?php
+							// start wp query and loop
+								// declare global posts variable
+								global $post;
+								// query arguments
+								$args = array(
+									'numberposts' => 1
+								);
 
-		<div class="container header-menu">
-					<?php
-					// echoing the additional nav menu
-						wp_nav_menu( array(
-							'menu' => 'Primary',
-							'menu_class' => 'menu',
-						) );
-					?>
-					<div id="mobileBtn">Menu <i class="fa fa-bars" aria-hidden="true"></i></div>
-		</div>
+								// query posts
+								$posts = get_posts( $args );
 
+							if( $posts ) {
+								foreach( $posts as $post ) {
+									if( get_field('date_picker') ) {
+										$datePick = get_field('date_picker', false, false);
+										$datePick = new DateTime($datePick);
+										$datePick = $datePick->format('F j, Y');
+									}
+
+									echo '<a href="' . get_permalink() . '"><p><strong>' . get_the_title() . '</strong></p>';
+									echo '<p>' . $datePick . '</p></a>';
+								}
+								// reset wp loop
+								wp_reset_postdata();
+							}
+						?>
+						<div class="card-view-map"><a href="<?php echo get_home_url() . '/#map'; ?>">View Map</a></div>
+					</div>
+				</div>
+			</div>
+	<?php
+		elseif( !is_home() || !is_front_page()) :
+	?>	
+
+
+	<?php
+		endif;
+	?>
+		</div>
+		<div class="header-social">
+			<?php
+				get_template_part('inc/share-fb-tw');
+			?>
+		</div>
 	</header><!-- #masthead -->
 <div id="content" class="site-content">

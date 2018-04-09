@@ -1,0 +1,112 @@
+// shared page styles
+.inner-wrapper.single-post-display, .inner-wrapper.archive {
+	max-width: 640px;
+	margin: 2em auto;
+	min-height: 60vh;
+}
+
+.archive .posts-navigation, .single-post .post-navigation {
+	h2 {
+		display: none;
+	}
+
+	.nav-links {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+
+		.nav-previous {
+			flex: 1 1 0;
+			background-color: $red;
+		}
+
+		.nav-next {
+			flex: 1 1 0;
+			background-color: $darkred;
+		}
+
+		.nav-previous, .nav-next {
+			text-align: center;
+			transition: 0.2s ease-in;
+			padding: 4em;
+
+			a {
+				color: white;
+				text-decoration: none;
+				text-transform: uppercase;
+				font-size: 1.4em;
+				transition: 0.2s ease-in;
+
+				&:hover, &:focus {
+					color: $darkblue;
+				}
+			}
+		}
+	}
+}
+
+// single page styles
+.single-post-display, .archive {
+	.title {
+		text-align: center;
+	}
+}
+
+.single-post-display {
+	.post-date {
+		text-align: center;
+	}
+
+	.article {
+		position: relative;
+		height: 100%;
+		padding-bottom: 4em;
+	}
+}
+
+.single-post {
+	position: relative;
+
+	.post-share-wrapper {
+		position: absolute;
+		bottom: 12em;
+		width: 100%;
+		text-align: center;
+
+		 a {
+		 	color: $red;
+		 	font-size: 1.6em;
+		 	margin: 0 .4em;
+		 	 &:hover, &:focus {
+		 	 	color: $darkblue;
+		 	 }
+		 }
+	}
+}
+
+// archive page styles
+.archive .article {
+	margin: 4em 0;
+
+	.post-date {
+		margin: 0;
+		color: $red;
+	}
+
+	h3 {
+		margin: 0 0 1em 0;
+	}
+
+	.article-inner {
+		padding: 0 2em;
+	}
+
+	a:first-of-type {
+		color: $darkblue;
+		text-decoration: none;
+
+		&:hover, &:focus {
+			color: $red;
+		}
+	}
+}

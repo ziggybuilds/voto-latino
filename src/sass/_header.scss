@@ -1,187 +1,252 @@
-// Header styles, universal
-
 header {
-	height: 80vh;
-	background-position: center;
+	position: relative;
+	background-position: left;
 	background-repeat: no-repeat;
 	background-size: cover;
-	position: relative;
-	background-color: $accent;
-	@media screen and (min-width: $sm) {
-		min-height: 600px;
-	}
-	@media screen and (max-width: $sm) {
-		min-height: 400px;
-	}
-}
 
-.header-branding {
-	position: relative;
-	.share-wrapper {
+	.header-navigation {
+		z-index: 888;
 		position: absolute;
-		left: 0;
-		top: 20px;
-		p {
-			display: inline-block;
-			font-weight: bold;
-			color: $white;
-			text-shadow: 0px 3px 20px rgba(0, 0, 0, 0.8);
-		}
-		a {
-			display: inline-block;
-			padding: 0 .5em;
-			color: $white;
-			text-shadow: 0px 3px 20px rgba(0, 0, 0, 0.8);
-			&:hover, &:focus {
-				color: $accent;
-			}
-			i {
-				font-size: 1.5em;
-			}
-		}
-	}
-	.logo {
-		position: absolute;
-		right: 0;
-		top: 20px;
-		img {
-			width: auto;
-			@media screen and (min-width: $sm) {
-				height: 6em;
-			}
-			@media screen and (max-width: $sm) {
-				height: 4em;
-			}
-		}
-	}
-}
-
-.header-content {
-	position: absolute;
-	width: 100%;
-	@media screen and (min-width: $sm) {
-		top: 60%;
-		transform: translateY(-40%);
-	}
-	@media screen and (max-width: $sm) {
-		top: 50%;
-		transform: translateY(-50%);
-	}
-}
-.header-text {
-		@media screen and (min-width: $sm) {
-			text-align: center;
-		}
-		@media screen and (max-width: $sm) {
-			text-align: left;
-		}
-	span {
-		background-color: $dark;
-		color: $white;
-		padding: .1em .5em;
-		line-height: 1.4em;
-	}
-	h1 {
-		@media screen and (min-width: $sm) {
-			font-size: 2.2em;
-		}
-		@media screen and (max-width: $sm) {
-			font-size: 2em;
-		}
-	}
-}
-
-.header-menu {
-	position: absolute;
-	bottom: 0;
-	z-index: 999;
-	background-color: $dark;
-}
-
-
-
-@media screen and (min-width: $sm) {
-	.header-menu {
-		padding: .8em 0;
-	}
-
-	#mobileBtn { display: none; }
-
-	.menu-primary-container {
+		height: 100vh;
+		width: 100vw;
+		background-color: $darkred;
 		display: table;
-		height: 100%;
-		width: 100%;
-		ul {
+		text-align: center;
+		transition: 0.4s ease-in;
+
+		> div {
 			display: table-cell;
 			vertical-align: middle;
-			text-align: center;
-			list-style: none;
-			li {
-				display: inline-block;
-				margin: 0 1em;
-				a {
-					color: $white;
-					text-decoration: none;
-					&:hover, &:hover {
-						color: $accent;
+
+			ul {
+				li {
+					padding: 1em 0;
+
+					a {
+						text-decoration: none;
+						font-family: $displayfont;
+						color: white;
+						font-size: 1.6em;
+
+						&:hover, &:focus {
+							color: $darkblue;
+						}
 					}
 				}
 			}
 		}
 	}
-}
 
-@media screen and (max-width: $sm) {
-	#mobileBtn {
-		color: $white;
-		font-size: 1em;
-		font-weight: bold;
-		position: relative;
+	.menu-open {
+		transform: translateY(0);
+	}
+
+	.hide {
+		transform: translateY(-1000px);
+	}
+
+
+
+	.header-menu {
 		width: 100%;
-		background-color: $dark;
-		text-align: right;
-		padding: 1em 1em;
-		i {
-			text-align: right;
+		box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+		position: relative;
+		z-index: 999;
+		background-color: $darkblue;
+		display: table;
+		height: 60px;
+
+		> div {
+			display: table-cell;
+			height: 100%;
+			vertical-align: middle;
+			text-align: center;
+
+			a {
+				color: white;
+				text-decoration: none;
+				font-weight: bold;
+				text-transform: uppercase;
+				&:hover, &:focus {
+					color: $darkblue;
+				}
+			}
+		}
+
+		.dga-link {
+			background-color: $blue;
+			width: 50%;
+			@media screen and (max-width: $sm) {
+				display: none;
+			}
+		}
+
+		.header-menu-control {
+			background-color: $darkred;
+			width: 25%;
+			@media screen and (max-width: $sm) {
+				width: 50%;
+			}
+		}
+
+		.header-view-map {
+			background-color: $red;
+			@media screen and (max-width: $sm) {
+				width: 50%;
+			}
 		}
 	}
 
-	.menu-primary-container {
-		//background-color: $accent;
-		ul {
-			list-style: none;
-			li {
-				padding: 1em 1em;
-				text-align: center;
-				a {
-					color: $white;
-					text-decoration: none;
+// shared header styles
+.header-content {
+	color: white;
+	max-width: 480px;
+
+		.header-text {
+		a {
+			color: white;
+			text-decoration: none;
+
+			.title {
+				font-size: 3em;
+
+				@media screen and (max-width: $sm) {
+					text-align: center;
 				}
 			}
 		}
 	}
 }
 
-.current-menu-item {
-	a { font-weight: $bold; }
-}
-.current_page_item {
-	a { font-weight: $bold; }
-}
 
-.menu-open {
-	opacity: 0;
-	transform: translateX(15px);
-	animation: menu-opener 300ms ease-in forwards;
-}
 
-@keyframes menu-opener {
-	from {
-		opacity: 0;
-		transform: translateX(15px);
+// page header styles
+	.header-wrapper-page-header {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		padding: 4em 0;
+		position: relative;
+		z-index: 2;
 	}
-	to {
-		opacity: 1;
-		transform: translateX(0px);
+
+// home header styles
+	.header-wrapper-home-header {
+		@media screen and (min-width: $sm) {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			padding: 4em 0;
+		}
+
+		position: relative;
+		z-index: 2;
+
+		.header-content {
+			@media screen and (min-width: $sm) {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				max-width: 60%;
+				margin: 0 1em;
+			}
+			
+			@media screen and (max-width: $sm) {
+				margin: 0 auto;
+			}		
+		}
+
+		.header-card {
+			background-color: #206b9d;
+			padding: 10px;
+			border-radius: 6px;
+			max-width: 400px;
+			margin: 0 1em;
+			position: relative;
+
+			@media screen and (max-width: $sm) {
+				margin: 0 auto;
+			}
+
+			> div {
+				border-radius: 6px;
+				background-color: $blue;
+				padding: 10px 10px;
+				color: white;
+				height: 100%;
+				position: relative;
+
+				.header-card-image {
+					width: 100%;
+					border-radius: 6px;
+					text-align: center;
+					position: relative;
+
+					@media screen and (min-width: $md) {
+						height: 300px;
+						> img {
+							max-width: 300px;
+						}
+					}
+
+					> img {
+						width: 100%;
+						border-radius: 6px;
+						height: auto;
+					}
+				}
+
+				.header-card-details {
+					text-align: center;
+					h4 {
+						font-family: $displayfont;
+					}
+					p {
+						text-align: left;
+						margin: 5px;
+					}
+					a {
+						color: white;
+						text-decoration: none;
+
+						&:hover, &:focus {
+							color: $darkblue;
+						}
+					}
+					.card-view-map {
+						margin-top: 1em;
+						text-transform: uppercase;
+						font-weight: bold;
+						font-size: 1.2em;
+					}
+				}
+			}
+		}
+	}
+
+	&:after {
+		content: "";
+		display: block;
+		background: $gradient;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+	}
+
+	.header-social {
+		z-index: 2;
+		@media screen and (min-width: $sm) {
+			bottom: 20px;
+			left: 20px;
+			position: absolute;
+		}
+
+		@media screen and (max-width: $sm) {
+			position: relative;
+			text-align: center;
+			padding: 1em 0;
+		}
 	}
 }

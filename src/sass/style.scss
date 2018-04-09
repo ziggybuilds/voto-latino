@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /*!
-Theme Name: Base Template
-Author: Joshua Ellis
-Description: JE starter theme
+Theme Name: Wisconsin - Dem Dev Base Template
+Author: Dem Dev
+Description: Wisconsin - Dem Dev Base Template
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -14,9 +14,6 @@ Tags:
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------*/
 @import "variables";
-
-/*--------------------------------------------------------------*/
-@import "mixins-master";
 
 /*--------------------------------------------------------------
 # Normalize 
@@ -31,6 +28,8 @@ Tags:
 @import "header";
 
 @import "index";
+
+@import "page";
 
 @import "footer";
 
