@@ -1227,11 +1227,9 @@ Object.keys = Object.keys || function (o) {
 
 jQuery(document).ready(function ($) {
   var map = void 0;
-  var geocoder = void 0;
   var markers = [];
   var markerCluster = void 0;
   function initMap() {
-    geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng('39.8283', '-98.5795');
     var mapSetup = {
       zoom: 4,
@@ -1240,7 +1238,7 @@ jQuery(document).ready(function ($) {
     map = new google.maps.Map(document.getElementById('map'), mapSetup);
   }
 
-  function renderMarker(location, title, desc, link) {
+  function renderMarker(lat, lng, title, desc, link) {
     var linkContent = link.length > 0 ? '<a href="' + link + '">Learn More</a>' : '';
     var contentString = '<div><h3>' + title + '</h3><p>' + desc + '</p>' + linkContent + '</div>';
 
@@ -1250,7 +1248,7 @@ jQuery(document).ready(function ($) {
 
     var marker = new google.maps.Marker({
       map: map,
-      position: location,
+      position: { lat: lat, lng: lng },
       icon: iconMarker
     });
 
@@ -1260,18 +1258,6 @@ jQuery(document).ready(function ($) {
 
     markers.push(marker.position);
     markerCluster.addMarker(marker);
-  }
-
-  function codeAddress(address, title, desc, link) {
-    var add = address;
-    geocoder.geocode({ address: add }, function (results, status) {
-      if (status === 'OK') {
-        // console.log('location:' + results[0].geometry.location);
-        renderMarker(results[0].geometry.location, title, desc, link);
-      } else {
-        console.log('Geocode was not successful for the following reason: ' + status);
-      }
-    });
   }
 
   // render the cluster markers
@@ -1296,21 +1282,25 @@ jQuery(document).ready(function ($) {
       // cluster image
       markerClusterImage = resp.acf.marker_cluster[0].url.slice(0, -5);
 
+      // generate cluster class
+      renderCluster();
+
       // map events
       resp.acf.map_events.map(function (event) {
         var title = event.title !== undefined ? event.title : '';
         var desc = event.description !== undefined ? event.description : '';
-        var address = event.event.address;
+        var lat = parseInt(event.event.lat, 10);
+        var lng = parseInt(event.event.lng, 10);
         var link = void 0;
         if (event.link) {
           link = event.link;
         } else {
           link = '';
         }
-        codeAddress(address, title, desc, link);
+        // codeAddress(address, title, desc, link);
+        renderMarker(lat, lng, title, desc, link);
       });
       // call the render cluster after the promise to ensure the image path is correct
-      renderCluster();
     }).fail(function (error) {
       console.log(error);
     });

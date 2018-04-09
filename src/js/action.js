@@ -1,10 +1,8 @@
 jQuery(document).ready(($) => {
 	let map;
-	let geocoder;
 	let markers = [];
 	let markerCluster;
 	function initMap() {
-		geocoder = new google.maps.Geocoder();
 		const latlng = new google.maps.LatLng('39.8283', '-98.5795');
 		const mapSetup = {
 			zoom: 4,
@@ -13,7 +11,7 @@ jQuery(document).ready(($) => {
 		map = new google.maps.Map(document.getElementById('map'), mapSetup);
 	}
 
-	function renderMarker(location, title, desc, link) {
+	function renderMarker(lat, lng, title, desc, link) {
 		const linkContent = link.length > 0 ? `<a href="${link}">Learn More</a>` : '';
 		const contentString = `<div><h3>${title}</h3><p>${desc}</p>${linkContent}</div>`;
 
@@ -23,7 +21,7 @@ jQuery(document).ready(($) => {
 
 		const marker = new google.maps.Marker({
 			map,
-			position: location,
+			position: { lat, lng },
 			icon: iconMarker,
 		});
 
@@ -33,18 +31,6 @@ jQuery(document).ready(($) => {
 
 		markers.push(marker.position);
 		markerCluster.addMarker(marker);
-	}
-
-	function codeAddress(address, title, desc, link) {
-		const add = address;
-		geocoder.geocode({ address: add }, (results, status) => {
-			if (status === 'OK') {
-				// console.log('location:' + results[0].geometry.location);
-				renderMarker(results[0].geometry.location, title, desc, link);
-			} else {
-				console.log(`Geocode was not successful for the following reason: ${status}`);
-			}
-		});
 	}
 
 	// render the cluster markers
@@ -70,21 +56,25 @@ jQuery(document).ready(($) => {
 				// cluster image
 				markerClusterImage = resp.acf.marker_cluster[0].url.slice(0, -5);
 
+				// generate cluster class
+				renderCluster();
+
 				// map events
 				resp.acf.map_events.map((event) => {
 					const title = event.title !== undefined ? event.title : '';
 					const desc = event.description !== undefined ? event.description : '';
-					const address = event.event.address;
+					const lat = parseInt(event.event.lat, 10);
+					const lng = parseInt(event.event.lng, 10);
 					let link;
 					if (event.link) {
 						link = event.link;
 					} else {
 						link = '';
 					}
-					codeAddress(address, title, desc, link);
+					// codeAddress(address, title, desc, link);
+					renderMarker(lat, lng, title, desc, link);
 				});
 				// call the render cluster after the promise to ensure the image path is correct
-				renderCluster();
 			})
 			.fail((error) => {
 				console.log(error);
