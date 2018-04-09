@@ -47,32 +47,41 @@ jQuery(document).ready(($) => {
 		});
 	}
 
-	let iconMarker;
+	// render the cluster markers
 	let markerClusterImage;
+	function renderCluster() {
+		markerCluster = new MarkerClusterer(map, markers, {imagePath: markerClusterImage});
+	}
+
+	// define gloabl variables
+	let iconMarker;
+	// ajax request WP REST API
 	function mapOptions() {
 		// postdata exposed via functions.php
 		const pageID = postdata.post_id;
 		const baseURI = `${postdata.rest_url}pages/${pageID}`;
-
 		$.get({
 			url: baseURI,
 		})
 			.then((resp) => {
+				console.log(resp.acf);
+				
+				// icon
 				iconMarker = resp.acf.marker_image;
+
+				// cluster image
 				markerClusterImage = resp.acf.marker_cluster[0].url.slice(0, -5);
+
+				// map events
 				resp.acf.map_events.map((event) => {
 					const title = event.title !== undefined ? event.title : '';
 					const desc = event.description !== undefined ? event.description : '';
 					const address = event.event.address;
 					let link;
-					if (event.read_more[0] != undefined) {
-						if (event.read_more[0].acf_fc_layout === 'internal_link') {
-							link = event.read_more[0].post.guid;
-						} else if (event.read_more[0].acf_fc_layout === 'external_link') {
-							link = event.read_more[0].link;
-						} else {
-							link = '';
-						}
+					if (event.link != undefined && event.link.length > 0) {
+						link = event.link;
+					} else {
+						link = '';
 					}
 					codeAddress(address, title, desc, link);
 				});
@@ -82,11 +91,6 @@ jQuery(document).ready(($) => {
 			.fail((error) => {
 				console.log(error);
 			});
-	}
-
-	function renderCluster() {
-		console.log(markers);
-		markerCluster = new MarkerClusterer(map, markers, {imagePath: markerClusterImage});
 	}
 
 	if (document.getElementById('map')) {

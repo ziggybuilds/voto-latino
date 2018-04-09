@@ -1274,31 +1274,40 @@ jQuery(document).ready(function ($) {
     });
   }
 
-  var iconMarker = void 0;
+  // render the cluster markers
   var markerClusterImage = void 0;
+  function renderCluster() {
+    markerCluster = new MarkerClusterer(map, markers, { imagePath: markerClusterImage });
+  }
+
+  // define gloabl variables
+  var iconMarker = void 0;
+  // ajax request WP REST API
   function mapOptions() {
     // postdata exposed via functions.php
     var pageID = postdata.post_id;
     var baseURI = postdata.rest_url + 'pages/' + pageID;
-
     $.get({
       url: baseURI
     }).then(function (resp) {
+      console.log(resp.acf);
+
+      // icon
       iconMarker = resp.acf.marker_image;
+
+      // cluster image
       markerClusterImage = resp.acf.marker_cluster[0].url.slice(0, -5);
+
+      // map events
       resp.acf.map_events.map(function (event) {
         var title = event.title !== undefined ? event.title : '';
         var desc = event.description !== undefined ? event.description : '';
         var address = event.event.address;
         var link = void 0;
-        if (event.read_more[0] != undefined) {
-          if (event.read_more[0].acf_fc_layout === 'internal_link') {
-            link = event.read_more[0].post.guid;
-          } else if (event.read_more[0].acf_fc_layout === 'external_link') {
-            link = event.read_more[0].link;
-          } else {
-            link = '';
-          }
+        if (event.link != undefined && event.link.length > 0) {
+          link = event.link;
+        } else {
+          link = '';
         }
         codeAddress(address, title, desc, link);
       });
@@ -1307,11 +1316,6 @@ jQuery(document).ready(function ($) {
     }).fail(function (error) {
       console.log(error);
     });
-  }
-
-  function renderCluster() {
-    console.log(markers);
-    markerCluster = new MarkerClusterer(map, markers, { imagePath: markerClusterImage });
   }
 
   if (document.getElementById('map')) {
