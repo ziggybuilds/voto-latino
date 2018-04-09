@@ -64,8 +64,6 @@ jQuery(document).ready(($) => {
 			url: baseURI,
 		})
 			.then((resp) => {
-				console.log(resp.acf);
-				
 				// icon
 				iconMarker = resp.acf.marker_image;
 
