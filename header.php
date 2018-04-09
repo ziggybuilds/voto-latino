@@ -83,7 +83,7 @@ if( get_field('topper_image', $pageID ) ) {
 					<div class="header-card-image">
 						<?php
 							if ( get_field('card_image', $pageID) ) {
-								echo '<img class="card-image" src="' . get_field('card_image', $pageID) . '" alt="card"></img>';
+								echo '<img class="card-image" src="' . get_field('card_image', $pageID) . '" alt="card" />';
 							}
 						?>
 					</div>

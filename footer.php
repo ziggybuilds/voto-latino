@@ -34,7 +34,7 @@
 					echo get_field('disclaimer', 'options');
 				}
 				if( get_field('copyright_holder', 'options') ) {
-					echo get_field('copyright_holder', 'options') . ' &copy ' . date("Y");
+					echo get_field('copyright_holder', 'options') . ' &copy; ' . date("Y");
 				}
 				if( get_field('privacy_policy', 'options') ) {
 					echo ', <a href="' . get_field('privacy_policy', 'options') . '">Privacy Policy</a>';

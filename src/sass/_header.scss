@@ -6,9 +6,10 @@ header {
 
 	.header-navigation {
 		z-index: 888;
-		position: absolute;
+		position: fixed;
 		height: 100vh;
-		width: 100vw;
+		width: 100%;
+		top: 0;
 		background-color: $darkred;
 		display: table;
 		text-align: center;
