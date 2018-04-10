@@ -1229,7 +1229,13 @@ jQuery(document).ready(function ($) {
   var map = void 0;
   var markers = [];
   var markerCluster = void 0;
+  // define gloabl variables
+  var iconMarker = void 0;
+  // render the cluster markers
+  var markerClusterImage = void 0;
+
   function initMap() {
+    // center of the united states
     var latlng = new google.maps.LatLng('39.8283', '-98.5795');
     var mapSetup = {
       zoom: 4,
@@ -1239,6 +1245,7 @@ jQuery(document).ready(function ($) {
   }
 
   function renderMarker(lat, lng, title, desc, link) {
+    // mark up of the internal content for pop ups
     var linkContent = link.length > 0 ? '<a href="' + link + '">Learn More</a>' : '';
     var contentString = '<div><h3>' + title + '</h3><p>' + desc + '</p>' + linkContent + '</div>';
 
@@ -1256,18 +1263,14 @@ jQuery(document).ready(function ($) {
       infowindow.open(map, marker);
     });
 
-    markers.push(marker.position);
+    // add marker to cluster map
     markerCluster.addMarker(marker);
   }
 
-  // render the cluster markers
-  var markerClusterImage = void 0;
   function renderCluster() {
     markerCluster = new MarkerClusterer(map, markers, { imagePath: markerClusterImage });
   }
 
-  // define gloabl variables
-  var iconMarker = void 0;
   // ajax request WP REST API
   function mapOptions() {
     // postdata exposed via functions.php
@@ -1289,15 +1292,14 @@ jQuery(document).ready(function ($) {
       resp.acf.map_events.map(function (event) {
         var title = event.title !== undefined ? event.title : '';
         var desc = event.description !== undefined ? event.description : '';
-        var lat = parseInt(event.event.lat, 10);
-        var lng = parseInt(event.event.lng, 10);
+        var lat = parseFloat(event.event.lat);
+        var lng = parseFloat(event.event.lng);
         var link = void 0;
         if (event.link) {
           link = event.link;
         } else {
           link = '';
         }
-        // codeAddress(address, title, desc, link);
         renderMarker(lat, lng, title, desc, link);
       });
       // call the render cluster after the promise to ensure the image path is correct

@@ -2,7 +2,13 @@ jQuery(document).ready(($) => {
 	let map;
 	let markers = [];
 	let markerCluster;
+	// define gloabl variables
+	let iconMarker;
+	// render the cluster markers
+	let markerClusterImage;
+
 	function initMap() {
+		// center of the united states
 		const latlng = new google.maps.LatLng('39.8283', '-98.5795');
 		const mapSetup = {
 			zoom: 4,
@@ -12,6 +18,7 @@ jQuery(document).ready(($) => {
 	}
 
 	function renderMarker(lat, lng, title, desc, link) {
+		// mark up of the internal content for pop ups
 		const linkContent = link.length > 0 ? `<a href="${link}">Learn More</a>` : '';
 		const contentString = `<div><h3>${title}</h3><p>${desc}</p>${linkContent}</div>`;
 
@@ -29,18 +36,14 @@ jQuery(document).ready(($) => {
 			infowindow.open(map, marker);
 		});
 
-		markers.push(marker.position);
+		// add marker to cluster map
 		markerCluster.addMarker(marker);
 	}
 
-	// render the cluster markers
-	let markerClusterImage;
 	function renderCluster() {
 		markerCluster = new MarkerClusterer(map, markers, {imagePath: markerClusterImage});
 	}
 
-	// define gloabl variables
-	let iconMarker;
 	// ajax request WP REST API
 	function mapOptions() {
 		// postdata exposed via functions.php
@@ -63,15 +66,14 @@ jQuery(document).ready(($) => {
 				resp.acf.map_events.map((event) => {
 					const title = event.title !== undefined ? event.title : '';
 					const desc = event.description !== undefined ? event.description : '';
-					const lat = parseInt(event.event.lat, 10);
-					const lng = parseInt(event.event.lng, 10);
+					const lat = parseFloat(event.event.lat);
+					const lng = parseFloat(event.event.lng);
 					let link;
 					if (event.link) {
 						link = event.link;
 					} else {
 						link = '';
 					}
-					// codeAddress(address, title, desc, link);
 					renderMarker(lat, lng, title, desc, link);
 				});
 				// call the render cluster after the promise to ensure the image path is correct
