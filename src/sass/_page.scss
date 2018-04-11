@@ -72,11 +72,9 @@
 	position: relative;
 
 	.post-share-wrapper {
-		position: absolute;
-		bottom: 0;
 		width: 100%;
 		text-align: center;
-
+		padding: 1em 0;
 		 a {
 		 	color: $red;
 		 	font-size: 1.6em;

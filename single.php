@@ -20,14 +20,6 @@ get_header(); ?>
 						get_template_part( 'template-parts/single-loop');
 				?>
 				</div>
-				<?php
-					the_post_navigation( array(
-							'prev_text' => '<span class="screen-reader-text nav">' . __( 'Previous Post', 'je-starter' ) . '</span>',
-							'next_text' => '<span class="screen-reader-text nav">' . __( 'Next Post', 'je-starter' ) . '</span>',
-						) );
-
-					endwhile; // End of the loop.
-				?>
 				<?php 
 				//Begin Social Profile Loop this while render as <a></a>
 				$twitter = "https://twitter.com/intent/tweet?url=";
@@ -39,6 +31,14 @@ get_header(); ?>
 						<a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
 						<a class="facebook" href="http://www.facebook.com/sharer.php?u=<?php $postLink ?>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 				</div>
+				<?php
+					the_post_navigation( array(
+							'prev_text' => '<span class="screen-reader-text nav">' . __( 'Previous Post', 'je-starter' ) . '</span>',
+							'next_text' => '<span class="screen-reader-text nav">' . __( 'Next Post', 'je-starter' ) . '</span>',
+						) );
+
+					endwhile; // End of the loop.
+				?>
 		</section>
 	</main><!-- #main -->
 </div><!-- #primary -->
