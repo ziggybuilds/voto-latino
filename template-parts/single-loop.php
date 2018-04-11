@@ -8,7 +8,7 @@
 ?>
 <article class="article">
 			<p class="post-date"><?php the_date(); ?></p>
-			<h1 class="title"><?php the_title(); ?></h1>
+			<h1 class=""><?php the_title(); ?></h1>
 			<div class="content"><?php the_content(); ?></div>
 
 			<?php

@@ -53,6 +53,10 @@
 }
 
 .single-post-display {
+	h1 {
+		font-family: $displayfont;
+		text-align: center;
+	}
 	.post-date {
 		text-align: center;
 	}
@@ -69,7 +73,7 @@
 
 	.post-share-wrapper {
 		position: absolute;
-		bottom: 12em;
+		bottom: 0;
 		width: 100%;
 		text-align: center;
 

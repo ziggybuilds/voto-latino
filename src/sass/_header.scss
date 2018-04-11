@@ -130,6 +130,10 @@ header {
 		padding: 4em 0;
 		position: relative;
 		z-index: 2;
+
+		.title {
+			text-align: center;
+		}
 	}
 
 // home header styles
