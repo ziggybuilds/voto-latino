@@ -87,12 +87,13 @@
 }
 
 // archive page styles
+.archive .category-name {
+	font-family: $displayfont;
+	text-align: center;
+}
+
 .archive .article {
 	margin: 4em 0;
-
-	.category-name {
-		font-family: $displayfont;
-	}
 
 	.post-date {
 		margin: 0;
