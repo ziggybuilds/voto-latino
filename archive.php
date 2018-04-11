@@ -16,7 +16,7 @@
 			<div class="inner-wrapper archive">
 				<?php 
 					// echo the category title before loop
-					echo '<div class="category-name"><h1 class="title">' . get_the_archive_title() . '</h1></div>';
+					echo '<div class="category-name"><h1>' . get_the_archive_title() . '</h1></div>';
 
 					echo '<div class="display-posts">';
 					
