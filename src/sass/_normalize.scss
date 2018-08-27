@@ -45,14 +45,6 @@ a {
 	background-color: transparent;
 }
 
-//Custom hover effects
-a:active,
-a:hover {
-	outline: 0;
-	color: $red;
-	transition: ease-in-out 0.2s;
-}
-
 abbr[title] {
 	border-bottom: 1px dotted;
 }

@@ -1,22 +1,6 @@
 jQuery(document).ready(function($) {
 	'use strict';
-	function mobileMenu() {
-		const $mobileBtn = $('#menuBtn');
-		if ($mobileBtn != undefined) {
-			const $menu = $('.header-navigation');
-			$mobileBtn.on('click', () => {
-				$menu.toggleClass('hide');
-				$menu.toggleClass('menu-open');
-			});
-			
-			const $menuLinks = $('.header-navigation a');
-			$menuLinks.on('click', () => {
-				$menu.toggleClass('hide');
-				$menu.toggleClass('menu-open');
-			});
-		}
-	}
-	mobileMenu();
+
 
 	// Select all links with hashes
 	$('a[href*="#"]')

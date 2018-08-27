@@ -12,4 +12,4 @@
 	grabSocial('youtube');
 	grabSocial('twitter');
 ?>
-</div>	
+</div>

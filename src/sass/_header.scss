@@ -1,258 +1,120 @@
 header {
-	position: relative;
-	background-position: left;
-	background-repeat: no-repeat;
+	background-position: 100% 0%;
 	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: $dark;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	min-height: 300px;
 
-	.header-navigation {
-		z-index: 888;
-		position: fixed;
-		height: 100vh;
-		width: 100%;
-		top: 0;
-		background-color: $darkred;
-		display: table;
-		text-align: center;
-		transition: 0.4s ease-in;
-
-		> div {
-			display: table-cell;
-			vertical-align: middle;
-
-			ul {
-				li {
-					padding: 1em 0;
-					list-style-type: none;
-					
-					a {
-						text-decoration: none;
-						font-family: $displayfont;
-						color: white;
-						font-size: 1.6em;
-
-						&:hover, &:focus {
-							color: $darkblue;
-						}
-					}
-				}
-			}
-		}
+	@media screen and (max-width: $md) and (min-width: $sm) {
+		min-height: 550px;
 	}
 
-	.menu-open {
-		transform: translateY(0);
+	@media screen and (min-width: $md) {
+		min-height: 668px;
+	}
+}
+
+.header__overlay {
+	background: linear-gradient(71deg, #192a56, rgba(48, 139, 203, 0.0));
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	opacity: 0.4;
+}
+
+
+// Header menu styles
+.headerMenu {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 888;
+	background-color: $dark;
+	padding: .5em 0;
+	box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.headerMenu__innerWrapper {
+	display: table;
+
+	> div {
+		display: table-cell;
+		vertical-align: middle;
 	}
 
-	.hide {
-		transform: translateY(-1000px);
-	}
-
-
-
-	.header-menu {
-		width: 100%;
-		box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
-		position: relative;
-		z-index: 999;
-		background-color: $darkblue;
-		display: table;
-		height: 60px;
-
-		> div {
-			display: table-cell;
-			height: 100%;
-			vertical-align: middle;
-			text-align: center;
-
-			a {
-				color: white;
-				text-decoration: none;
-				font-weight: bold;
-				text-transform: uppercase;
-				&:hover, &:focus {
-					color: $darkblue;
-				}
-			}
-		}
-
-		.dga-link {
-			background-color: $blue;
-			width: 50%;
-			@media screen and (max-width: $sm) {
-				display: none;
-			}
-		}
-
-		.header-menu-control {
-			background-color: $darkred;
-			width: 25%;
-			@media screen and (max-width: $sm) {
-				width: 50%;
-			}
-		}
-
-		.header-view-map {
-			background-color: $red;
-			@media screen and (max-width: $sm) {
-				width: 50%;
-			}
-		}
-	}
-
-// shared header styles
-.header-content {
-	color: white;
-	max-width: 480px;
-
-		.header-text {
-		a {
-			color: white;
-			text-decoration: none;
-
-			.title {
-				font-size: 3em;
-
-				@media screen and (max-width: $sm) {
-					text-align: center;
-				}
-			}
+	a {
+		color: white;
+		text-decoration: none;
+		&:hover, &:focus {
+			color: $highlight;
 		}
 	}
 }
 
+.headerMenu__logo img {
+	max-height: 3em;
+	width: auto;
+}
 
-
-// page header styles
-	.header-wrapper-page-header {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		padding: 4em 0;
-		position: relative;
-		z-index: 2;
-
-		.title {
-			text-align: center;
-		}
-	}
-
-// home header styles
-	.header-wrapper-home-header {
-		@media screen and (min-width: $sm) {
-			display: flex;
-			flex-direction: row;
-			justify-content: center;
-			padding: 4em 0;
-		}
-
-		position: relative;
-		z-index: 2;
-
-		.header-content {
-			@media screen and (min-width: $sm) {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				max-width: 60%;
-				margin: 0 1em;
-			}
-			
-			@media screen and (max-width: $sm) {
-				margin: 0 auto;
-			}		
-		}
-
-		.header-card {
-			background-color: #206b9d;
-			padding: 10px;
-			border-radius: 6px;
-			max-width: 400px;
-			margin: 0 1em;
-			position: relative;
-
-			@media screen and (max-width: $sm) {
-				margin: 0 auto;
-			}
-
-			> div {
-				border-radius: 6px;
-				background-color: $blue;
-				padding: 10px 10px;
-				color: white;
-				height: 100%;
-				position: relative;
-
-				.header-card-image {
-					width: 100%;
-					border-radius: 6px;
-					text-align: center;
-					position: relative;
-
-					@media screen and (min-width: $md) {
-						height: 300px;
-						> img {
-							max-width: 300px;
-						}
-					}
-
-					> img {
-						width: 100%;
-						border-radius: 6px;
-						height: auto;
-					}
-				}
-
-				.header-card-details {
-					text-align: center;
-					h4 {
-						font-family: $displayfont;
-					}
-					p {
-						text-align: left;
-						margin: 5px;
-					}
-					a {
-						color: white;
-						text-decoration: none;
-
-						&:hover, &:focus {
-							color: $darkblue;
-						}
-					}
-					.card-view-map {
-						margin-top: 1em;
-						text-transform: uppercase;
-						font-weight: bold;
-						font-size: 1.2em;
-					}
-				}
-			}
-		}
-	}
-
-	&:after {
-		content: "";
-		display: block;
-		background: $gradient;
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 100%;
-		width: 100%;
-	}
-
-	.header-social {
-		z-index: 2;
-		@media screen and (min-width: $sm) {
-			bottom: 20px;
-			left: 20px;
-			position: absolute;
-		}
-
-		@media screen and (max-width: $sm) {
-			position: relative;
-			text-align: center;
-			padding: 1em 0;
+.headerMenu__innerWrapper .menu-primary-container {
+	text-align: right;
+	ul {
+		li {
+			display: inline-block;
+			padding: 0 1em;
+			font-size: .8em;
 		}
 	}
 }
+
+.headerMenu__social {
+	text-align: right;
+	max-width: 6em;
+	a {
+		padding: 0 .2em;
+	}
+}
+
+// header text styles 
+.header__titleWrapper {
+	@extend .inner-wrapper;
+	margin-top: 4em;
+	padding-top: 6em;
+	padding-bottom: 6em;
+	position: relative;
+	z-index: 2;
+
+	&__title, &__subtitle, &__pageTitle {
+		text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+		color: white;
+	}
+
+	&__title {
+		font-size: 4em;
+		margin: 0 0 0 0;
+		font-weight: 900;
+		line-height: 1em;
+		span {
+			color: $highlight;
+		}
+	}
+	&__subtitle {
+		font-style: italic;
+		font-weight: 600;
+		margin: 0;
+	}
+	&__pageTitle {
+		font-size: 2em;
+	}
+}
+

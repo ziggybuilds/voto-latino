@@ -5,16 +5,19 @@
 * @package je-starter
 *
 */
+
+$id = get_the_ID();
 ?>
-<div class="event">
-			<?php
-				if( get_field('date_picker') ) {
-					$datePick = get_field('date_picker', false, false);
-					$datePick = new DateTime($datePick);
-					$datePick = $datePick->format('F j, Y');
-				}
-			?>
-			<p><span class="post-date"><?php echo $datePick; ?></span></p>
-			<h4><?php the_title(); ?></h4>
-			<a href="<?php echo get_permalink(); ?>">View More</a>
+<div class="feed__articles__article">
+				<div class="feed__articles__article__image">
+					<h3 class="feed__articles__article__title">
+						<?php the_title(); ?>
+					</h3>
+					<?php if ( get_field( 'post_image', $id ) ) : ?>
+						<img src="<?php the_field( 'post_image', $id ) ?>" alt="article" />
+					<?php endif; ?>
+				</div>
+			<div class="feed__articles__article__content">
+				<?php the_content(); ?>
+			</div>
 </div>

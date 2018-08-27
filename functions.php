@@ -100,11 +100,9 @@ add_action( 'widgets_init', 'jestarter_widgets_init' );
  * Enqueue scripts and styles.
  */
 function jestarter_scripts() {
-	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Sigmar+One|Source+Sans+Pro:400,700', false);
+	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,600i,900,900i" rel="stylesheet', false);
 
-	wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyC9pn3p6hiRCYRbDVN6AynUySqLjy3yztQ', true);
-
-	wp_enqueue_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
+	wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.2.0/css/all.css'); 
 
 	wp_enqueue_script('gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js', true);
 
@@ -149,13 +147,12 @@ if( function_exists('acf_add_options_page') ) {
 function grabSocial($platform) {
 	$page = 'options';
 	if( get_field($platform, $page) ):
-		$render = '<a href="'  .  get_field($platform, $page) . '"><div class="circle-social"><i class="fa fa-' . $platform . '" aria-hidden="true"></i></div></a>';
+		$render = '<a href="'  .  get_field($platform, $page) . '"><i class="fab fa-' . $platform . '" aria-hidden="true"></i></a>';
 		echo $render;
 	endif;
 }
 
 // Filter excerpt length
-
 function custom_excerpt_length( $length ) {
 	return 80;
 }
@@ -198,10 +195,3 @@ function displayCats() {
 		return $categories[0]->name;
 	}
 }
-
-// ACF Google Maps API Key
-function my_acf_init() {
-	acf_update_setting('google_api_key', 'AIzaSyC9pn3p6hiRCYRbDVN6AynUySqLjy3yztQ');
-}
-
-add_action('acf/init', 'my_acf_init');

@@ -78,7 +78,7 @@ var browserSyncFiles = [
 // browser-sync options
 // see: https://www.browsersync.io/docs/options/
 var browserSyncOptions = {
-    proxy: "http://localhost/base-template/wordpress/",
+    proxy: "http://localhost/iecomm-template/wordpress/",
     notify: false,
     injectChanges: false
 };
