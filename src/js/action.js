@@ -7,15 +7,19 @@ jQuery(document).ready(($) => {
 		$('#popUpTrigger').on('click', () => {
 			if ($popUp.is(":visible") === false) {
 				$popUp.fadeIn('fast');
-				console.log($popUp.is(":visible"));
 			}
 		});
 
 		$('#popUpClose').on('click', (e) => {
 			e.preventDefault();
-			console.log($popUp.is(":visible"));
 			if ($popUp.is(":visible") === true) {
-				console.log($popUp.is(":visible"));
+				// reloads the iframe to stop the video
+				const iframes = $('iframe');
+				if (iframes != null) {
+				    for (let i = 0; i < iframes.length; i++) {
+				        iframes[i].src = iframes[i].src;
+				    }
+				}
 				$popUp.fadeOut('fast');
 			}
 		});

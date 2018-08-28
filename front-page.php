@@ -18,11 +18,17 @@ get_header(); ?>
 if ( get_field('topper_video_preview', $id) ) :
 	$video_style = 'background-image: url(' . get_field('topper_video_preview', $id) . ')';
 endif;
+
+if ( get_field('topper_video', $id) ) :
+	$video_class = '--videoActive';
+else :
+	$video_class = '--videoNull';
+endif;
 ?>
 	<div id="primary" class="content-area home-page fadeIn">
 		<main id="main" class="site-main" role="main">
 		<section class="frontTopper container">
-			<div class="frontTopper__innerWrapper inner-wrapper">
+			<div class="frontTopper__innerWrapper inner-wrapper frontTopper__innerWrapper<?php echo $video_class; ?>">
 				<div class="frontTopper__innerWrapper__text">
 					<?php
 						if ( get_field('topper_title', $id) ) {

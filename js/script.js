@@ -9,15 +9,19 @@ jQuery(document).ready(function ($) {
 		$('#popUpTrigger').on('click', function () {
 			if ($popUp.is(":visible") === false) {
 				$popUp.fadeIn('fast');
-				console.log($popUp.is(":visible"));
 			}
 		});
 
 		$('#popUpClose').on('click', function (e) {
 			e.preventDefault();
-			console.log($popUp.is(":visible"));
 			if ($popUp.is(":visible") === true) {
-				console.log($popUp.is(":visible"));
+				// reloads the iframe to stop the video
+				var iframes = $('iframe');
+				if (iframes != null) {
+					for (var i = 0; i < iframes.length; i++) {
+						iframes[i].src = iframes[i].src;
+					}
+				}
 				$popUp.fadeOut('fast');
 			}
 		});

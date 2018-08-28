@@ -8,7 +8,13 @@
 	position: relative;
 	z-index: 5;
 
-	&__video {
+	&__text {
+		padding-top: .2em;
+	}
+}
+
+.frontTopper__innerWrapper--videoActive {
+	.frontTopper__innerWrapper__video {
 		width: 90%;
 		margin: 20px auto;
 		max-width: 400px;
@@ -16,31 +22,36 @@
 		padding-bottom: 20px;
 	}
 
-	&__text {
-		padding-top: .2em;
-	}
-
 	@media screen and (min-width: $sm) {
 		display: table;
 		height: 60vh;
 		min-height: 550px;
 
-		&__text, &__video {
+		.frontTopper__innerWrapper__text, .frontTopper__innerWrapper__video {
 			display: table-cell;
 			width: 50%;
 		}
 
-		&__text {
+		.frontTopper__innerWrapper__text {
 			vertical-align: top;
 			padding: 2em 2em 110px 0;
 		}
 
-		&__video {
+		.frontTopper__innerWrapper__video {
 			height: 100%;
 			padding: 4em 0 50px 0;
 		}
 	}
 }
+
+.frontTopper__innerWrapper--videoNull {
+	.frontTopper__innerWrapper__text {
+		max-width: 640px;
+		margin: 0 auto 120px auto;
+	}
+}
+
+
 
 .frontTopper__innerWrapper__text {
 	h2 {
