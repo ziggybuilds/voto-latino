@@ -54,9 +54,7 @@
 	}
 }
 
-.frontTopper__innerWrapper__video {
-
-}
+.frontTopper__innerWrapper__video {}
 
 .frontTopper__innerWrapper__video__innerVideo {
 	background-color: $medium;
@@ -65,6 +63,9 @@
 	width: 100%;
 	transition: 0.2s ease-in;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
 
 	&:hover, &:focus {
 		box-shadow: 0 2px 10px 5px $highlight;

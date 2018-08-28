@@ -352,6 +352,30 @@ acf_add_local_field_group(array(
 			'placeholder' => '',
 		),
 		array(
+			'key' => 'field_5b854cd14dc61',
+			'label' => 'Topper Video Preview',
+			'name' => 'topper_video_preview',
+			'type' => 'image',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'url',
+			'preview_size' => 'thumbnail',
+			'library' => 'all',
+			'min_width' => '',
+			'min_height' => '',
+			'min_size' => '',
+			'max_width' => '',
+			'max_height' => '',
+			'max_size' => '',
+			'mime_types' => '',
+		),
+		array(
 			'key' => 'field_5b840e7811cc1',
 			'label' => 'Featured Posts',
 			'name' => '',
@@ -586,9 +610,9 @@ acf_add_local_field_group(array(
 	'location' => array(
 		array(
 			array(
-				'param' => 'page',
+				'param' => 'page_type',
 				'operator' => '==',
-				'value' => '9',
+				'value' => 'front_page',
 			),
 		),
 	),

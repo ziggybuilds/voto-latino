@@ -13,7 +13,12 @@
  */
 
 get_header(); ?>
- <?php $id = get_the_id(); ?>
+<?php $id = get_the_id(); ?>
+<?php
+if ( get_field('topper_video_preview', $id) ) :
+	$video_style = 'background-image: url(' . get_field('topper_video_preview', $id) . ')';
+endif;
+?>
 	<div id="primary" class="content-area home-page fadeIn">
 		<main id="main" class="site-main" role="main">
 		<section class="frontTopper container">
@@ -30,7 +35,7 @@ get_header(); ?>
 				</div>
 				<?php if ( get_field('topper_video', $id) ) : ?>
 				<div class="frontTopper__innerWrapper__video">
-					<div id="popUpTrigger" class="frontTopper__innerWrapper__video__innerVideo" tabindex="1">
+					<div id="popUpTrigger" style="<?php echo $video_style; ?>" class="frontTopper__innerWrapper__video__innerVideo" tabindex="1">
 						<svg viewBox="0 0 106 106" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 							<circle id="Oval-2" stroke="#FFFFFF" stroke-width="4" cx="50" cy="50" r="50" fill="none"></circle>
 							<polygon id="Triangle-2" fill="#FFFFFF" transform="translate(55.839844, 50.202972) rotate(90.000000) translate(-55.839844, -50.202972) " points="55.8398438 25.3631281 88.0428156 75.0428156 23.6368719 75.0428156"></polygon>

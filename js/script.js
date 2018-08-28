@@ -22,6 +22,25 @@ jQuery(document).ready(function ($) {
 			}
 		});
 	}
+
+	// animation controls
+	var controller = new ScrollMagic.Controller();
+	function scrollReveal(elem) {
+		TweenMax.to(elem, 0, { css: { 'opacity': '0' } });
+		new ScrollMagic.Scene({
+			triggerElement: elem,
+			offset: '-50px',
+			reverse: false
+		}).setTween(elem, 1, { css: { 'opacity': '1' } }).addTo(controller);
+	}
+
+	// feed__articles__article
+	(function () {
+		var $articles = $('.feed__articles__article');
+		for (var i = 0; i < $articles.length; i += 1) {
+			scrollReveal($articles[i]);
+		}
+	})();
 });
 
 jQuery(document).ready(function ($) {
