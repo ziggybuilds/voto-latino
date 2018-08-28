@@ -184,7 +184,9 @@
 		width: calc(2/3 * 100%);
 	}
 	&__content {
-
+		ul, ol {
+			padding-left: 2em;
+		}
 	}
 }
 
@@ -236,7 +238,6 @@
 		span { color: $highlight; }
 	}
 	&__text {
-
 	}
 }
 
