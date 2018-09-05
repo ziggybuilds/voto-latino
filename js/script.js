@@ -1,32 +1,6 @@
 'use strict';
 
 jQuery(document).ready(function ($) {
-	// pop up functionality
-	if ($('.popUp')) {
-		var $popUp = $('.popUp');
-		$popUp.hide();
-
-		$('#popUpTrigger').on('click', function () {
-			if ($popUp.is(":visible") === false) {
-				$popUp.fadeIn('fast');
-			}
-		});
-
-		$('#popUpClose').on('click', function (e) {
-			e.preventDefault();
-			if ($popUp.is(":visible") === true) {
-				// reloads the iframe to stop the video
-				var iframes = $('iframe');
-				if (iframes != null) {
-					for (var i = 0; i < iframes.length; i++) {
-						iframes[i].src = iframes[i].src;
-					}
-				}
-				$popUp.fadeOut('fast');
-			}
-		});
-	}
-
 	// animation controls
 	var controller = new ScrollMagic.Controller();
 	function scrollReveal(elem) {
@@ -45,11 +19,30 @@ jQuery(document).ready(function ($) {
 			scrollReveal($articles[i]);
 		}
 	})();
+
+	// Fullpage.js Init
+	$('#fullpage').fullpage({
+		//options here
+		autoScrolling: true,
+		licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE'
+
+	});
+
+	//methods
+	$.fn.fullpage.setAllowScrolling(true);
+
+	// continue scroll actions
+	var $continueLinks = $('.instruction__bottomBar__nav__content__link');
+	for (var i = 0; i < $continueLinks.length; i += 1) {
+		$($continueLinks[i]).on('click', function (e) {
+			e.preventDefault();
+			fullpage_api.moveSectionDown();
+		});
+	}
 });
 
 jQuery(document).ready(function ($) {
 	'use strict';
-
 	// Select all links with hashes
 
 	$('a[href*="#"]')

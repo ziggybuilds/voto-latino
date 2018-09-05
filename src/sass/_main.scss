@@ -1,7 +1,7 @@
 html {
 	font-size: 16px;
 	@media only screen and (max-width: $sm) {
-		font-size: 14px;
+		font-size: 12px;
 	}
 }
 
@@ -66,46 +66,10 @@ button {
 	padding: 1em 4em;
 	border-radius: 4em;
 	transition: 0.2s ease-in;
-}
 
-button.primary {
-	border: 2px solid white;
-	color: white;
-}
-
-button.link {
-	color: white;
-	border: none;
-	padding: 0;
-	font-weight: bold;
-
-	&:hover, &:focus {
-		color: $dark;
-	}
-}
-
-.more-link {
-	a {
-		text-decoration: none;
-		font-weight: bold;
-		i {
-			font-size: 1.5em;
-			padding: 0px 0px 0px 10px;
-		}
-	}
-}
-
-// Grid control
-.container {
-	width: 100%;
-	margin: 0 auto;
-}
-
-.inner-wrapper {
-	width: 90%;
-	margin: 0 auto;
-	max-width: 1200px;
-	height: 100%;
+	&--primary {}
+	&--danger {}
+	&--forward {}
 }
 
 // extra styling
@@ -124,44 +88,26 @@ button.link {
 	visibility: hidden;
 }
 
-// Animation styling 
-
-
-/* Layout classes */
-.flex-row {
-	display: flex;
-	flex-direction: row;
+/*******************************************
+* Grid Styles & Control
+*******************************************/
+.container {
+	border: 1px solid purple;
+	width: 100%;	
 }
 
-.flex-column {
-	display: flex;
-	flex-direction: column;
+.inner-wrapper {
+	border: 1px solid yellow;
+
+	max-width: 960px;
+	width: calc(11/12 * 100%);
+	margin: 0 auto;
+
+	@media screen and (min-width: $sm) {
+		width: calc(10/12 * 100%);
+	}
 }
 
-.flex-vertical {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-
-.vertical-align {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-}
-
-.center-align {
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
-}
-
-.abs-center {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-}
 
 // Responsive media controls 
 .responsive-video {

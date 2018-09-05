@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /*!
-Theme Name: DeSantis Care - Dem Dev Base Template
-Author: Dem Dev
-Description: DeSantis Care - Dem Dev Base Template
+Theme Name: Voto Latino - VoterPal
+Author: Joshua Ellis
+Description: Voto Latino - VoterPal
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -12,8 +12,11 @@ Tags:
 
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
+# Variables and Dependencies
 ----------------------------------------------------------------*/
 @import "variables";
+
+@import "fullpage";
 
 /*--------------------------------------------------------------
 # Normalize 
@@ -21,7 +24,7 @@ Tags:
 @import "normalize";
 
 /*--------------------------------------------------------------
-# Normalize
+# Styles
 --------------------------------------------------------------*/
 @import "main";
 
@@ -29,7 +32,7 @@ Tags:
 
 @import "index";
 
-@import "footer";
+// @import "footer";
 
-@import "error";
+// @import "error";
 

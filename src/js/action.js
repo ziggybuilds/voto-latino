@@ -1,30 +1,4 @@
 jQuery(document).ready(($) => {
-	// pop up functionality
-	if ($('.popUp')) {
-		const $popUp = $('.popUp');
-		$popUp.hide();
-
-		$('#popUpTrigger').on('click', () => {
-			if ($popUp.is(":visible") === false) {
-				$popUp.fadeIn('fast');
-			}
-		});
-
-		$('#popUpClose').on('click', (e) => {
-			e.preventDefault();
-			if ($popUp.is(":visible") === true) {
-				// reloads the iframe to stop the video
-				const iframes = $('iframe');
-				if (iframes != null) {
-				    for (let i = 0; i < iframes.length; i++) {
-				        iframes[i].src = iframes[i].src;
-				    }
-				}
-				$popUp.fadeOut('fast');
-			}
-		});
-	}
-
 	// animation controls
 	const controller = new ScrollMagic.Controller();
 	function scrollReveal(elem) {
@@ -45,4 +19,24 @@ jQuery(document).ready(($) => {
 			scrollReveal($articles[i]);
 		}
 	})();
+
+	// Fullpage.js Init
+	$('#fullpage').fullpage({
+		//options here
+		autoScrolling: true,
+		licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+
+	});
+
+	//methods
+	$.fn.fullpage.setAllowScrolling(true);
+
+	// continue scroll actions
+	const $continueLinks = $('.instruction__bottomBar__nav__content__link');
+	for (let i = 0; i < $continueLinks.length; i += 1) {
+		$($continueLinks[i]).on('click', (e) => {
+			e.preventDefault();
+			fullpage_api.moveSectionDown();
+		});
+	}
 });

@@ -26,13 +26,13 @@ const autoprefixerOptions = {
 };
 
 gulp.task('sass', function() {
-	gulp.src('src/sass/**/*.scss')
+	gulp.src('src/sass/*.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass({
-			outputStyle: 'compressed'
+			outputStyle: 'compressed',
 		}))
-			.on('error', gutil.log)
-		// .pipe(sourcemaps.write())
+		.on('error', gutil.log)
+		.pipe(sourcemaps.write())
 		.pipe(autoprefixer(autoprefixerOptions))
 		.pipe(gulp.dest('./'))
 		.pipe(rename('style.min.css'))
@@ -78,7 +78,7 @@ var browserSyncFiles = [
 // browser-sync options
 // see: https://www.browsersync.io/docs/options/
 var browserSyncOptions = {
-    proxy: "http://localhost/iecomm-template/wordpress/",
+    proxy: "http://localhost/voto-latino/wordpress/",
     notify: false,
     injectChanges: false
 };

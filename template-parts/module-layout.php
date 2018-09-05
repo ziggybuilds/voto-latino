@@ -1,59 +1,6 @@
-<?php
-/**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package je-starter
- */
-
-get_header(); ?>
-<?php $id = get_the_id(); ?>
-	<div id="primary" class="content-area home-page fadeIn">
-		<main id="fullpage" class="site-main" role="main">
-			<section class="section intro container">
-				<div class="intro__innerWrapper inner-wrapper">
-					<div class="intro__innerWrapper__topper">
-						<p>VoterPal, brought to you by Voto Latino, has been completely redesigned from top to bottom. Now it's quicker and easier than ever!</p>
-					</div>
-					<div class="intro__innerWrapper__boxes">
-						<div class="intro__innerWrapper__boxes__box">
-							<p>Portraying the experience of prejudice currently faced by oppressed minorities in America authentically</p>
-						</div>
-						<div class="intro__innerWrapper__boxes__box">
-							<p>Portraying the experience of prejudice currently faced by oppressed minorities in America authentically</p>
-						</div>
-						<div class="intro__innerWrapper__boxes__box">
-							<p>Portraying the experience of prejudice currently faced by oppressed minorities in America authentically</p>
-						</div>
-					</div>
-					<div class="intro__innerWrapper__footer">
-						<h5>How It Works</h5>
-						<h2>4 Easy Steps</h2>
-						<h2>The whole process should take minutes</h2>
-						<svg viewBox="0 0 54 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-						    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-						        <g transform="translate(-1138.000000, -689.000000)" stroke="#FFFFFF" stroke-width="5.669">
-						            <g>
-						                <g transform="translate(1140.000000, 692.000000)">
-						                    <path d="M50,0 L25.9902011,19.5863798 C25.4454049,20.1378734 24.5545951,20.1378734 24.0097989,19.5863798 L0,0"></path>
-						                </g>
-						            </g>
-						        </g>
-						    </g>
-						</svg>
-					</div>
-				</div>
-			</section>
-			<?php
+		<?php
 				if ( have_rows('instruction_modules', $id) ) :
 					$count = 1;
-					$total = count( get_field('instruction_modules', $id ) );
 					while ( have_rows('instruction_modules', $id) ) : the_row();
 							$field = get_sub_field('module');
 							$image = $field['preview_image'];
@@ -63,11 +10,6 @@ get_header(); ?>
 								$state = 'even';
 							} else {
 								$state = 'odd';
-							}
-
-							if ( $count == $total) {
-								// conditional render of the continue
-								$endOfModules = 'end';
 							}
 					?>
 					<section class=" section container instruction">
@@ -112,20 +54,18 @@ get_header(); ?>
 				<div class="instruction__bottomBar instruction__bottomBar--<?php echo $state; ?> container">
 					<div class="instruction__bottomBar__nav inner-wrapper">
 						<div class="instruction__bottomBar__nav__content">
-							<a class="instruction__bottomBar__nav__content__link  instruction__bottomBar__nav__content__link--<?php echo $endOfModules; ?>" href="">
-								<p>Continue</p>
-								<svg viewBox="0 0 54 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-								    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-								        <g transform="translate(-1138.000000, -689.000000)" stroke="#FFFFFF" stroke-width="5.669">
-								            <g>
-								                <g transform="translate(1140.000000, 692.000000)">
-								                    <path d="M50,0 L25.9902011,19.5863798 C25.4454049,20.1378734 24.5545951,20.1378734 24.0097989,19.5863798 L0,0"></path>
-								                </g>
-								            </g>
-								        </g>
-								    </g>
-								</svg>
-							</a>
+							<p>Continue</p>
+							<svg viewBox="0 0 54 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+							    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							        <g transform="translate(-1138.000000, -689.000000)" stroke="#FFFFFF" stroke-width="5.669">
+							            <g>
+							                <g transform="translate(1140.000000, 692.000000)">
+							                    <path d="M50,0 L25.9902011,19.5863798 C25.4454049,20.1378734 24.5545951,20.1378734 24.0097989,19.5863798 L0,0"></path>
+							                </g>
+							            </g>
+							        </g>
+							    </g>
+							</svg>
 						</div>
 					</div>
 				</div>
@@ -136,7 +76,3 @@ get_header(); ?>
 					endwhile;
 				endif;
 			?>
-		</main>
-	</div><!-- #primary -->
-<?php
-get_footer();

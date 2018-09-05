@@ -34,5 +34,7 @@
     "node-sass": "^4.9.3",
     "pump": "^1.0.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "susy": "^3.0.5"
+  }
 }
