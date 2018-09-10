@@ -15,21 +15,5 @@
 				echo '<img src="' . get_field("logo", "options") . '" alt="logo" />';
 			endif; ?>
 		</div>
-		<?php
-			// echoing the nav menu
-		/*
-			wp_nav_menu( array(
-				'menu' => 'Primary',
-				'menu_class' => 'headerMenu__menuInner',
-				) );
-		*/
-		?>
-		<div class="headerMenu__social">
-			<?php 
-				grabSocial('facebook');
-				grabSocial('youtube');
-				grabSocial('twitter');
-			?>
-		</div>
 	</div>
 </div>

@@ -38,6 +38,51 @@ jQuery(document).ready(function ($) {
 			fullpage_api.moveSectionDown();
 		});
 	}
+
+	// button control
+	// grabs data-url on each button and uses it to assign new window.location
+	function handleButtonClick(elem) {
+		var $btn = $(elem);
+		$($btn).on('click', function (e) {
+			e.preventDefault();
+			var url = $btn.attr('data-url');
+			window.location.assign(url);
+		});
+	}
+
+	// iterate through the main buttons on the page
+	var $activeBtns = $('.button--danger');
+	$activeBtns.each(function () {
+		handleButtonClick(this);
+	});
+
+	// control animation for banner
+	var $banner = $('.banner__innerWrapper');
+	var $hero = $('.hero');
+	var $intro = $('.intro');
+	var controllerBanner = new ScrollMagic.Controller();
+
+	function bannerReveal() {
+
+		var tl = new TimelineMax().set($banner, { y: 30 }).to($banner, 0.1, { css: { opacity: '1' } }).to($banner, 0.1, { y: 0 }, '-=0.1');
+
+		new ScrollMagic.Scene({
+			triggerElement: '.intro',
+			offset: 200,
+			triggerHook: 'onCenter',
+			reverse: true
+		}).setTween(tl).addTo(controllerBanner);
+
+		var tlFooter = new TimelineMax().to($banner, 0.1, { css: { opacity: '0' } }).to($banner, 0.1, { x: -15 });
+
+		new ScrollMagic.Scene({
+			triggerElement: '.footer',
+			offset: 200,
+			triggerHook: 'onEnter',
+			reverse: true
+		}).setTween(tlFooter).addTo(controllerBanner);
+	}
+	bannerReveal();
 });
 
 jQuery(document).ready(function ($) {

@@ -198,6 +198,20 @@ function displayCats() {
 	}
 }
 
+// helper function to fallback to the frontpage for the introduction topper
+// voterpal specific function, be cautious
+function acf_home_fallback($field_name) {
+	$page = get_the_id();
+	$front_page = get_option( 'page_on_front' );
+	if ( get_field($field_name, $page) ) {
+		return get_field($field_name, $page);
+	} elseif ( get_field($field_name, $front_page) ) {
+		return get_field($field_name, $front_page);
+	} else {
+		return false;
+	}
+}
+
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
@@ -205,11 +219,121 @@ acf_add_local_field_group(array(
 	'title' => 'Home',
 	'fields' => array(
 		array(
+			'key' => 'field_5b968d5bda0ae',
+			'label' => 'Introduction',
+			'name' => '',
+			'type' => 'tab',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'placement' => 'top',
+			'endpoint' => 0,
+		),
+		array(
+			'key' => 'field_5b968debda0b0',
+			'label' => 'Introduction Topper',
+			'name' => 'introduction_topper',
+			'type' => 'textarea',
+			'instructions' => 'This will appear at the top of the introduction slide.',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'maxlength' => '',
+			'rows' => '',
+			'new_lines' => '',
+		),
+		array(
+			'key' => 'field_5b968e0eda0b1',
+			'label' => 'Introduction Statements',
+			'name' => 'introduction_statements',
+			'type' => 'repeater',
+			'instructions' => 'Add content to display as the emphasized statements on the introduction slide.',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'collapsed' => '',
+			'min' => 0,
+			'max' => 3,
+			'layout' => 'row',
+			'button_label' => '',
+			'sub_fields' => array(
+				array(
+					'key' => 'field_5b968e42da0b2',
+					'label' => 'Box',
+					'name' => 'box',
+					'type' => 'text',
+					'instructions' => 'Keep these text sections short',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+					'maxlength' => '',
+				),
+			),
+		),
+		array(
+			'key' => 'field_5b968e74da0b3',
+			'label' => 'Introduction Footer',
+			'name' => 'introduction_footer',
+			'type' => 'textarea',
+			'instructions' => 'Add content to display at the bottom of the introduction section right above the down arrow',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'maxlength' => '',
+			'rows' => '',
+			'new_lines' => 'br',
+		),
+		array(
+			'key' => 'field_5b968d6bda0af',
+			'label' => 'Instructions',
+			'name' => '',
+			'type' => 'tab',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'placement' => 'top',
+			'endpoint' => 0,
+		),
+		array(
 			'key' => 'field_5b85e4a8733e0',
 			'label' => 'Instruction Modules',
 			'name' => 'instruction_modules',
 			'type' => 'repeater',
-			'instructions' => '',
+			'instructions' => 'Create and order the instructions to use VoterPal.',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
@@ -228,7 +352,7 @@ acf_add_local_field_group(array(
 					'label' => 'Module',
 					'name' => 'module',
 					'type' => 'group',
-					'instructions' => '',
+					'instructions' => 'Each instruction module has an image and a short description that are required.',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -294,9 +418,16 @@ acf_add_local_field_group(array(
 				'value' => 'front_page',
 			),
 		),
+		array(
+			array(
+				'param' => 'page_template',
+				'operator' => '==',
+				'value' => 'default',
+			),
+		),
 	),
 	'menu_order' => 0,
-	'position' => 'normal',
+	'position' => 'acf_after_title',
 	'style' => 'default',
 	'label_placement' => 'top',
 	'instruction_placement' => 'label',
@@ -552,6 +683,22 @@ acf_add_local_field_group(array(
 			'prepend' => '',
 			'append' => '',
 			'maxlength' => '',
+		),
+		array(
+			'key' => 'field_5b9695dfe8958',
+			'label' => 'Sign Up Link',
+			'name' => 'sign_up_link',
+			'type' => 'url',
+			'instructions' => 'Paste the Sign Up redirect link here',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
 		),
 		array(
 			'key' => 'field_5b9422067077b',

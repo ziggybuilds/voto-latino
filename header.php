@@ -46,6 +46,26 @@ $pageID = get_option('page_on_front');
 						endif;
 					?>
 				</div>
+				<div class="banner__innerWrapper__location">
+					<?php
+						// function to check if home or organizer
+						if ( is_home() || is_front_page() ) :
+							echo '';
+						elseif ( is_page('organizer-mode') ) :
+							echo '<p>Organizer Mode</p>';
+						endif;
+					?>
+				</div>
+				<div class="banner__innerWrapper__link">
+					<?php
+						// function to check if home or organizer
+						if ( is_home() || is_front_page() ) :
+							echo '<a href="' . get_permalink( get_page_by_title( 'Organizer Mode' ) ) .  '"><p>View Organizer Mode <i class="fas fa-caret-right"></i></p></a>';
+						elseif ( is_page('organizer-mode') ) :
+							echo '<a href="' . get_home_url() .  '"><p>View Main Mode <i class="fas fa-caret-right"></i></p></a>';
+						endif;
+					?>
+				</div>
 			</div>
 		</div>
 	</header><!-- #masthead -->

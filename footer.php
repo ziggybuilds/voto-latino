@@ -23,7 +23,7 @@
 							<p class="footer__innerWrapper__buttons__text"><?php the_field('sign_up_topper', 'options'); ?></p>
 						<?php endif; ?>
 						<?php get_template_part('inc/download-buttons'); ?>
-						<button class="button--danger footer__innerWrapper__buttons__signUp">Sign Up</button>
+						<?php get_template_part('inc/sign-up-button'); ?>
 					</div>
 					<div class="footer__innerWrapper__disclaimer">
 					<?php if ( get_field('disclaimer', 'options') ) : ?>

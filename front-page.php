@@ -43,36 +43,49 @@ get_header(); ?>
 			</section>
 			<section class="section intro container ">
 				<div class="intro__innerWrapper inner-wrapper">
-					<div class="intro__innerWrapper__topper">
-						<p>VoterPal, brought to you by Voto Latino, has been completely redesigned from top to bottom. Now it's quicker and easier than ever!</p>
-					</div>
-					<div class="intro__innerWrapper__boxes">
-						<div class="intro__innerWrapper__boxes__box">
-							<p>Portraying the experience of prejudice currently faced by oppressed minorities in America authentically</p>
+					<?php
+						// function to fallback to homepage if not on current page
+						if ( acf_home_fallback('introduction_topper') ) :
+					?>
+						<div class="intro__innerWrapper__topper">
+							<p><?php echo acf_home_fallback('introduction_topper'); ?></p>
 						</div>
-						<div class="intro__innerWrapper__boxes__box">
-							<p>Portraying the experience of prejudice currently faced by oppressed minorities in America authentically</p>
+					<?php endif; ?>
+					<?php
+						// function to fallback to homepage if not on current page
+						if ( acf_home_fallback('introduction_statements') ) :
+					?>
+						<div class="intro__innerWrapper__boxes">
+					<?php
+							function emphasis_boxes() {
+								$repeater = acf_home_fallback('introduction_statements');
+								foreach ( $repeater as $box ) {
+									echo '<div class="intro__innerWrapper__boxes__box"><p>' . $box["box"] . '</p></div>';
+								}
+							}
+							emphasis_boxes();
+					?>
 						</div>
-						<div class="intro__innerWrapper__boxes__box">
-							<p>Portraying the experience of prejudice currently faced by oppressed minorities in America authentically</p>
+					<?php endif; ?>
+					<?php
+						if ( acf_home_fallback('introduction_footer') ) :
+					?>
+						<div class="intro__innerWrapper__footer">
+							<h5>How It Works</h5>
+							<h2><?php echo acf_home_fallback('introduction_footer'); ?></h2>
+							<svg viewBox="0 0 54 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+							    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							        <g transform="translate(-1138.000000, -689.000000)" stroke="#FFFFFF" stroke-width="5.669">
+							            <g>
+							                <g transform="translate(1140.000000, 692.000000)">
+							                    <path d="M50,0 L25.9902011,19.5863798 C25.4454049,20.1378734 24.5545951,20.1378734 24.0097989,19.5863798 L0,0"></path>
+							                </g>
+							            </g>
+							        </g>
+							    </g>
+							</svg>
 						</div>
-					</div>
-					<div class="intro__innerWrapper__footer">
-						<h5>How It Works</h5>
-						<h2>4 Easy Steps</h2>
-						<h2>The whole process should take minutes</h2>
-						<svg viewBox="0 0 54 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-						    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-						        <g transform="translate(-1138.000000, -689.000000)" stroke="#FFFFFF" stroke-width="5.669">
-						            <g>
-						                <g transform="translate(1140.000000, 692.000000)">
-						                    <path d="M50,0 L25.9902011,19.5863798 C25.4454049,20.1378734 24.5545951,20.1378734 24.0097989,19.5863798 L0,0"></path>
-						                </g>
-						            </g>
-						        </g>
-						    </g>
-						</svg>
-					</div>
+					<?php endif; ?>
 				</div>
 			</section>
 			<?php

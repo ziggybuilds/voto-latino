@@ -42,6 +42,7 @@ gulp.task('sass', function() {
 gulp.task('js', function() {
 	gulp.src(['src/js/**/*.js'])
 		.pipe(eslint())
+		.on('error', gutil.log)
 		.pipe(concat('script.js'))
 		.pipe(eslint.format())
 		.pipe(babel())
