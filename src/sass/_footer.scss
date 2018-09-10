@@ -1,0 +1,66 @@
+.footer {
+ background-color: $light;
+ color: white;
+}
+
+.footer__innerWrapper {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	padding: 2em 1em;
+	max-width: 640px;
+	max-height: 480px;
+}
+
+.footer__innerWrapper__topper {
+	font-size: 1.2em;
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.footer__innerWrapper__buttons {
+	margin: 2em 0;
+
+	@media screen and (min-width: $xs) {
+		margin: 4em 0;		
+	}
+	
+	&__text {
+		font-size: 1.2em;
+		margin: .5em 0;
+		p {
+			margin: 0;
+		}
+	}
+
+	.button {
+		&--ios, &--android {
+			width: 100%;
+			margin: 5px 0 0 0;
+
+			@media screen and (min-width: $xs) {
+				width: calc(50% - 5px);
+			}
+		}
+		&--ios {
+			float: left;
+		}
+		&--android {
+			float: right;
+		}
+	}
+
+	&__signUp {
+		margin: 20px 0 0 0;
+		width: 100%;
+	}
+}
+
+.footer__innerWrapper__disclaimer {
+	p {
+		font-size: .6em;
+		margin: 2px 0;
+	}
+}

@@ -16,7 +16,32 @@ get_header(); ?>
 <?php $id = get_the_id(); ?>
 	<div id="primary" class="content-area home-page fadeIn">
 		<main id="fullpage" class="site-main" role="main">
-			<section class="section intro container">
+			<section class="container section hero">
+				<div class="hero__innerWrapper inner-wrapper">
+					<?php if ( get_field('hero_logo', 'options') ) : $hero_logo = get_field('hero_logo', 'options'); ?>
+					<div class="hero__innerWrapper__logo">
+						<img src="<?php echo $hero_logo; ?>" alt="hero" />
+					</div>
+					<?php endif; ?>
+					<?php if ( get_field('hero_subtitle', 'options') ) : ?>
+					<div class="hero__innerWrapper__subtitle">
+						<h3><?php the_field('hero_subtitle', 'options'); ?></h3>
+					</div>
+					<?php endif; ?>
+					<?php if ( get_field('hero_text', 'options') ) : ?>
+					<div class="hero__innerWrapper__text">
+						<p><?php the_field('hero_text', 'options'); ?></p>
+					</div>
+					<?php endif; ?>
+					<div class="hero__innerWrapper__buttons">
+						<?php get_template_part('inc/download-buttons'); ?>
+					</div>
+				</div>
+				<?php if ( get_field('hero_background', 'options') ) : ?>
+				<img  class="hero__background" src="<?php the_field('hero_background', 'options'); ?>" alt="background" />
+				<?php endif; ?>
+			</section>
+			<section class="section intro container ">
 				<div class="intro__innerWrapper inner-wrapper">
 					<div class="intro__innerWrapper__topper">
 						<p>VoterPal, brought to you by Voto Latino, has been completely redesigned from top to bottom. Now it's quicker and easier than ever!</p>
@@ -136,7 +161,9 @@ get_header(); ?>
 					endwhile;
 				endif;
 			?>
-		</main>
-	</div><!-- #primary -->
 <?php
+
+// <main>
+// </div> primary
+// ^^^^ will end in footer to accomodate fullpage.js
 get_footer();

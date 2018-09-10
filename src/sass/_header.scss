@@ -3,21 +3,93 @@
 	top: 0;
 	left: 0;
 	width: 100vw;
+}
 
-	&__innerWrapper {
-		&__logo {
-			img {
-				max-height: 50px;
-				width: auto;
+.banner__innerWrapper {
+	&__logo {
+		img {
+			max-height: 50px;
+			width: auto;
 
-				@media screen and (min-width: $sm) {
-					max-height: 100px;
-				}
+			@media screen and (min-width: $sm) {
+				max-height: 100px;
+			}
 
-				@media screen and (min-width: $sm) {
-					max-height: 100px;
-				}
+			@media screen and (min-width: $sm) {
+				max-height: 100px;
 			}
 		}
 	}
+}
+
+.hero {
+	background-color: white;
+	position: relative;
+}
+
+.hero__innerWrapper {
+	color: $medium;
+	position: relative;
+	z-index: 2;
+}
+
+.hero__innerWrapper__logo {
+	max-width: 610px;
+	width: 100%;
+	position: relative;
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+.hero__innerWrapper__subtitle, 
+.hero__innerWrapper__text {
+	max-width: 480px;
+}
+
+.hero__innerWrapper__subtitle {
+	h3 {
+		margin: 1em 0;
+	}
+}
+
+.hero__innerWrapper__text {
+	p {
+		margin: 0 0 2em 0;
+	}
+}
+
+.hero__innerWrapper__buttons {
+	max-width: 610px;
+	width: 100%;
+	button {
+		width: 100%;
+		margin: 5px 0;
+
+	}
+
+	@media screen and (min-width: $xs) {
+		button {
+			width: calc(50% - 20px);
+			max-width: 290px;
+		}
+
+		:first-child {
+			margin: 0 4px 0 0;
+		}
+
+		:nth-child(2) {
+			margin: 0 0 4px 0;
+		}
+	}
+}
+
+.hero__background {
+	position: absolute;
+	z-index: 0;
+	width: 45%;
+	bottom: 0;
+	right: 0;
+	opacity: .8;
 }

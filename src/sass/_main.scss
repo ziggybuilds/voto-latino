@@ -17,6 +17,13 @@ a {
 	}
 }
 
+a.invert {
+	color: white;
+ 	&:hover, &:focus {
+ 		color: $highlight;
+ 	}
+}
+
 ::selection {
 	background-color: $highlight;
 	color: white;
@@ -62,14 +69,33 @@ i {
 
 button {
 	background: transparent;
+	border: none;
 	text-transform: uppercase;
-	padding: 1em 4em;
-	border-radius: 4em;
+	padding: 1em 0;
+	border-radius: 1px;
 	transition: 0.2s ease-in;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+	font-family: Montserrat;
+  	font-size: .8em;
+  	font-weight: bold;
 
-	&--primary {}
-	&--danger {}
-	&--forward {}
+  	i {
+  		font-weight: normal;
+  	}
+
+	&.button--danger {
+		background-color: $highlight;
+		color: white;
+
+		&:hover, &:focus {
+			background-color: $medium;
+		}
+	}
+
+	&.button--ios {
+	}
+	&.button--android {
+	}
 }
 
 // extra styling
@@ -92,13 +118,10 @@ button {
 * Grid Styles & Control
 *******************************************/
 .container {
-	border: 1px solid purple;
 	width: 100%;	
 }
 
 .inner-wrapper {
-	border: 1px solid yellow;
-
 	max-width: 960px;
 	width: calc(11/12 * 100%);
 	margin: 0 auto;
