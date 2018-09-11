@@ -117,34 +117,11 @@ get_header(); ?>
 						</div>
 					</div>
 					<div class="instruction__innerWrapper__image">
-						<svg viewBox="0 0 349 698" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-						    <defs>
-						    	 <pattern id="img_<?php echo $count; ?>" patternUnits="userSpaceOnUse" width="300" height="520"  patternTransform="translate(12.5, 0)">
-									<image xlink:href="<?php echo $image; ?>" x="0" y="77" width="300" height="520" />
-								</pattern>
-						        <path d="M162.5,674 L273.375,674 C281.183,674 288.929,672.259 295.859,668.662 C305.415,663.703 312.927,656.862 318.242,648.001 C322.778,640.439 325,631.712 325,622.894 L325,51.106 C325,42.288 322.778,33.561 318.242,25.999 C312.927,17.137 305.415,10.297 295.859,5.338 C288.929,1.741 281.183,0 273.375,0 L162.5,0 L51.625,0 C43.817,0 36.072,1.741 29.141,5.338 C19.585,10.297 12.073,17.137 6.758,25.999 C2.222,33.561 0,42.288 0,51.106 L0,622.894 C0,631.712 2.222,640.439 6.758,648.001 C12.073,656.862 19.585,663.703 29.141,668.662 C36.072,672.259 43.817,674 51.625,674 L162.5,674 Z"></path>
-						        <filter x="-6.2%" y="-2.4%" width="112.3%" height="105.9%" filterUnits="objectBoundingBox">
-						            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
-						            <feOffset dx="0" dy="4" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
-						            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-						            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
-						        </filter>
-						    </defs>
-						    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-						        <g transform="translate(11.000000, 8.000000)">
-						            <g transform="translate(1.000000, 0.000000)">
-						                <g>
-						                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
-						                    <use fill="#D1E4F1" fill-rule="evenodd" xlink:href="#path-1"></use>
-						                </g>
-						                <path class="svg__innerImage" d="M308.5,596 L16.5,596 C14.3,596 12.5,594.2 12.5,592 L12.5,80 C12.5,77.8 14.3,76 16.5,76 L308.5,76 C310.7,76 312.5,77.8 312.5,80 L312.5,592 C312.5,594.2 310.7,596 308.5,596" fill="url(#img_<?php echo $count; ?>)"></path>
-						                <path d="M186.5,633.835 C186.5,647.09 175.755,657.835 162.5,657.835 C149.245,657.835 138.5,647.09 138.5,633.835 C138.5,620.58 149.245,609.835 162.5,609.835 C175.755,609.835 186.5,620.58 186.5,633.835" fill="#8AC1E6"></path>
-						                <path d="M211.5,47 L113.5,47 C111.025,47 109,44.975 109,42.5 C109,40.025 111.025,38 113.5,38 L211.5,38 C213.975,38 216,40.025 216,42.5 C216,44.975 213.975,47 211.5,47" fill="#8AC1E6"></path>
-						                <path d="M167.3984,21.7881 C167.3984,24.4931 165.2054,26.6861 162.5004,26.6861 C159.7944,26.6861 157.6024,24.4931 157.6024,21.7881 C157.6024,19.0831 159.7944,16.8901 162.5004,16.8901 C165.2054,16.8901 167.3984,19.0831 167.3984,21.7881" fill="#8AC1E6"></path>
-						            </g>
-						        </g>
-						    </g>
-						</svg>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 325 674"><defs><style>.cls-1{fill:#d1e4f0;}.cls-3{fill:#8ac1e6;}</style>
+ <pattern id="img_<?php echo $count; ?>" patternUnits="userSpaceOnUse" width="300" height="520"  patternTransform="translate(12.5, 0)">
+	<image xlink:href="<?php echo $image; ?>" x="0" y="77" width="300" height="520" />
+</pattern>
+</defs><g data-name="Layer 2"><g data-name="Layer 1"><path class="cls-1" d="M162.5,674H273.37a48.75,48.75,0,0,0,22.49-5.34A54.93,54.93,0,0,0,318.24,648,48.72,48.72,0,0,0,325,622.89V51.11A48.72,48.72,0,0,0,318.24,26,54.93,54.93,0,0,0,295.86,5.34,48.75,48.75,0,0,0,273.37,0H51.63A48.75,48.75,0,0,0,29.14,5.34,54.93,54.93,0,0,0,6.76,26,48.72,48.72,0,0,0,0,51.11V622.89A48.72,48.72,0,0,0,6.76,648a54.93,54.93,0,0,0,22.38,20.66A48.75,48.75,0,0,0,51.63,674Z"/><rect class="cls-2" x="12.5" y="76" width="300" height="520" rx="4" ry="4" fill="url(#img_<?php echo $count; ?>)"/><circle class="cls-3" cx="162.5" cy="633.83" r="24"/><rect class="cls-3" x="109" y="38" width="107" height="9" rx="4.5" ry="4.5"/><circle class="cls-3" cx="162.5" cy="21.79" r="4.9"/></g></g></svg>
 					</div>
 				</div>
 				<div class="instruction__bottomBar instruction__bottomBar--<?php echo $state; ?> container">

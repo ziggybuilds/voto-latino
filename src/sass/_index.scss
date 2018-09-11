@@ -224,10 +224,16 @@
 		height: 70%;
 		position: relative;
 		overflow-y: hidden;
-		z-index: 4;
-		max-width: 380px;
-		margin: 0 auto;
+		z-index: 5;
+		text-align: center;
+		> svg {
+			max-width: 380px;
+		}
 	}
+}
+
+.intro, .hero {
+	display: none !important;
 }
 
 .instruction__bottomBar {
