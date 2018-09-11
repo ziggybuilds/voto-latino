@@ -16,8 +16,10 @@
 
 .footer__innerWrapper__topper {
 	font-size: 1.2em;
-	max-width: 400px;
-	margin: 0 auto;
+
+	@media screen and (min-width: $sm) {
+		padding: 0 4em;
+	}
 }
 
 .footer__innerWrapper__buttons {

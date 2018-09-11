@@ -31,13 +31,23 @@ jQuery(document).ready(($) => {
 	$.fn.fullpage.setAllowScrolling(true);
 
 	// continue scroll actions
-	const $continueLinks = $('.instruction__bottomBar__nav__content__link');
-	for (let i = 0; i < $continueLinks.length; i += 1) {
-		$($continueLinks[i]).on('click', (e) => {
-			e.preventDefault();
-			fullpage_api.moveSectionDown();
-		});
+	function moveDownHandleClick(array) {
+		for (let i = 0; i < array.length; i += 1) {
+			$(array[i]).on('click', (e) => {
+				e.preventDefault();
+				fullpage_api.moveSectionDown();
+			});
+		}
 	}
+
+	const $continueLinks = $('.instruction__bottomBar__nav__content__link');
+	moveDownHandleClick($continueLinks);
+
+	const $svgBtn = $('.svg-btn-down');
+	$svgBtn.on('click', (e) => {
+		e.preventDefault();
+		fullpage_api.moveSectionDown();
+	});
 
 	// button control
 	// grabs data-url on each button and uses it to assign new window.location

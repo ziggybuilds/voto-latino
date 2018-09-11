@@ -172,10 +172,11 @@
 		vertical-align: middle;
 	}
 	h1 {
-		padding: 0 5px;
+		padding: 0 10px 0 0;
 	}
 	p {
 		color: $medium;
+		font-size: 1.4em;
 	}
 	&--even {
 		h1 {
@@ -207,6 +208,12 @@
 	position: relative;
 	z-index: 4;
 	overflow: hidden;
+
+	> svg {
+		.cls-1 {
+			box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.3);
+		}
+	}
 
 	@media screen and (min-width: $sm) {
 		order: 1;
