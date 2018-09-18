@@ -1,17 +1,6 @@
 'use strict';
 
 jQuery(document).ready(function ($) {
-	// animation controls
-	var controller = new ScrollMagic.Controller();
-	function scrollReveal(elem) {
-		TweenMax.to(elem, 0, { css: { 'opacity': '0' } });
-		new ScrollMagic.Scene({
-			triggerElement: elem,
-			offset: '-50px',
-			reverse: false
-		}).setTween(elem, 1, { css: { 'opacity': '1' } }).addTo(controller);
-	}
-
 	// feed__articles__article
 	(function () {
 		var $articles = $('.feed__articles__article');
@@ -73,7 +62,6 @@ jQuery(document).ready(function ($) {
 	var controllerBanner = new ScrollMagic.Controller();
 
 	function bannerReveal() {
-
 		var tl = new TimelineMax().set($banner, { y: 30 }).to($banner, 0.1, { css: { opacity: '1' } }).to($banner, 0.1, { y: 0 }, '-=0.1');
 
 		new ScrollMagic.Scene({
@@ -93,6 +81,33 @@ jQuery(document).ready(function ($) {
 		}).setTween(tlFooter).addTo(controllerBanner);
 	}
 	bannerReveal();
+
+	// animation controls
+	var controller = new ScrollMagic.Controller();
+	function scrollReveal(elem) {
+		var tl = new TimelineMax().set(elem, { y: 30 }).set(elem, { css: { opacity: '0' } }).to(elem, 0.5, { css: { opacity: '1' } }).to(elem, 0.5, { y: 0 }, '-=0.4');
+		new ScrollMagic.Scene({
+			triggerElement: elem,
+			offset: '-50px',
+			reverse: false
+		}).setTween(tl).addTo(controller);
+	}
+
+	// button actions for organizer mode
+	var $modeBtn = $('#modeBtn');
+
+	if ($modeBtn) {
+		$modeBtn.on('click', function (e) {
+			e.preventDefault();
+			var url = $modeBtn.attr('data-href');
+			window.location = url;
+		});
+	}
+
+	var $phoneFrames = $('.instruction__innerWrapper__image');
+	for (var i = 0; i <= $phoneFrames.length; i += 1) {
+		scrollReveal($phoneFrames[i]);
+	}
 });
 
 jQuery(document).ready(function ($) {

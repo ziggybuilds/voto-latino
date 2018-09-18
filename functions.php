@@ -212,6 +212,14 @@ function acf_home_fallback($field_name) {
 	}
 }
 
+// Hide menu page items
+function remove_menus(){
+	remove_menu_page( 'edit.php' );                   //Posts
+	remove_menu_page( 'edit-comments.php' );          //Comments
+}
+add_action( 'admin_menu', 'remove_menus' );
+
+// ACF Pro functions
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(

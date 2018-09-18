@@ -60,9 +60,9 @@ $pageID = get_option('page_on_front');
 					<?php
 						// function to check if home or organizer
 						if ( is_home() || is_front_page() ) :
-							echo '<a href="' . get_permalink( get_page_by_title( 'Organizer Mode' ) ) .  '"><p>View Organizer Mode <i class="fas fa-caret-right"></i></p></a>';
+							echo '<button id="modeBtn" class="button--danger" data-href="' . get_permalink( get_page_by_title( 'Organizer Mode' ) ) .  '"><p>View Organizer Mode <i class="fas fa-caret-right"></i></p></button>';
 						elseif ( is_page('organizer-mode') ) :
-							echo '<a href="' . get_home_url() .  '"><p>View Main Mode <i class="fas fa-caret-right"></i></p></a>';
+							echo '<button id="modeBtn" class="button--danger" data-href="' . get_home_url() .  '"><p>View Main Mode <i class="fas fa-caret-right"></i></p></button>';
 						endif;
 					?>
 				</div>

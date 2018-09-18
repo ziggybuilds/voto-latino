@@ -104,6 +104,7 @@
 	svg {
 		height: 2em;
 		width: 3.125em;
+		cursor: pointer;
 		path {
 			stroke: $dark;
 		}
@@ -226,6 +227,7 @@
 			transform: translateX(-50%);
 			width: 80%;
 			max-width: 360px;
+			max-height: 90vh;
 		}
 	}
 

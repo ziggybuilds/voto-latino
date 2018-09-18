@@ -1,3 +1,4 @@
+// Banner Styles
 .banner {
 	position: fixed;
 	top: 0;
@@ -52,8 +53,13 @@
 
 	&__link {
 		text-align: right;
-		a {
-			text-decoration: none;
+		display: table;
+		padding: .2em 0;
+		
+		button {
+			display: table-cell;
+			vertical-align: middle;
+			padding: 0em 1em;
 		}
 	}
 }

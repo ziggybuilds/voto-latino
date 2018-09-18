@@ -1,17 +1,4 @@
 jQuery(document).ready(($) => {
-	// animation controls
-	const controller = new ScrollMagic.Controller();
-	function scrollReveal(elem) {
-		TweenMax.to(elem, 0, {css: {'opacity': '0'}});
-		new ScrollMagic.Scene({
-			triggerElement: elem,
-			offset: '-50px',
-			reverse: false,
-		})
-		.setTween(elem, 1, {css: {'opacity': '1'}})
-		.addTo(controller);
-	}
-
 	// feed__articles__article
 	(function() {
 		const $articles = $('.feed__articles__article');
@@ -73,7 +60,6 @@ jQuery(document).ready(($) => {
 	const controllerBanner = new ScrollMagic.Controller();
 
 	function bannerReveal() {
-
 		const tl = new TimelineMax()
 			.set($banner, { y: 30 })
 			.to($banner, 0.1, { css: { opacity: '1'} })
@@ -102,4 +88,39 @@ jQuery(document).ready(($) => {
 			.addTo(controllerBanner);
 	}
 	bannerReveal();
+
+	// animation controls
+	const controller = new ScrollMagic.Controller();
+	function scrollReveal(elem) {
+		const tl = new TimelineMax()
+			.set(elem, { y: 30 })
+			.set(elem, { css: { opacity: '0' } })
+			.to(elem, 0.5, { css: { opacity: '1' } })
+			.to(elem, 0.5, { y: 0 }, '-=0.4');
+		new ScrollMagic.Scene({
+			triggerElement: elem,
+			offset: '-50px',
+			reverse: false,
+		})
+		.setTween(tl)
+		.addTo(controller);
+	}
+
+	// button actions for organizer mode
+	const $modeBtn = $('#modeBtn');
+
+	if ($modeBtn) {
+		$modeBtn.on('click', (e) => {
+			e.preventDefault();
+			const url = $modeBtn.attr('data-href');
+			window.location = url;
+		});
+	}
+
+	
+	const $phoneFrames = $('.instruction__innerWrapper__image');
+	for (let i = 0; i <= $phoneFrames.length; i += 1) {
+		scrollReveal($phoneFrames[i]);
+	}
+	
 });
