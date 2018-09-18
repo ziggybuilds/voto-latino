@@ -85,12 +85,17 @@ jQuery(document).ready(function ($) {
 	// animation controls
 	var controller = new ScrollMagic.Controller();
 	function scrollReveal(elem) {
-		var tl = new TimelineMax().set(elem, { y: 30 }).set(elem, { css: { opacity: '0' } }).to(elem, 0.5, { css: { opacity: '1' } }).to(elem, 0.5, { y: 0 }, '-=0.4');
+		var tl = new TimelineMax().set(elem, { y: 15 }).set(elem, { css: { opacity: '0' } }).to(elem, 0.5, { css: { opacity: '1' } }).to(elem, 0.5, { y: 0 }, '-=0.4');
 		new ScrollMagic.Scene({
 			triggerElement: elem,
 			offset: '-50px',
 			reverse: false
 		}).setTween(tl).addTo(controller);
+	}
+
+	var $phoneFrames = $('.instruction__innerWrapper__image');
+	for (var i = 0; i < $phoneFrames.length; i += 1) {
+		scrollReveal($phoneFrames[i]);
 	}
 
 	// button actions for organizer mode
@@ -104,10 +109,12 @@ jQuery(document).ready(function ($) {
 		});
 	}
 
-	var $phoneFrames = $('.instruction__innerWrapper__image');
-	for (var i = 0; i <= $phoneFrames.length; i += 1) {
-		scrollReveal($phoneFrames[i]);
-	}
+	/*
+ 	const $textContent = $('.instruction__innerWrapper__text__content');
+ 	for (let i = 0; i <= $textContent.length; i += 1) {
+ 		scrollFadeIn($textContent[i]);
+ 	}
+ */
 });
 
 jQuery(document).ready(function ($) {

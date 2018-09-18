@@ -58,11 +58,13 @@ $pageID = get_option('page_on_front');
 				</div>
 				<div class="banner__innerWrapper__link">
 					<?php
-						// function to check if home or organizer
-						if ( is_home() || is_front_page() ) :
-							echo '<button id="modeBtn" class="button--danger" data-href="' . get_permalink( get_page_by_title( 'Organizer Mode' ) ) .  '"><p>View Organizer Mode <i class="fas fa-caret-right"></i></p></button>';
-						elseif ( is_page('organizer-mode') ) :
-							echo '<button id="modeBtn" class="button--danger" data-href="' . get_home_url() .  '"><p>View Main Mode <i class="fas fa-caret-right"></i></p></button>';
+						if ( get_field('display_organizer_button', 'options') && get_field('display_organizer_button', 'options') === true ) :
+							// function to check if home or organizer
+							if ( is_home() || is_front_page() ) :
+								echo '<button id="modeBtn" class="button--danger" data-href="' . get_permalink( get_page_by_title( 'Organizer Mode' ) ) .  '"><p>Organizer Mode <i class="fas fa-caret-right"></i></p></button>';
+							elseif ( is_page('organizer-mode') ) :
+								echo '<button id="modeBtn" class="button--danger" data-href="' . get_home_url() .  '"><p>Main Mode <i class="fas fa-caret-right"></i></p></button>';
+							endif;
 						endif;
 					?>
 				</div>
