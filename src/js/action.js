@@ -95,18 +95,18 @@ jQuery(document).ready(($) => {
 		const tl = new TimelineMax()
 			.set(elem, { y: 15 })
 			.set(elem, { css: { opacity: '0' } })
-			.to(elem, 0.5, { css: { opacity: '1' } })
-			.to(elem, 0.5, { y: 0 }, '-=0.4');
+			.to(elem, 0.5, { css: { opacity: '1' } }, '0.1')
+			.to(elem, 0.5, { y: 0 }, '-=0.5');
 		new ScrollMagic.Scene({
 			triggerElement: elem,
 			offset: '-50px',
 			reverse: false,
 		})
-		.setTween(tl)
-		.addTo(controller);
+			.setTween(tl)
+			.addTo(controller);
 	}
 
-	const $phoneFrames = $('.instruction__innerWrapper__image');
+	const $phoneFrames = $('.instruction__innerWrapper__image svg');
 	for (let i = 0; i < $phoneFrames.length; i += 1) {
 		scrollReveal($phoneFrames[i]);
 	}
@@ -122,10 +122,24 @@ jQuery(document).ready(($) => {
 		});
 	}
 
-/*
+	const textController = new ScrollMagic.Controller();
+	function scrollFadeIn(elem) {
+		const tl = new TimelineMax()
+			.set(elem, { x: 15 })
+			.set(elem, { css: { opacity: '0' } })
+			.to(elem, 0.5, { css: { opacity: '1' } }, '0.1')
+			.to(elem, 0.5, { x: 0 }, '-=0.5');
+		new ScrollMagic.Scene({
+			triggerElement: elem,
+			offset: '-50px',
+			reverse: false,
+		})
+			.setTween(tl)
+			.addTo(textController);
+	}
+
 	const $textContent = $('.instruction__innerWrapper__text__content');
-	for (let i = 0; i <= $textContent.length; i += 1) {
+	for (let i = 0; i < $textContent.length; i += 1) {
 		scrollFadeIn($textContent[i]);
 	}
-*/
 });
