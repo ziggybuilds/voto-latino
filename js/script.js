@@ -111,7 +111,7 @@ jQuery(document).ready(function ($) {
 
 	var textController = new ScrollMagic.Controller();
 	function scrollFadeIn(elem) {
-		var tl = new TimelineMax().set(elem, { x: 15 }).set(elem, { css: { opacity: '0' } }).to(elem, 0.5, { css: { opacity: '1' } }, '0.1').to(elem, 0.5, { x: 0 }, '-=0.5');
+		var tl = new TimelineMax().set(elem, { x: 10 }).set(elem, { css: { opacity: '0' } }).to(elem, 0.5, { css: { opacity: '1' } }, '0.1').to(elem, 0.5, { x: 0 }, '-=0.5');
 		new ScrollMagic.Scene({
 			triggerElement: elem,
 			offset: '-50px',
