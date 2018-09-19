@@ -11,12 +11,12 @@ jQuery(document).ready(function ($) {
 
 	// Fullpage.js Init
 	$('#fullpage').fullpage({
-		//options here
+		// options here
 		autoScrolling: true,
 		licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE'
 	});
 
-	//methods
+	// methods
 	$.fn.fullpage.setAllowScrolling(true);
 
 	// continue scroll actions
@@ -57,8 +57,6 @@ jQuery(document).ready(function ($) {
 
 	// control animation for banner
 	var $banner = $('.banner__innerWrapper');
-	var $hero = $('.hero');
-	var $intro = $('.intro');
 	var controllerBanner = new ScrollMagic.Controller();
 
 	function bannerReveal() {
@@ -123,6 +121,19 @@ jQuery(document).ready(function ($) {
 	for (var _i = 0; _i < $textContent.length; _i += 1) {
 		scrollFadeIn($textContent[_i]);
 	}
+
+	// false ajax loader svg animation
+	function ajaxOnComplete() {
+		var $loaderContainer = $('.falseAjax');
+		var $ajaxLoader = $('#ajaxLoader');
+		var ajaxTl = new TimelineMax().to($ajaxLoader, 1, { scale: 2 }).to($ajaxLoader, 1, { css: { opacity: '0' } }, '-=0.6').to($loaderContainer, 0.5, { css: { opacity: '0' } }).to($loaderContainer, 0, { css: { display: 'none' } });
+	}
+
+	var myVivus = new Vivus('ajaxLoader', {
+		type: 'sync',
+		duration: 200,
+		animTimingFunction: Vivus.EASE_IN
+	}, ajaxOnComplete);
 });
 
 jQuery(document).ready(function ($) {

@@ -71,4 +71,7 @@ $pageID = get_option('page_on_front');
 			</div>
 		</div>
 	</header><!-- #masthead -->
+	<div class="falseAjax">
+			<svg id="ajaxLoader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410.14 395.33"><polygon stroke-linecap="round" fill="none" stroke-width="4" stroke="#139acb" class="cls-1" points="0 141.51 114.36 141.51 164.14 222.65 110.86 308.45 0 141.51"/><polygon stroke-linecap="round" fill="none" stroke-width="4" stroke="#df494b" class="cls-2" points="301.96 0 323.6 0 122.04 325.08 110.86 308.45 301.96 0"/><polygon stroke-linecap="round" fill="none" stroke-width="4" stroke="#df494b" class="cls-2" points="345.24 0 366.87 0 146.15 361.38 133.24 341.93 345.24 0"/><polygon stroke-linecap="round" fill="none" stroke-width="4" stroke="#df494b" class="cls-2" points="388.5 0 410.14 0 168.7 395.33 157.42 378.36 388.5 0"/></svg>
+	</div>
 <div id="content" class="site-content">

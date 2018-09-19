@@ -9,12 +9,12 @@ jQuery(document).ready(($) => {
 
 	// Fullpage.js Init
 	$('#fullpage').fullpage({
-		//options here
+		// options here
 		autoScrolling: true,
 		licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
 	});
 
-	//methods
+	// methods
 	$.fn.fullpage.setAllowScrolling(true);
 
 	// continue scroll actions
@@ -55,14 +55,12 @@ jQuery(document).ready(($) => {
 
 	// control animation for banner
 	const $banner = $('.banner__innerWrapper');
-	const $hero = $('.hero');
-	const $intro = $('.intro');
 	const controllerBanner = new ScrollMagic.Controller();
 
 	function bannerReveal() {
 		const tl = new TimelineMax()
 			.set($banner, { y: 30 })
-			.to($banner, 0.1, { css: { opacity: '1'} })
+			.to($banner, 0.1, { css: { opacity: '1' } })
 			.to($banner, 0.1, { y: 0 }, '-=0.1');
 
 		new ScrollMagic.Scene({
@@ -75,7 +73,7 @@ jQuery(document).ready(($) => {
 			.addTo(controllerBanner);
 
 		const tlFooter = new TimelineMax()
-			.to($banner, 0.1, { css: { opacity: '0'} })
+			.to($banner, 0.1, { css: { opacity: '0' } })
 			.to($banner, 0.1, { x: -15 });
 
 		new ScrollMagic.Scene({
@@ -142,4 +140,21 @@ jQuery(document).ready(($) => {
 	for (let i = 0; i < $textContent.length; i += 1) {
 		scrollFadeIn($textContent[i]);
 	}
+
+	// false ajax loader svg animation
+	function ajaxOnComplete() {
+		const $loaderContainer = $('.falseAjax');
+		const $ajaxLoader = $('#ajaxLoader');
+		const ajaxTl = new TimelineMax()
+			.to($ajaxLoader, 1, { scale: 2 })
+			.to($ajaxLoader, 1, { css: { opacity: '0' } }, '-=0.6')
+			.to($loaderContainer, 0.5, { css: { opacity: '0' } })
+			.to($loaderContainer, 0, { css: { display: 'none' } });
+	}
+
+	const myVivus = new Vivus('ajaxLoader', {
+		type: 'sync',
+		duration: 200,
+		animTimingFunction: Vivus.EASE_IN,
+	}, ajaxOnComplete);
 });
