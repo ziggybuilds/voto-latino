@@ -1,3 +1,91 @@
+// embed form styles
+.signUp {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 999;
+	background-color: rgb(35, 143, 184);
+
+	.signUp__innerWrapper {
+		height: 100%;
+		max-width: 910px;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		.signUp__innerWrapper__closeBtn {
+			width: 20em;
+			margin: 1em auto;
+		}
+	}
+
+	.at-form {
+		
+	}
+}
+/*
+.at-form {
+	header, legend {
+		display: none;
+	}
+
+	form {
+		background-color: $light;
+		color: white;
+	}
+
+	.at fieldset.at-fieldset, .at-fieldset {
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+
+	.at-fields {
+		> div {
+			label {
+				color: white;
+				text-align: left;
+				margin: 0;
+			}
+		}
+	}
+
+	.at-form-submit {
+		padding: 0 !important;
+		.at-submit {
+			background: transparent;
+			border: none;
+			text-transform: uppercase;
+			padding: 1em 0;
+			border-radius: 3px;
+			transition: 0.2s ease-in;
+			box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+			font-family: Montserrat;
+		  	font-size: .8em;
+		  	font-weight: bold;
+
+			margin: 0 !important;
+			display: block;
+			float: none;
+			width: 100%;
+
+			background-color: $highlight;
+			color: white;
+
+			&:hover, &:focus {
+				background-color: $dark;
+			}
+		}
+	}
+}
+
+.fastaction-signup {
+	display: none;
+}
+*/
 .footer {
  background-color: $light;
  color: white;

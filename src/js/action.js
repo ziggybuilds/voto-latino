@@ -1,12 +1,4 @@
 jQuery(document).ready(($) => {
-	// feed__articles__article
-	(function() {
-		const $articles = $('.feed__articles__article');
-		for (let i = 0; i < $articles.length; i += 1) {
-			scrollReveal($articles[i]);
-		}
-	})();
-
 	// Fullpage.js Init
 	$('#fullpage').fullpage({
 		// options here
@@ -48,10 +40,43 @@ jQuery(document).ready(($) => {
 	}
 
 	// iterate through the main buttons on the page
-	const $activeBtns = $('.button--danger');
+	const $activeBtns = $('.button--url');
 	$activeBtns.each(function () {
 		handleButtonClick(this);
 	});
+
+	// sign up pop up controls
+	function handlePopUp() {
+		const $signUpBtn = $('.button--signUp');
+		const $popUp = $('#signUp');
+		const $closePopUpBtn = $('#signUpCloser');
+
+		if ($signUpBtn) {
+			$signUpBtn.on('click', (e) => {
+				e.preventDefault();
+				const openTl = new TimelineMax()
+					.set($popUp, { css: { opacity: '0' } })
+					.to($popUp, 0, { css: { display: 'block' } })
+					.to($popUp, 1, { css: { opacity: '1' } });
+
+				$popUp.addClass('active');
+			});
+		}
+
+		if ($closePopUpBtn) {
+			$closePopUpBtn.on('click', (e) => {
+				e.preventDefault();
+				if ($popUp.hasClass('active')) {
+					const closeTl = new TimelineMax()
+						.to($popUp, 1, { css: { opacity: '1' } })
+						.to($popUp, 0, { css: { display: 'none' } });
+
+					$popUp.removeClass('active');
+				}
+			});
+		}
+	}
+	handlePopUp();
 
 	// control animation for banner
 	const $banner = $('.banner__innerWrapper');

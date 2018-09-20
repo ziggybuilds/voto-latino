@@ -1,14 +1,6 @@
 'use strict';
 
 jQuery(document).ready(function ($) {
-	// feed__articles__article
-	(function () {
-		var $articles = $('.feed__articles__article');
-		for (var i = 0; i < $articles.length; i += 1) {
-			scrollReveal($articles[i]);
-		}
-	})();
-
 	// Fullpage.js Init
 	$('#fullpage').fullpage({
 		// options here
@@ -50,10 +42,38 @@ jQuery(document).ready(function ($) {
 	}
 
 	// iterate through the main buttons on the page
-	var $activeBtns = $('.button--danger');
+	var $activeBtns = $('.button--url');
 	$activeBtns.each(function () {
 		handleButtonClick(this);
 	});
+
+	// sign up pop up controls
+	function handlePopUp() {
+		var $signUpBtn = $('.button--signUp');
+		var $popUp = $('#signUp');
+		var $closePopUpBtn = $('#signUpCloser');
+
+		if ($signUpBtn) {
+			$signUpBtn.on('click', function (e) {
+				e.preventDefault();
+				var openTl = new TimelineMax().set($popUp, { css: { opacity: '0' } }).to($popUp, 0, { css: { display: 'block' } }).to($popUp, 1, { css: { opacity: '1' } });
+
+				$popUp.addClass('active');
+			});
+		}
+
+		if ($closePopUpBtn) {
+			$closePopUpBtn.on('click', function (e) {
+				e.preventDefault();
+				if ($popUp.hasClass('active')) {
+					var closeTl = new TimelineMax().to($popUp, 1, { css: { opacity: '1' } }).to($popUp, 0, { css: { display: 'none' } });
+
+					$popUp.removeClass('active');
+				}
+			});
+		}
+	}
+	handlePopUp();
 
 	// control animation for banner
 	var $banner = $('.banner__innerWrapper');
