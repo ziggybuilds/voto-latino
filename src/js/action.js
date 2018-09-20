@@ -68,7 +68,7 @@ jQuery(document).ready(($) => {
 				e.preventDefault();
 				if ($popUp.hasClass('active')) {
 					const closeTl = new TimelineMax()
-						.to($popUp, 1, { css: { opacity: '1' } })
+						.to($popUp, 1, { css: { opacity: '0' } })
 						.to($popUp, 0, { css: { display: 'none' } });
 
 					$popUp.removeClass('active');

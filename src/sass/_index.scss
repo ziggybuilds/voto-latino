@@ -27,7 +27,7 @@
 	padding-top: 2em;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	align-content: center;
 	height: 90%;
 	max-height: 668px;
@@ -101,13 +101,8 @@
 		margin: 5px 0;	
 	}
 
-	svg {
-		height: 2em;
-		width: 3.125em;
-		cursor: pointer;
-		path {
-			stroke: $dark;
-		}
+	i {
+		font-size: 3em;
 	}
 
 	@media screen and (max-width: $sm) {
@@ -254,6 +249,17 @@
 	}
 }
 
+.instruction__bottomBar__nav {
+	text-align: right;
+	color: white;
+
+	@media screen and (max-width: $sm) {
+		content: "";
+		display: block;
+		height: 100px;
+	}
+}
+
 .instruction__bottomBar__nav__content {
 	padding: 2em 0;
 	text-align: center;
@@ -268,27 +274,17 @@
 .instruction__bottomBar__nav__content__link {
 	text-decoration: none;
 	color: white;
-	p { transition: 0.2s ease-in; }
-	> svg {
-		width: 3em;
-		max-width: 50px;
+	p { 
 		transition: 0.2s ease-in;
+		margin: 0;
+	}
+	i {
+		font-size: 3em;
 	}
 	&:hover, &:focus {
 		color: white;
 	}
 	&--end {
 		visibility: hidden;
-	}
-}
-
-.instruction__bottomBar__nav {
-	text-align: right;
-	color: white;
-
-	@media screen and (max-width: $sm) {
-		content: "";
-		display: block;
-		height: 100px;
 	}
 }

@@ -73,17 +73,7 @@ get_header(); ?>
 						<div class="intro__innerWrapper__footer svg-btn-down">
 							<h5>How It Works</h5>
 							<h2><?php echo acf_home_fallback('introduction_footer'); ?></h2>
-							<svg viewBox="0 0 54 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-							    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-							        <g transform="translate(-1138.000000, -689.000000)" stroke="#FFFFFF" stroke-width="5.669">
-							            <g>
-							                <g transform="translate(1140.000000, 692.000000)">
-							                    <path d="M50,0 L25.9902011,19.5863798 C25.4454049,20.1378734 24.5545951,20.1378734 24.0097989,19.5863798 L0,0"></path>
-							                </g>
-							            </g>
-							        </g>
-							    </g>
-							</svg>
+							<i class="fas fa-chevron-down"></i>
 						</div>
 					<?php endif; ?>
 				</div>
@@ -159,17 +149,7 @@ get_header(); ?>
 									echo 'Download';
 								} ?>
 								</p>
-								<svg viewBox="0 0 54 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-								    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-								        <g transform="translate(-1138.000000, -689.000000)" stroke="#FFFFFF" stroke-width="5.669">
-								            <g>
-								                <g transform="translate(1140.000000, 692.000000)">
-								                    <path d="M50,0 L25.9902011,19.5863798 C25.4454049,20.1378734 24.5545951,20.1378734 24.0097989,19.5863798 L0,0"></path>
-								                </g>
-								            </g>
-								        </g>
-								    </g>
-								</svg>
+								<i class="fas fa-chevron-down"></i>
 							</a>
 						</div>
 					</div>
